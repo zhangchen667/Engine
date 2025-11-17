@@ -5,6 +5,7 @@ namespace myarcane {
 			:m_Front(glm::vec3(0.0f, 0.0f, -1.0f)), m_MovementSpeed(SPEED), m_MouseSensitivity(SENSITIVITY), m_Fov(FOV)
 		{
 			m_Position = position;
+			m_WorldUp = up;
 			m_Up = up;
 			m_Yaw = yaw;
 			m_Pitch = pitch;
@@ -14,7 +15,7 @@ namespace myarcane {
 			: m_Front(glm::vec3(0.0f, 0.0f, -1.0f)), m_MovementSpeed(SPEED), m_MouseSensitivity(SENSITIVITY), m_Fov(FOV)
 		{
 			m_Position = glm::vec3(xPos, yPos, zPos);
-			m_Up = glm::vec3(xUp, yUp, zUp);
+			m_WorldUp= glm::vec3(xUp, yUp, zUp);
 			m_Yaw = yaw;
 			m_Pitch = pitch;
 			updateCameraVectors();

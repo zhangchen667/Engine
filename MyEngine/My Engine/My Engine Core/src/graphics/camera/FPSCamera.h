@@ -20,7 +20,7 @@ namespace myarcane {
 		const GLfloat FOV = 45.0f;//视野范围
 
 		class FPSCamera {
-		public:
+		private:
 			//相机位置朝向
 			glm::vec3 m_Position;
 			glm::vec3 m_Front;
@@ -36,20 +36,20 @@ namespace myarcane {
 			GLfloat m_Fov;
 		public:
 			//向量构造函数
-			FPSCamera(glm::vec3 position = glm::vec3(0.0f, 0.0f, 0.0f), glm::vec3 up = glm::vec3(0.0f, 1.0f, 0.0f), GLfloat yaw = YAW, GLfloat pitch = PITCH);
+			FPSCamera(glm::vec3 position, glm::vec3 up, GLfloat yaw, GLfloat pitch);
 			//坐标构造函数
 			FPSCamera(GLfloat xPos, GLfloat yPos, GLfloat zPos, GLfloat xUp, GLfloat yUp, GLfloat zUp, GLfloat yaw, GLfloat pitch);
 
 			glm::mat4 getViewMatrix();
 			void processKeyboard(Camera_Movement direction, GLfloat deltaTime);
-			void processMouseMovement(GLfloat xOffset, GLfloat yOffset, GLboolean constrainPitch=true);
+			void processMouseMovement(GLfloat xOffset, GLfloat yOffset, GLboolean constrainPitch);
 			void processMouseScroll(GLfloat yOffset);
 
-			//inline GLfloat getYaw() { return m_Yaw; };
-			//inline GLfloat getPitch() { return m_Pitch; };
-			//inline GLfloat getFov() { return m_Fov; };
-			//inline GLfloat getMovementSpeed() { return m_MovementSpeed; };
-			//inline GLfloat getMouseSensitivity() { return m_MouseSensitivity; };
+			inline GLfloat getYaw() { return m_Yaw; };
+			inline GLfloat getPitch() { return m_Pitch; };
+			inline GLfloat getFov() { return m_Fov; };
+			inline GLfloat getMovementSpeed() { return m_MovementSpeed; };
+			inline GLfloat getMouseSensitivity() { return m_MouseSensitivity; };
 		private:
 			void updateCameraVectors();
 		};
