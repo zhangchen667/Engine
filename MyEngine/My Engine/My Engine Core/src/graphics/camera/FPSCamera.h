@@ -17,7 +17,7 @@ namespace myarcane {
 		const GLfloat PITCH = 0.0f;//俯仰角（上下）
 		const GLfloat SPEED = 3.0f;//移动速度
 		const GLfloat SENSITIVITY = 0.25f;//鼠标灵敏度
-		const GLfloat FOV = 45.0f;//视野范围
+		const GLfloat FOV = 80.0f;//视野范围
 
 		class FPSCamera {
 		private:
@@ -50,6 +50,7 @@ namespace myarcane {
 			inline GLfloat getFov() { return m_Fov; };
 			inline GLfloat getMovementSpeed() { return m_MovementSpeed; };
 			inline GLfloat getMouseSensitivity() { return m_MouseSensitivity; };
+			inline glm::vec3 getPosition() { return m_Position; };
 		private:
 			void updateCameraVectors();
 		};

@@ -1,0 +1,77 @@
+GLuint texture1, texture2;
+glGenTextures(1, &texture1);
+
+int width, height,nrComponents;
+glBindTexture(GL_TEXTURE_2D, texture1);
+unsigned char* image = stbi_load("res/container.jpg", &width, &height, &nrComponents, 0);
+if (image) {
+	GLenum internalFormat, format;
+	if (nrComponents == 1) {
+		internalFormat = GL_RED;
+		format = GL_RED;
+	}
+	else if (nrComponents == 3) {
+		internalFormat = GL_RGB;
+		format = GL_RGB;
+	}
+	else if (nrComponents == 4) {
+		internalFormat = GL_RGBA;  // 适配RGBA通道
+		format = GL_RGBA;
+	}
+	glTexImage2D(GL_TEXTURE_2D, 0, internalFormat, width, height, 0, format, GL_UNSIGNED_BYTE, image);
+	glGenerateMipmap(GL_TEXTURE_2D);
+	stbi_image_free(image);
+}
+else {
+	std::cout << "Failed to load texture1" << std::endl;
+
+}
+
+glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_MIRRORED_REPEAT);
+glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_MIRRORED_REPEAT);
+glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
+glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+glBindTexture(GL_TEXTURE_2D, 0);
+
+glGenTextures(1, &texture2);
+glBindTexture(GL_TEXTURE_2D, texture2);
+unsigned char* image2 = stbi_load("res/awesomeface.png", &width, &height, &nrComponents, 0);
+if (image2) {
+	GLenum internalFormat, format;
+	if (nrComponents == 1) {
+		internalFormat = GL_RED;
+		format = GL_RED;
+	}
+	else if (nrComponents == 3) {
+		internalFormat = GL_RGB;
+		format = GL_RGB;
+	}
+	else if (nrComponents == 4) {
+		internalFormat = GL_RGBA;  // 适配RGBA通道
+		format = GL_RGBA;
+	}
+	glTexImage2D(GL_TEXTURE_2D, 0, internalFormat, width, height, 0, format, GL_UNSIGNED_BYTE, image2);
+	glGenerateMipmap(GL_TEXTURE_2D);
+	stbi_image_free(image2);
+}
+else {
+	std::cout << "Failed to load texture2" << std::endl;
+}
+glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_MIRRORED_REPEAT);
+glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_MIRRORED_REPEAT);
+glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
+glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+glBindTexture(GL_TEXTURE_2D, 0);
+// 检查ourTexture1的位置
+GLint loc1 = glGetUniformLocation(shader.getShaderID(), "texture1");
+if (loc1 == -1) {
+	std::cout << "Uniform 'texture1' not found in shader!" << std::endl;
+}
+glUniform1i(loc1, 0);
+
+// 检查ourTexture2的位置
+GLint loc2 = glGetUniformLocation(shader.getShaderID(), "texture2");
+if (loc2 == -1) {
+	std::cout << "Uniform 'texture2' not found in shader!" << std::endl;
+}
+glUniform1i(loc2, 1);
