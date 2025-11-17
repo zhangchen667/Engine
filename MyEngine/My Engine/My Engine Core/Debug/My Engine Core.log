@@ -1,0 +1,20 @@
+﻿  FPSCamera.cpp
+  Shader.cpp
+  Window.cpp
+  main.cpp
+D:\MyEngine\My Engine\My Engine Core\src\main.cpp(19,15): warning C4244: “初始化”: 从“int”转换到“GLfloat”，可能丢失数据
+D:\MyEngine\My Engine\My Engine Core\src\main.cpp(20,15): warning C4244: “初始化”: 从“int”转换到“GLfloat”，可能丢失数据
+D:\MyEngine\My Engine\My Engine Core\src\main.cpp(127,26): warning C4244: “=”: 从“double”转换到“GLfloat”，可能丢失数据
+D:\MyEngine\My Engine\My Engine Core\src\main.cpp(128,26): warning C4244: “=”: 从“double”转换到“GLfloat”，可能丢失数据
+D:\MyEngine\My Engine\My Engine Core\src\main.cpp(133,19): warning C4244: “初始化”: 从“double”转换到“GLfloat”，可能丢失数据
+D:\MyEngine\My Engine\My Engine Core\src\main.cpp(134,19): warning C4244: “初始化”: 从“double”转换到“GLfloat”，可能丢失数据
+D:\MyEngine\My Engine\My Engine Core\src\main.cpp(135,27): warning C4244: “=”: 从“double”转换到“GLfloat”，可能丢失数据
+D:\MyEngine\My Engine\My Engine Core\src\main.cpp(136,27): warning C4244: “=”: 从“double”转换到“GLfloat”，可能丢失数据
+D:\MyEngine\My Engine\My Engine Core\src\main.cpp(99,19): warning C4101: “EBO”: 未引用的局部变量
+D:\MyEngine\My Engine\My Engine Core\src\main.cpp(194,23): warning C4244: “初始化”: 从“double”转换到“GLfloat”，可能丢失数据
+  正在生成代码...
+glfw3.lib(init.c.obj) : error LNK2019: 无法解析的外部符号 __imp__vsnprintf，函数 __glfwInputError 中引用了该符号
+MSVCRTD.lib(vsnprintf.obj) : error LNK2001: 无法解析的外部符号 __imp__vsnprintf
+glfw3.lib(context.c.obj) : error LNK2019: 无法解析的外部符号 __imp__sscanf，函数 _parseVersionString 中引用了该符号
+MSVCRTD.lib(vsnprintf.obj) : error LNK2001: 无法解析的外部符号 __imp___vsnprintf
+D:\MyEngine\My Engine\Debug\My Engine Core.exe : fatal error LNK1120: 3 个无法解析的外部命令
