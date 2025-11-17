@@ -2,4 +2,6 @@ D:\Engine\MyEngine\My Engine\My Engine Core\src\graphics\camera\FPSCamera.cpp;D:
 D:\Engine\MyEngine\My Engine\My Engine Core\src\graphics\Shader.cpp;D:\Engine\MyEngine\My Engine\My Engine Core\x64\Debug\Shader.obj
 D:\Engine\MyEngine\My Engine\My Engine Core\src\graphics\Window.cpp;D:\Engine\MyEngine\My Engine\My Engine Core\x64\Debug\Window.obj
 D:\Engine\MyEngine\My Engine\My Engine Core\src\main.cpp;D:\Engine\MyEngine\My Engine\My Engine Core\x64\Debug\main.obj
+D:\Engine\MyEngine\My Engine\My Engine Core\src\utils\FileUtils.cpp;D:\Engine\MyEngine\My Engine\My Engine Core\x64\Debug\FileUtils.obj
 D:\Engine\MyEngine\My Engine\My Engine Core\src\utils\Time.cpp;D:\Engine\MyEngine\My Engine\My Engine Core\x64\Debug\Time.obj
+D:\Engine\MyEngine\My Engine\My Engine Core\src\utils\Timer.cpp;D:\Engine\MyEngine\My Engine\My Engine Core\x64\Debug\Timer.obj

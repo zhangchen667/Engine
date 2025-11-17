@@ -7,14 +7,8 @@ namespace myarcane {
 	private:
 		double startTime;
 	public:
-		Timer() {
-			startTime = glfwGetTime();
-		}
-		void reset() {
-			startTime = glfwGetTime();
-		}
-		double elapsed() {
-			return glfwGetTime() - startTime;
-		}
+		Timer();
+		void reset();
+		double elapsed();
 	};
 }
