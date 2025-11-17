@@ -2,7 +2,7 @@
 <Project>
   <ProjectOutputs>
     <ProjectOutput>
-      <FullPath>D:\MyEngine\My Engine\x64\Debug\My Engine Core.exe</FullPath>
+      <FullPath>D:\Engine\MyEngine\My Engine\x64\Debug\My Engine Core.exe</FullPath>
     </ProjectOutput>
   </ProjectOutputs>
   <ContentFiles />

@@ -1,7 +1,7 @@
 #include<iostream>
 #include"graphics/Window.h"
 #include"graphics/camera/FPSCamera.h"
-
+#include"utils/Time.h"
 #include "graphics\Shader.h"
 #include <cmath>
 #include<glm/glm.hpp>
@@ -12,9 +12,7 @@
 #define STB_IMAGE_IMPLEMENTATION
 #include"stb/stb_image.h"
 //myarcane::graphics::FPSCamera camera(glm::vec3(0.0f, 0.0f, 0.0f), glm::vec3(0.0f, 1.0f, 0.0f), -90.0f, 0.0f);
-void move();
-void checkZoom(float& fov);
-glm::vec3 cameraPos(0.0f, 0.0f, 5.0f); glm::vec3 cameraFront(0.0f, 0.0f, -1.0f); glm::vec3 cameraUp(0.0f, 1.0f, 0.0f);
+myarcane::graphics::FPSCamera camera(glm::vec3(0.0f, 0.0f, 0.0f), glm::vec3(0.0f, 1.0f, 0.0f), -90.0f, 0.0f);
 myarcane::graphics::Window window("My Engine",1366,768);
 GLfloat lastX = window.getWidth();
 GLfloat lastY = window.getHeight();//窗口极限
@@ -177,7 +175,7 @@ int main() {
 	myarcane::Timer count;
 	myarcane::Timer timer;
 
-	float fov = 45.0f;
+	myarcane::Time time;
 	lastX = window.getMouseX();
 	lastY = window.getMouseY();
 	shader.enable();
@@ -186,40 +184,36 @@ int main() {
 	//渲染循环
 	while (!window.closed()) {
 		window.clear();
-		
-		GLfloat xOffset = window.getMouseX() - lastX;
-		GLfloat yOffset = lastY - window.getMouseY(); // Reversed since y is top to bottom
-		lastX = window.getMouseX();
-		lastY = window.getMouseY();
-		GLfloat sensitivity = 0.05f;
-		xOffset *= sensitivity;
-		yOffset *= sensitivity;
-		yaw += xOffset;
-		pitch += yOffset;
-		if (pitch > 89.0f)
-			pitch = 89.0f;
-		if (pitch < -89.0f)
-			pitch = -89.0f;
-		glm::vec3 front;
-		front.x = cos(glm::radians(yaw)) * cos(glm::radians(pitch));
-		front.y = sin(glm::radians(pitch));
-		front.z = sin(glm::radians(yaw)) * cos(glm::radians(pitch));
-		cameraFront = glm::normalize(front);
+		time.update();
 
 		glActiveTexture(GL_TEXTURE0);
 		glBindTexture(GL_TEXTURE_2D, texture1);
 		
 		glActiveTexture(GL_TEXTURE1);
 		glBindTexture(GL_TEXTURE_2D, texture2);
-		
-		checkZoom(fov);
-		move();
+	
+		camera.processMouseMovement(window.getMouseX() - lastX, lastY - window.getMouseY(), true);
+		lastX = window.getMouseX();
+		lastY = window.getMouseY();
+
+		if (window.isKeyPressed(GLFW_KEY_W))
+			camera.processKeyboard(myarcane::graphics::FORWARD, time.delta);
+		if (window.isKeyPressed(GLFW_KEY_S))
+			camera.processKeyboard(myarcane::graphics::BACKWARD, time.delta);
+		if (window.isKeyPressed(GLFW_KEY_A))
+			camera.processKeyboard(myarcane::graphics::LEFT, time.delta);
+		if (window.isKeyPressed(GLFW_KEY_D))
+			camera.processKeyboard(myarcane::graphics::RIGHT, time.delta);
+		if (window.isKeyPressed(GLFW_KEY_ESCAPE))
+			window.setclosed();
+		camera.processMouseScroll(window.getScrollY());
+
 		glm::mat4 model(1);
 		glm::mat4 view;
-		view = glm::lookAt(cameraPos, cameraPos + cameraFront, cameraUp);
+		view = camera.getViewMatrix();
 
 		glm::mat4 projection;
-		projection = glm::perspective(glm::radians(fov), (float)window.getWidth() / (float)window.getHeight(), 0.1f, 100.0f);
+		projection = glm::perspective(glm::radians(camera.getFov()), (float)window.getWidth() / (float)window.getHeight(), 0.1f, 100.0f);
 		shader.setUniformMat4("model", model);
 		shader.setUniformMat4("view", view);
 		shader.setUniformMat4("projection", projection);
@@ -241,43 +235,4 @@ int main() {
 	return 0;
 }
 
-
-//通过鼠标进行视野角度fov的缩放
-float origFov;
-bool first = true;
-void checkZoom(float& fov) {
-	if (first) {
-		origFov = fov;
-		first = false;
-	}
-	if (window.getScrollX() == 1 && fov > 1.0f) {
-		fov--;
-		window.resetScroll();
-	}
-	if (window.getScrollY() == -1 && fov < origFov) {
-		fov++;
-		window.resetScroll();
-	}
-}
-GLfloat deltaTime = 0.0f;
-GLfloat lastFrame = 0.0f;
-void move() {
-	GLfloat currentFrame = glfwGetTime();
-	deltaTime = currentFrame - lastFrame;
-	lastFrame = currentFrame;
-
-	GLfloat cameraSpeed = 2.0f * deltaTime;
-	if (window.isKeyPressed(GLFW_KEY_W)) {
-		cameraPos += cameraFront * cameraSpeed;
-	}
-	if (window.isKeyPressed(GLFW_KEY_S)) {
-		cameraPos -= cameraFront * cameraSpeed;
-	}
-	if (window.isKeyPressed(GLFW_KEY_A)) {
-		cameraPos -= glm::normalize(glm::cross(cameraFront, cameraUp)) * cameraSpeed;
-	}
-	if (window.isKeyPressed(GLFW_KEY_D)) {
-		cameraPos += glm::normalize(glm::cross(cameraFront, cameraUp)) * cameraSpeed;
-	}
-}
 
