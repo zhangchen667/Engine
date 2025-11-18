@@ -12,4 +12,22 @@ D:\Engine\MyEngine\My Engine\My Engine Core\src\main.cpp(134,61): warning C4244:
 D:\Engine\MyEngine\My Engine\My Engine Core\src\main.cpp(136,57): warning C4244: “参数”: 从“GLdouble”转换到“GLfloat”，可能丢失数据
 D:\Engine\MyEngine\My Engine\My Engine Core\src\main.cpp(138,58): warning C4244: “参数”: 从“GLdouble”转换到“GLfloat”，可能丢失数据
 D:\Engine\MyEngine\My Engine\My Engine Core\src\main.cpp(141,48): warning C4244: “参数”: 从“double”转换到“GLfloat”，可能丢失数据
+D:\Engine\MyEngine\My Engine\My Engine Core\src\main.cpp(147,22): warning C4244: “=”: 从“double”转换到“T”，可能丢失数据
+D:\Engine\MyEngine\My Engine\My Engine Core\src\main.cpp(147,22): warning C4244:         with
+D:\Engine\MyEngine\My Engine\My Engine Core\src\main.cpp(147,22): warning C4244:         [
+D:\Engine\MyEngine\My Engine\My Engine Core\src\main.cpp(147,22): warning C4244:             T=float
+D:\Engine\MyEngine\My Engine\My Engine Core\src\main.cpp(147,22): warning C4244:         ]
+D:\Engine\MyEngine\My Engine\My Engine Core\src\main.cpp(148,22): warning C4244: “=”: 从“double”转换到“T”，可能丢失数据
+D:\Engine\MyEngine\My Engine\My Engine Core\src\main.cpp(148,22): warning C4244:         with
+D:\Engine\MyEngine\My Engine\My Engine Core\src\main.cpp(148,22): warning C4244:         [
+D:\Engine\MyEngine\My Engine\My Engine Core\src\main.cpp(148,22): warning C4244:             T=float
+D:\Engine\MyEngine\My Engine\My Engine Core\src\main.cpp(148,22): warning C4244:         ]
+D:\Engine\MyEngine\My Engine\My Engine Core\src\main.cpp(149,22): warning C4244: “=”: 从“double”转换到“T”，可能丢失数据
+D:\Engine\MyEngine\My Engine\My Engine Core\src\main.cpp(149,22): warning C4244:         with
+D:\Engine\MyEngine\My Engine\My Engine Core\src\main.cpp(149,22): warning C4244:         [
+D:\Engine\MyEngine\My Engine\My Engine Core\src\main.cpp(149,22): warning C4244:             T=float
+D:\Engine\MyEngine\My Engine\My Engine Core\src\main.cpp(149,22): warning C4244:         ]
+glew32s.lib(glew.obj) : warning LNK4099: 未找到 PDB“”(使用“glew32s.lib(glew.obj)”或在“”中寻找)；正在链接对象，如同没有调试信息一样
+LINK : warning LNK4098: 默认库“MSVCRT”与其他库的使用冲突；请使用 /NODEFAULTLIB:library
+LINK : warning LNK4098: 默认库“LIBCMT”与其他库的使用冲突；请使用 /NODEFAULTLIB:library
   My Engine Core.vcxproj -> D:\Engine\MyEngine\My Engine\x64\Debug\My Engine Core.exe
