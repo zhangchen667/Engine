@@ -70,6 +70,12 @@
     <Image Include="res\container.jpg">
       <Filter>Resources</Filter>
     </Image>
+    <Image Include="res\container2.png">
+      <Filter>Resources</Filter>
+    </Image>
+    <Image Include="res\container2_specular.png">
+      <Filter>Resources</Filter>
+    </Image>
   </ItemGroup>
   <ItemGroup>
     <None Include="src\shaders\basic.frag">
