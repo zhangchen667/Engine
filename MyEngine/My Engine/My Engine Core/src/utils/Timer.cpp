@@ -10,8 +10,4 @@ namespace myarcane {
 		startTime = glfwGetTime();
 	}
 
-	double Timer::elapsed() {
-		return glfwGetTime() - startTime;
-	}
-
 };

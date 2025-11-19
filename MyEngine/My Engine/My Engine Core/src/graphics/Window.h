@@ -25,7 +25,7 @@ namespace myarcane {
 			bool closed() const;
 			void setclosed();
 			bool isKeyPressed(unsigned int Keycode)const;
-			bool isMouseButtonPressed(unsigned int Keycode) const;
+			bool isMouseButtonPressed(unsigned int code) const;
 
 			inline double getMouseX() { return mx; };
 			inline double getMouseY() { return my; };
@@ -37,7 +37,7 @@ namespace myarcane {
 			inline int getHeight() { return m_Height; };
 		private:
 			bool init();
-			void setResolution();//设置视口分辨率
+			void setFullscreenResolution();//设置视口分辨率
 			static friend void error_callback(int error, const char* description);
 			static friend void window_resize(GLFWwindow* window, int width, int height);
 			static friend void key_callback(GLFWwindow* window, int key, int scancode, int action, int mods);
