@@ -32,7 +32,7 @@ namespace myarcane {
 
 			// Create the window
 			if (FULLSCREEN_MODE) {//全屏
-				setResolution();//获得主显示屏分辨率
+				setFullscreenResolution();//获得主显示屏分辨率
 				m_Window = glfwCreateWindow(m_Width, m_Height, m_Title, glfwGetPrimaryMonitor(), NULL);
 			}
 			else {
@@ -95,27 +95,27 @@ namespace myarcane {
 		void Window::setclosed() {
 			glfwSetWindowShouldClose(m_Window, GLFW_TRUE);
 		}
-		void Window::setResolution() {
+		void Window::setFullscreenResolution() {
 			const GLFWvidmode* mode = glfwGetVideoMode(glfwGetPrimaryMonitor());//查询主显示器模式（里边monitor返回句柄）
 			m_Width = mode->width;
 			m_Height = mode->height;
 		}
 
-		bool Window::isKeyPressed(unsigned int keycode)const {
-			if (keycode >= MAX_KEYS) {
+		bool Window::isKeyPressed(unsigned int code)const {
+			if (code >= MAX_KEYS) {
 				return false;
 			}
 			else {
-				return m_Keys[keycode];
+				return m_Keys[code];
 			}
 		}
-		bool Window::isMouseButtonPressed(unsigned int keycode) const {
-			if (keycode >= MAX_BUTTONS) {
+		bool Window::isMouseButtonPressed(unsigned int code) const {
+			if (code >= MAX_BUTTONS) {
 				//TODO: LOG THIS
 				return false;
 			}
 			else {
-				return m_Buttons[keycode];
+				return m_Buttons[code];
 			}
 		}
 		//回调函数功能实现

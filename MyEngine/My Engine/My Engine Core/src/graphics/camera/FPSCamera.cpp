@@ -11,7 +11,7 @@ namespace myarcane {
 			m_Pitch = pitch;
 			updateCameraVectors();
 		}
-		FPSCamera::FPSCamera(GLfloat xPos, GLfloat yPos, GLfloat zPos, GLfloat xUp, GLfloat yUp, GLfloat zUp, GLfloat yaw, GLfloat pitch)
+		FPSCamera::FPSCamera(GLfloat xPos, GLfloat yPos, GLfloat zPos, GLfloat xUp, GLfloat yUp, GLfloat zUp, GLfloat yaw=YAW, GLfloat pitch=PITCH)
 			: m_Front(glm::vec3(0.0f, 0.0f, -1.0f)), m_MovementSpeed(SPEED), m_MouseSensitivity(SENSITIVITY), m_Fov(FOV)
 		{
 			m_Position = glm::vec3(xPos, yPos, zPos);
