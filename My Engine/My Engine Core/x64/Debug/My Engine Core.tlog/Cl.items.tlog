@@ -1,7 +1,8 @@
-D:\Engine\MyEngine\My Engine\My Engine Core\src\graphics\camera\FPSCamera.cpp;D:\Engine\MyEngine\My Engine\My Engine Core\x64\Debug\FPSCamera.obj
-D:\Engine\MyEngine\My Engine\My Engine Core\src\graphics\Shader.cpp;D:\Engine\MyEngine\My Engine\My Engine Core\x64\Debug\Shader.obj
-D:\Engine\MyEngine\My Engine\My Engine Core\src\graphics\Window.cpp;D:\Engine\MyEngine\My Engine\My Engine Core\x64\Debug\Window.obj
-D:\Engine\MyEngine\My Engine\My Engine Core\src\main.cpp;D:\Engine\MyEngine\My Engine\My Engine Core\x64\Debug\main.obj
-D:\Engine\MyEngine\My Engine\My Engine Core\src\utils\FileUtils.cpp;D:\Engine\MyEngine\My Engine\My Engine Core\x64\Debug\FileUtils.obj
-D:\Engine\MyEngine\My Engine\My Engine Core\src\utils\Time.cpp;D:\Engine\MyEngine\My Engine\My Engine Core\x64\Debug\Time.obj
-D:\Engine\MyEngine\My Engine\My Engine Core\src\utils\Timer.cpp;D:\Engine\MyEngine\My Engine\My Engine Core\x64\Debug\Timer.obj
+D:\Engine\My Engine\My Engine Core\src\graphics\camera\FPSCamera.cpp;D:\Engine\My Engine\My Engine Core\x64\Debug\FPSCamera.obj
+D:\Engine\My Engine\My Engine Core\src\graphics\Shader.cpp;D:\Engine\My Engine\My Engine Core\x64\Debug\Shader.obj
+D:\Engine\My Engine\My Engine Core\src\graphics\Window.cpp;D:\Engine\My Engine\My Engine Core\x64\Debug\Window.obj
+D:\Engine\My Engine\My Engine Core\src\main.cpp;D:\Engine\My Engine\My Engine Core\x64\Debug\main.obj
+D:\Engine\My Engine\My Engine Core\src\utils\FileUtils.cpp;D:\Engine\My Engine\My Engine Core\x64\Debug\FileUtils.obj
+D:\Engine\My Engine\My Engine Core\src\utils\Logger.cpp;D:\Engine\My Engine\My Engine Core\x64\Debug\Logger.obj
+D:\Engine\My Engine\My Engine Core\src\utils\Time.cpp;D:\Engine\My Engine\My Engine Core\x64\Debug\Time.obj
+D:\Engine\My Engine\My Engine Core\src\utils\Timer.cpp;D:\Engine\My Engine\My Engine Core\x64\Debug\Timer.obj

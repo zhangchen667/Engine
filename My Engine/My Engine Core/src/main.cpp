@@ -8,6 +8,7 @@
 #include <glm/gtc/matrix_transform.hpp>
 #include <glm/gtc/type_ptr.hpp>
 #include"utils/Timer.h"
+#include"utils\Logger.h"
 //#define GLEW_STATIC
 #define STB_IMAGE_IMPLEMENTATION
 #include"stb/stb_image.h"
@@ -19,8 +20,10 @@ GLfloat yaw = -90.0f;//偏航角
 GLfloat pitch = 0.0f;//俯仰角
 //xOffset
 int main() {
-	glEnable(GL_DEPTH_TEST);
+	myarcane::Logger log;
+	log.info("Shader Initialization", "Shader successfully initialized");
 
+	glEnable(GL_DEPTH_TEST);
 
 	myarcane::graphics::Shader shader("src/shaders/basic.vert", "src/shaders/basic.frag");
 	myarcane::graphics::Shader lampShader("src/shaders/basic.vert", "src/shaders/lightCube.frag");
@@ -153,7 +156,7 @@ int main() {
 
 	//渲染循环
 	while (!window.closed()) {
-		glClearColor(0.0f, 0.05f, 0.15f, 1.0f);
+		glClearColor(0.2f, 0.0f, 0.0f, 1.0f);
 		window.clear();
 		time.update();
 		// 检测鼠标移动
@@ -181,25 +184,20 @@ int main() {
 
 		// 光源变量的设置
 		shader.enable();
-		glm::vec3 lightColour;
-		lightColour.x = sin(count.elapsed() * 2.0f);
-		lightColour.y = sin(count.elapsed() * 0.7f);
-		lightColour.z = sin(count.elapsed() * 1.3f);
+		
 		
 		glm::vec3 cameraPosition = camera.getPosition();
 		shader.setUniform3f("viewPos", glm::vec3(cameraPosition.x, cameraPosition.y, cameraPosition.z));
 
-		
-		
 		shader.setUniform1f("material.shininess", 32.0f);
 
 		shader.setUniform3f("light.position", glm::vec3(lightPos.x, lightPos.y, lightPos.z));
-		shader.setUniform3f("light.ambient", glm::vec3(0.2f,0.2f,0.2f));
+		shader.setUniform3f("light.ambient", glm::vec3(0.15f,0.15f,0.15f));
 		shader.setUniform3f("light.diffuse", glm::vec3(0.6f,0.6f,0.6f));
 		shader.setUniform3f("light.specular", glm::vec3(1.0f, 1.0f, 1.0f));
 		glm::mat4 model(1);
-		//model = glm::rotate(model, (GLfloat)count.elapsed(), glm::vec3(1.0f, 0.3f, 0.6f));//旋转矩阵（随时间）
-
+		model = glm::rotate(model, (GLfloat)count.elapsed(), glm::vec3(1.0f, 0.0f, 0.0f));//旋转矩阵（随时间）
+		model = glm::scale(model, glm::vec3(2.0f, 2.0f, 2.0f));
 		glm::mat4 view;
 		view = camera.getViewMatrix();
 
