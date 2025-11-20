@@ -12,13 +12,15 @@ namespace myarcane {
 		};
 
 		std::ofstream filestream;
-		std::string file; // Default value set to: "info/log.txt"
+		std::string file; // Default value set to: "logged_files/log.txt"
 	public:
-		Logger(const std::string& filePath = "info/log.txt");
+		Logger(const std::string& filePath = "logged_files/log.txt");
 
 		inline void setOutputFile(const std::string& filename) {
 			file = filename;
 		}
+
+		void clearFileContents();
 
 		inline void debug(const std::string& module, const std::string& message) {
 			logMessage(DEBUG, module, message);
