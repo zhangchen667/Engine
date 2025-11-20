@@ -1,18 +1,4 @@
-﻿  main.cpp
-D:\Engine\My Engine\My Engine Core\src\main.cpp(154,16): warning C4244: “初始化”: 从“int”转换到“GLfloat”，可能丢失数据
-D:\Engine\My Engine\My Engine Core\src\main.cpp(155,16): warning C4244: “初始化”: 从“int”转换到“GLfloat”，可能丢失数据
-D:\Engine\My Engine\My Engine Core\src\main.cpp(164,28): warning C4244: “=”: 从“double”转换到“GLfloat”，可能丢失数据
-D:\Engine\My Engine\My Engine Core\src\main.cpp(165,28): warning C4244: “=”: 从“double”转换到“GLfloat”，可能丢失数据
-D:\Engine\My Engine\My Engine Core\src\main.cpp(168,65): warning C4244: “参数”: 从“double”转换到“GLfloat”，可能丢失数据
-D:\Engine\My Engine\My Engine Core\src\main.cpp(168,50): warning C4244: “参数”: 从“double”转换到“GLfloat”，可能丢失数据
-D:\Engine\My Engine\My Engine Core\src\main.cpp(169,27): warning C4244: “=”: 从“double”转换到“GLfloat”，可能丢失数据
-D:\Engine\My Engine\My Engine Core\src\main.cpp(170,27): warning C4244: “=”: 从“double”转换到“GLfloat”，可能丢失数据
-D:\Engine\My Engine\My Engine Core\src\main.cpp(173,73): warning C4244: “参数”: 从“GLdouble”转换到“GLfloat”，可能丢失数据
-D:\Engine\My Engine\My Engine Core\src\main.cpp(175,74): warning C4244: “参数”: 从“GLdouble”转换到“GLfloat”，可能丢失数据
-D:\Engine\My Engine\My Engine Core\src\main.cpp(177,70): warning C4244: “参数”: 从“GLdouble”转换到“GLfloat”，可能丢失数据
-D:\Engine\My Engine\My Engine Core\src\main.cpp(179,71): warning C4244: “参数”: 从“GLdouble”转换到“GLfloat”，可能丢失数据
-D:\Engine\My Engine\My Engine Core\src\main.cpp(182,48): warning C4244: “参数”: 从“double”转换到“GLfloat”，可能丢失数据
-glew32s.lib(glew.obj) : warning LNK4099: 未找到 PDB“”(使用“glew32s.lib(glew.obj)”或在“”中寻找)；正在链接对象，如同没有调试信息一样
+﻿glew32s.lib(glew.obj) : warning LNK4099: 未找到 PDB“”(使用“glew32s.lib(glew.obj)”或在“”中寻找)；正在链接对象，如同没有调试信息一样
 LINK : warning LNK4098: 默认库“MSVCRT”与其他库的使用冲突；请使用 /NODEFAULTLIB:library
 LINK : warning LNK4098: 默认库“LIBCMT”与其他库的使用冲突；请使用 /NODEFAULTLIB:library
   My Engine Core.vcxproj -> D:\Engine\My Engine\x64\Debug\My Engine Core.exe

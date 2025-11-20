@@ -15,8 +15,10 @@ namespace myarcane {
 			m_Title = title;
 			m_Width = width;
 			m_Height = height;
-
+			m_log.setOutputFile("logged_files/window_creation.txt");
+			m_log.clearFileContents();
 			if (!init()) {
+				m_log.error("Window Initialization", "Could not initialize window class");
 				glfwDestroyWindow(m_Window);//销毁窗口
 				glfwTerminate();//释放资源
 			}
@@ -28,6 +30,7 @@ namespace myarcane {
 		bool Window::init() {
 			if (!glfwInit()) {
 				std::cout << "GLFW Failed To Initialize" << std::endl;
+				m_log.error("Window Initialization", "Could not initialize the GLFW window");
 			}
 
 			// Create the window
@@ -40,6 +43,7 @@ namespace myarcane {
 			}
 
 			if (!m_Window) {
+				m_log.error("Window Initialization", "Could not create the GLFW window");
 				std::cout << "GLFW Window Couldn't Be Created" << std::endl;
 			}
 
@@ -71,6 +75,7 @@ namespace myarcane {
 			// Initialize GLEW (allows us to use newer versions of OpenGL)
 			if (glewInit() != GLEW_OK) {
 				std::cout << "Could not Initialize GLEW" << std::endl;
+				m_log.error("Window Initialization", "Could not initialize the GLEW");
 				return 0;
 			}
 			std::cout << "OpenGL " << glGetString(GL_VERSION) << std::endl;
