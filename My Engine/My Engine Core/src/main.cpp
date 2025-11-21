@@ -122,23 +122,25 @@ int main() {
 	glBindTexture(GL_TEXTURE_2D, diffuseMap);
 	glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, width, height, 0, GL_RGBA, GL_UNSIGNED_BYTE, image);
 	glGenerateMipmap(GL_TEXTURE_2D);
-	stbi_image_free(image);
+	
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR_MIPMAP_LINEAR);
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_NEAREST_MIPMAP_NEAREST);
 	glBindTexture(GL_TEXTURE_2D, 0);
+	stbi_image_free(image);
 	//镜面反射贴图
 	image = stbi_load("res/container2_specular.png", &width, &height, &nrChannels, 0);
 	glBindTexture(GL_TEXTURE_2D, specularMap);
 	glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, width, height, 0, GL_RGBA, GL_UNSIGNED_BYTE, image);
 	glGenerateMipmap(GL_TEXTURE_2D);
-	stbi_image_free(image);
+	
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR_MIPMAP_LINEAR);
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_NEAREST_MIPMAP_NEAREST);
 	glBindTexture(GL_TEXTURE_2D, 0);
+	stbi_image_free(image);
 
 	shader.enable();
 	shader.setUniform1i("material.diffuse", 0);
@@ -177,6 +179,10 @@ int main() {
 			camera.processKeyboard(myarcane::graphics::LEFT, time.getDeltaTime());
 		if (window.isKeyPressed(GLFW_KEY_D))
 			camera.processKeyboard(myarcane::graphics::RIGHT, time.getDeltaTime());
+		if (window.isKeyPressed(GLFW_KEY_SPACE))
+			camera.processKeyboard(myarcane::graphics::UPWARDS, time.getDeltaTime());
+		if (window.isKeyPressed(GLFW_KEY_LEFT_CONTROL))
+			camera.processKeyboard(myarcane::graphics::DOWNWARDS, time.getDeltaTime());
 		if (window.isKeyPressed(GLFW_KEY_ESCAPE))
 			window.setclosed();
 		camera.processMouseScroll(window.getScrollY()*6);
@@ -184,7 +190,9 @@ int main() {
 
 		// 光源变量的设置
 		shader.enable();
-		
+		lightPos.x = sin(glfwGetTime()) * 2.0f;
+		lightPos.y = cos(glfwGetTime()) * 1.5f;
+		lightPos.z = -2.0f;
 		
 		glm::vec3 cameraPosition = camera.getPosition();
 		shader.setUniform3f("viewPos", glm::vec3(cameraPosition.x, cameraPosition.y, cameraPosition.z));
@@ -196,7 +204,8 @@ int main() {
 		shader.setUniform3f("light.diffuse", glm::vec3(0.6f,0.6f,0.6f));
 		shader.setUniform3f("light.specular", glm::vec3(1.0f, 1.0f, 1.0f));
 		glm::mat4 model(1);
-		model = glm::rotate(model, (GLfloat)count.elapsed(), glm::vec3(1.0f, 0.0f, 0.0f));//旋转矩阵（随时间）
+		model = glm::translate(model, glm::vec3(0.0f, 0.0f, -7.0f));//平移矩阵
+		model = glm::rotate(model, (GLfloat)count.elapsed(), glm::vec3(1.0f, 0.5f, 0.2f));//旋转矩阵（随时间）
 		model = glm::scale(model, glm::vec3(2.0f, 2.0f, 2.0f));
 		glm::mat4 view;
 		view = camera.getViewMatrix();
