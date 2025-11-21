@@ -10,7 +10,9 @@ namespace myarcane {
 			FORWARD,
 			BACKWARD,
 			LEFT,
-			RIGHT
+			RIGHT,
+			UPWARDS,
+			DOWNWARDS
 		};
 
 		const GLfloat YAW = -90.0f;//水平偏航角(水平)
