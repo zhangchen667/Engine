@@ -25,7 +25,7 @@ int main() {
 
 	glEnable(GL_DEPTH_TEST);
 
-	myarcane::graphics::Shader shader("src/shaders/basic.vert", "src/shaders/basic.frag");
+	myarcane::graphics::Shader shader("src/shaders/basic.vert", "src/shaders/spotlight.frag");
 	myarcane::graphics::Shader lampShader("src/shaders/basic.vert", "src/shaders/lightCube.frag");
 
 	stbi_set_flip_vertically_on_load(true);//翻转y轴
@@ -33,7 +33,7 @@ int main() {
 	
 	//顶点数据
 	GLfloat vertices[] = {
-		// Positions         // Normals           // Texture Coords
+		// Positions         // Normals           // Texture Coords (UV Mapping)
 		-0.5f, -0.5f, -0.5f,  0.0f,  0.0f, -1.0f,  0.0f,  0.0f,
 		 0.5f, -0.5f, -0.5f,  0.0f,  0.0f, -1.0f,  1.0f,  0.0f,
 		 0.5f,  0.5f, -0.5f,  0.0f,  0.0f, -1.0f,  1.0f,  1.0f,
@@ -56,11 +56,11 @@ int main() {
 		-0.5f,  0.5f,  0.5f, -1.0f,  0.0f,  0.0f,  1.0f,  0.0f,
 
 		 0.5f,  0.5f,  0.5f,  1.0f,  0.0f,  0.0f,  1.0f,  0.0f,
-		 0.5f,  0.5f, -0.5f,  1.0f,  0.0f,  0.0f,  1.0f,  1.0f,
-		 0.5f, -0.5f, -0.5f,  1.0f,  0.0f,  0.0f,  0.0f,  1.0f,
-		 0.5f, -0.5f, -0.5f,  1.0f,  0.0f,  0.0f,  0.0f,  1.0f,
-		 0.5f, -0.5f,  0.5f,  1.0f,  0.0f,  0.0f,  0.0f,  0.0f,
-		 0.5f,  0.5f,  0.5f,  1.0f,  0.0f,  0.0f,  1.0f,  0.0f,
+		0.5f,  0.5f, -0.5f,  1.0f,  0.0f,  0.0f,  1.0f,  1.0f,
+		0.5f, -0.5f, -0.5f,  1.0f,  0.0f,  0.0f,  0.0f,  1.0f,
+		0.5f, -0.5f, -0.5f,  1.0f,  0.0f,  0.0f,  0.0f,  1.0f,
+		0.5f, -0.5f,  0.5f,  1.0f,  0.0f,  0.0f,  0.0f,  0.0f,
+		0.5f,  0.5f,  0.5f,  1.0f,  0.0f,  0.0f,  1.0f,  0.0f,
 
 		-0.5f, -0.5f, -0.5f,  0.0f, -1.0f,  0.0f,  0.0f,  1.0f,
 		 0.5f, -0.5f, -0.5f,  0.0f, -1.0f,  0.0f,  1.0f,  1.0f,
@@ -76,7 +76,18 @@ int main() {
 		-0.5f,  0.5f,  0.5f,  0.0f,  1.0f,  0.0f,  0.0f,  0.0f,
 		-0.5f,  0.5f, -0.5f,  0.0f,  1.0f,  0.0f,  0.0f,  1.0f
 	};
-
+	glm::vec3 cubePositions[] = {//立方体位置
+		glm::vec3(0.0f,  0.0f,  0.0f),
+		glm::vec3(2.0f,  5.0f, -15.0f),
+		glm::vec3(-1.5f, -2.2f, -2.5f),
+		glm::vec3(-3.8f, -2.0f, -12.3f),
+		glm::vec3(2.4f, -0.4f, -3.5f),
+		glm::vec3(-1.7f,  3.0f, -7.5f),
+		glm::vec3(1.3f, -2.0f, -2.5f),
+		glm::vec3(1.5f,  2.0f, -2.5f),
+		glm::vec3(1.5f,  0.2f, -1.5f),
+		glm::vec3(-1.3f,  1.0f, -1.5f)
+	};
 	GLuint VBO, VAO, lightVAO;//VAO顶点属性的配置状态，VBO存放顶点数据
 	glGenVertexArrays(1, &VAO);
 	glGenVertexArrays(1, &lightVAO);
@@ -109,8 +120,6 @@ int main() {
 	glBindVertexArray(0); //unbind
 	glBindBuffer(GL_ARRAY_BUFFER, 0);
 
-	// 光源位置
-	glm::vec3 lightPos(1.2f, 1.0f, 2.0f);
 
 	//加载纹理
 	GLuint diffuseMap, specularMap,emissionMap;
@@ -158,6 +167,12 @@ int main() {
 	shader.setUniform1i("material.diffuse", 0);
 	shader.setUniform1i("material.specular", 1);
 	shader.setUniform1i("material.emission", 2);
+	//聚光灯属性
+	shader.setUniform1f("light.cutOff", glm::cos(glm::radians(22.0f)));
+	shader.setUniform1f("light.outerCutOff", glm::cos(glm::radians(25.0f)));
+	shader.setUniform1f("light.constant", 1.0f);
+	shader.setUniform1f("light.linear", 0.09f);
+	shader.setUniform1f("light.quadratic", 0.032f);
 	//绑定纹理(不需要在循环中)
 	glActiveTexture(GL_TEXTURE0);
 	glBindTexture(GL_TEXTURE_2D, diffuseMap);
@@ -212,41 +227,42 @@ int main() {
 
 		// 光源变量的设置
 		shader.enable();
-		//lightPos.x = sin(glfwGetTime()) * 2.0f;
-		//lightPos.y = cos(glfwGetTime()) * 1.5f;
-		lightPos.z = -2.0f;
-		
 		glm::vec3 cameraPosition = camera.getPosition();
 		shader.setUniform3f("viewPos", glm::vec3(cameraPosition.x, cameraPosition.y, cameraPosition.z));
 
 		shader.setUniform1f("material.shininess", 32.0f);
-
-		shader.setUniform3f("light.position", glm::vec3(lightPos.x, lightPos.y, lightPos.z));
 		shader.setUniform3f("light.ambient", glm::vec3(0.15f,0.15f,0.15f));
 		shader.setUniform3f("light.diffuse", glm::vec3(0.6f,0.6f,0.6f));
 		shader.setUniform3f("light.specular", glm::vec3(1.0f, 1.0f, 1.0f));
-		glm::mat4 model(1);
-		model = glm::translate(model, glm::vec3(0.0f, 0.0f, -7.0f));//平移矩阵
-		model = glm::rotate(model, (GLfloat)count.elapsed(), glm::vec3(0.01f, 0.01f, 0.02f));//旋转矩阵（随时间）
-		model = glm::scale(model, glm::vec3(2.0f, 2.0f, 2.0f));
+		shader.setUniform3f("light.position", camera.getPosition());//光源位置跟随相机,手电筒效果
+		shader.setUniform3f("light.direction", camera.getFront());//光源方向跟随相机方向
+
+		
 		glm::mat4 view;
 		view = camera.getViewMatrix();
 
 		glm::mat4 projection;
 		projection = glm::perspective(glm::radians(camera.getFov()), (float)window.getWidth() / (float)window.getHeight(), 0.1f, 100.0f);
-		shader.setUniformMat4("model", model);
+	
 		shader.setUniformMat4("view", view);
 		shader.setUniformMat4("projection", projection);
-
+		shader.setUniform1f("time", glfwGetTime());
 		
 
 		glBindVertexArray(VAO);
-		glDrawArrays(GL_TRIANGLES, 0, 36);//36个顶点
+		//绘制多个立方体
+		for (unsigned int i = 0; i < 10; i++) {
+			glm::mat4 model=glm::mat4(1.0);
+			model = glm::translate(model, cubePositions[i]);
+			model = glm::rotate(model, glm::radians(20.0f * (i + (float)glfwGetTime())), glm::vec3(0.3f, 0.5f, 1.0f));
+			shader.setUniformMat4("model", model);
+			glDrawArrays(GL_TRIANGLES, 0, 36);
+		}
 		glBindVertexArray(0);
 
 		//光源的绘制
-		model = glm::mat4(1.0f);
-		model = glm::translate(model, lightPos);
+		glm::mat4 model = glm::mat4(1.0f);
+		/*model = glm::translate(model, lightPos);
 		model = glm::scale(model, glm::vec3(0.2f, 0.2f, 0.2f));
 
 		lampShader.enable();
@@ -256,7 +272,7 @@ int main() {
 
 		glBindVertexArray(lightVAO);
 		glDrawArrays(GL_TRIANGLES, 0, 36);
-		glBindVertexArray(0);
+		glBindVertexArray(0);*/
 
 		window.update();
 		if (timer.elapsed() >= 1) {

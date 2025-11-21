@@ -93,5 +93,14 @@
     <None Include="src\shaders\lightCube.frag">
       <Filter>Shaders</Filter>
     </None>
+    <None Include="src\shaders\directionalLight.frag">
+      <Filter>Shaders</Filter>
+    </None>
+    <None Include="src\shaders\pointlight.frag">
+      <Filter>Shaders</Filter>
+    </None>
+    <None Include="src\shaders\spotlight.frag">
+      <Filter>Shaders</Filter>
+    </None>
   </ItemGroup>
 </Project>
