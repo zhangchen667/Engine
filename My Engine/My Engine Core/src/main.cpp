@@ -113,9 +113,10 @@ int main() {
 	glm::vec3 lightPos(1.2f, 1.0f, 2.0f);
 
 	//加载纹理
-	GLuint diffuseMap, specularMap;
+	GLuint diffuseMap, specularMap,emissionMap;
 	glGenTextures(1, &diffuseMap);
 	glGenTextures(1, &specularMap);
+	glGenTextures(1, &emissionMap);
 	int width, height, nrChannels;
 	//漫反射贴图
 	unsigned char* image = stbi_load("res/container2.png", &width, &height, &nrChannels, 0);
@@ -141,10 +142,31 @@ int main() {
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_NEAREST_MIPMAP_NEAREST);
 	glBindTexture(GL_TEXTURE_2D, 0);
 	stbi_image_free(image);
+	//自发光贴图
+	image = stbi_load("res//container2_emission.png", &width, &height, &nrChannels, 0);
+	glBindTexture(GL_TEXTURE_2D, emissionMap);
+	glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, width, height, 0, GL_RGB, GL_UNSIGNED_BYTE, image);
+	glGenerateMipmap(GL_TEXTURE_2D); // Generate mip maps for what is currently bounded to GL_TEXTURE_2D
+	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
+	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
+	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR_MIPMAP_LINEAR);
+	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_NEAREST_MIPMAP_NEAREST);
+	glBindTexture(GL_TEXTURE_2D, 0);
+	stbi_image_free(image);
 
 	shader.enable();
 	shader.setUniform1i("material.diffuse", 0);
 	shader.setUniform1i("material.specular", 1);
+	shader.setUniform1i("material.emission", 2);
+	//绑定纹理(不需要在循环中)
+	glActiveTexture(GL_TEXTURE0);
+	glBindTexture(GL_TEXTURE_2D, diffuseMap);
+	
+	glActiveTexture(GL_TEXTURE1);
+	glBindTexture(GL_TEXTURE_2D, specularMap);
+	
+	glActiveTexture(GL_TEXTURE2);
+	glBindTexture(GL_TEXTURE_2D, emissionMap);
 
 	int frames = 0;
 	//temp rotation timer
@@ -190,8 +212,8 @@ int main() {
 
 		// 光源变量的设置
 		shader.enable();
-		lightPos.x = sin(glfwGetTime()) * 2.0f;
-		lightPos.y = cos(glfwGetTime()) * 1.5f;
+		//lightPos.x = sin(glfwGetTime()) * 2.0f;
+		//lightPos.y = cos(glfwGetTime()) * 1.5f;
 		lightPos.z = -2.0f;
 		
 		glm::vec3 cameraPosition = camera.getPosition();
@@ -205,7 +227,7 @@ int main() {
 		shader.setUniform3f("light.specular", glm::vec3(1.0f, 1.0f, 1.0f));
 		glm::mat4 model(1);
 		model = glm::translate(model, glm::vec3(0.0f, 0.0f, -7.0f));//平移矩阵
-		model = glm::rotate(model, (GLfloat)count.elapsed(), glm::vec3(1.0f, 0.5f, 0.2f));//旋转矩阵（随时间）
+		model = glm::rotate(model, (GLfloat)count.elapsed(), glm::vec3(0.01f, 0.01f, 0.02f));//旋转矩阵（随时间）
 		model = glm::scale(model, glm::vec3(2.0f, 2.0f, 2.0f));
 		glm::mat4 view;
 		view = camera.getViewMatrix();
@@ -216,12 +238,7 @@ int main() {
 		shader.setUniformMat4("view", view);
 		shader.setUniformMat4("projection", projection);
 
-		// Bind Diffuse Map
-		glActiveTexture(GL_TEXTURE0);
-		glBindTexture(GL_TEXTURE_2D, diffuseMap);
-		// Bind Specular Map
-		glActiveTexture(GL_TEXTURE1);
-		glBindTexture(GL_TEXTURE_2D, specularMap);
+		
 
 		glBindVertexArray(VAO);
 		glDrawArrays(GL_TRIANGLES, 0, 36);//36个顶点
@@ -251,6 +268,11 @@ int main() {
 			frames++;
 		}
 	}
+
+	//释放资源
+	glDeleteVertexArrays(1, &VAO);
+	glDeleteVertexArrays(1, &lightVAO);
+	glDeleteBuffers(1, &VBO);
 	return 0;
 }
 
