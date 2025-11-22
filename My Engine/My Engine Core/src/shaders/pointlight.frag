@@ -39,7 +39,7 @@ void main(){
 	float spec=pow(max(dot(viewDir,reflectDir),0.0),material.shininess);//数越大高光越集中
 	vec3 specular=light.specular*spec*texture(material.specular,TexCoords).rgb;
 	//自发光(与光源无关)
-	vec3 emission=texture(material.emission,TexCoords).rgb+abs(sin(time));//让其发光强度随时间变化
+	vec3 emission=texture(material.emission,TexCoords).rgb*clamp((sin(time)*2)-1,0,1);//让其发光强度随时间变化
 	//距离衰减
 	float distance=length(light.position-FragPos);
 	float attenuation=1.0/(light.constant+light.linear*distance+light.quadratic*(distance*distance));
