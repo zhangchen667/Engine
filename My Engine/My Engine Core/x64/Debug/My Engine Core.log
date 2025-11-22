@@ -1,4 +1,8 @@
-﻿  main.cpp
+﻿  FPSCamera.cpp
+  Mesh.cpp
+  Shader.cpp
+  Window.cpp
+  main.cpp
 D:\Engine\My Engine\My Engine Core\src\main.cpp(199,16): warning C4244: “初始化”: 从“int”转换到“GLfloat”，可能丢失数据
 D:\Engine\My Engine\My Engine Core\src\main.cpp(200,16): warning C4244: “初始化”: 从“int”转换到“GLfloat”，可能丢失数据
 D:\Engine\My Engine\My Engine Core\src\main.cpp(209,28): warning C4244: “=”: 从“double”转换到“GLfloat”，可能丢失数据
@@ -27,4 +31,12 @@ D:\Engine\My Engine\My Engine Core\src\main.cpp(290,51): warning C4305: “参�
 D:\Engine\My Engine\My Engine Core\src\main.cpp(298,43): warning C4305: “参数”: 从“double”到“float”截断
 D:\Engine\My Engine\My Engine Core\src\main.cpp(299,46): warning C4305: “参数”: 从“double”到“float”截断
 D:\Engine\My Engine\My Engine Core\src\main.cpp(311,42): warning C4244: “参数”: 从“double”转换到“float”，可能丢失数据
+  FileUtils.cpp
+  Logger.cpp
+  Time.cpp
+  Timer.cpp
+  正在生成代码...
+glew32s.lib(glew.obj) : warning LNK4099: 未找到 PDB“”(使用“glew32s.lib(glew.obj)”或在“”中寻找)；正在链接对象，如同没有调试信息一样
+LINK : warning LNK4098: 默认库“MSVCRT”与其他库的使用冲突；请使用 /NODEFAULTLIB:library
+LINK : warning LNK4098: 默认库“LIBCMT”与其他库的使用冲突；请使用 /NODEFAULTLIB:library
   My Engine Core.vcxproj -> D:\Engine\My Engine\x64\Debug\My Engine Core.exe

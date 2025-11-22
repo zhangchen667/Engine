@@ -1,0 +1,62 @@
+#include"Mesh.h"
+#include<sstream>
+namespace myarcane {
+	namespace graphics {
+		Mesh::Mesh(const std::vector<vertex>& vertices, const std::vector<unsigned int>& indices, const std::vector<Texture>& textures)
+		{
+			this->vertices = vertices;
+			this->indices = indices;
+			this->textures = textures;
+			setupMesh();
+		}
+		void Mesh::setupMesh() {
+			//创建缓冲区对象
+			glGenVertexArrays(1, &m_VAO);
+			glGenBuffers(1, &m_VBO);
+			glGenBuffers(1, &m_EBO);
+			//绑定VAO
+			glBindVertexArray(m_VAO);
+			glBindBuffer(GL_ARRAY_BUFFER, m_VBO);
+			glBufferData(GL_ARRAY_BUFFER, vertices.size() * sizeof(vertex), &vertices[0], GL_STATIC_DRAW);
+			//绑定EBO
+			glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, m_EBO);
+			glBufferData(GL_ELEMENT_ARRAY_BUFFER, indices.size() * sizeof(unsigned int), &indices[0], GL_STATIC_DRAW);
+
+			//顶点位置
+			glEnableVertexAttribArray(0);
+			glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, sizeof(vertex), (void*)0);
+			//顶点法线
+			glEnableVertexAttribArray(1);
+			glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, sizeof(vertex), (void*)offsetof(vertex, Normal));
+			//顶点纹理坐标
+			glEnableVertexAttribArray(2);
+			glVertexAttribPointer(2, 2, GL_FLOAT, GL_FALSE, sizeof(vertex), (void*)offsetof(vertex, TexCoords));
+			glBindVertexArray(0);
+		}
+		void Mesh::Draw(Shader& shader)const{
+			//绑定纹理
+			unsigned int diffuseNr = 1;//漫反射贴图计数
+			unsigned int specularNr = 1;//镜面反射贴图计数
+			for (unsigned int i = 0; i < textures.size(); i++) {
+				glActiveTexture(GL_TEXTURE0 + i);//激活相应的纹理单元
+				//取得纹理序号
+				std::stringstream ss;
+				std::string number;
+				std::string name = textures[i].type;
+				if (name == "texture_diffuse")
+					ss << diffuseNr++;//递增
+				else if (name == "texture_specular")
+					ss << specularNr++;//递增
+				number = ss.str();//转换为字符串
+				//设置采样器到对应的纹理单元
+				shader.setUniform1i(("material." + name + number).c_str(), i);//设置采样器i代表第i个纹理单元
+				//绑定纹理
+				glBindTexture(GL_TEXTURE_2D, textures[i].id);
+			}
+			//绘制网格
+			glBindVertexArray(m_VAO);
+			glDrawElements(GL_TRIANGLES, static_cast<unsigned int>(indices.size()), GL_UNSIGNED_INT, 0);
+			glBindVertexArray(0);
+		}
+	}
+}
