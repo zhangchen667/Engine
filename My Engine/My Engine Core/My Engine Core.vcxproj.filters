@@ -84,9 +84,6 @@
     </Image>
   </ItemGroup>
   <ItemGroup>
-    <None Include="src\shaders\basic.frag">
-      <Filter>Shaders</Filter>
-    </None>
     <None Include="src\shaders\basic.vert">
       <Filter>Shaders</Filter>
     </None>
@@ -100,6 +97,9 @@
       <Filter>Shaders</Filter>
     </None>
     <None Include="src\shaders\spotlight.frag">
+      <Filter>Shaders</Filter>
+    </None>
+    <None Include="src\shaders\multipleLight.frag">
       <Filter>Shaders</Filter>
     </None>
   </ItemGroup>
