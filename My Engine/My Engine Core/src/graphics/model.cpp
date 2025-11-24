@@ -8,8 +8,8 @@ namespace myarcane {
 			loadModel(path);
 		}
 		void Model::Draw(Shader& shader)const {
-			for (unsigned int i = 0; i < meshes.size(); i++) {
-				meshes[i].Draw(shader);
+			for (unsigned int i = 0; i < m_Meshes.size(); i++) {
+				m_Meshes[i].Draw(shader);
 			}
 		}
 		void Model::loadModel(const std::string& path) {
@@ -21,7 +21,7 @@ namespace myarcane {
 				return;
 			}
 			//获取目录路径
-			directory = path.substr(0, path.find_last_of('/'));
+			m_Directory = path.substr(0, path.find_last_of('/'));
 			//处理节点
 			processNode(scene->mRootNode, scene);
 		}
@@ -30,7 +30,7 @@ namespace myarcane {
 			for (unsigned int i = 0; i < node->mNumMeshes; i++) {
 				//获取网格
 				aiMesh* mesh = scene->mMeshes[node->mMeshes[i]];
-				meshes.push_back(processMesh(mesh, scene));
+				m_Meshes.push_back(processMesh(mesh, scene));
 			}
 			//递归处理子节点
 			for (unsigned int i = 0; i < node->mNumChildren; i++) {
@@ -95,18 +95,21 @@ namespace myarcane {
 				mat->GetTexture(type, i, &str);
 				//检查纹理是否已加载
 				bool skip = false;
-				for (unsigned int j = 0; j < textures.size(); j++) {
-					if (std::strcmp(textures[j].path.C_Str(), str.C_Str()) == 0) {
+				for (unsigned int j = 0; j < m_LoadedTextures.size(); ++j) {
+					if (std::strcmp(str.C_Str(), m_LoadedTextures[j].path.C_Str()) == 0) {
+						textures.push_back(m_LoadedTextures[j]);
 						skip = true;
 						break;
 					}
 				}
+
 				if (!skip) {
 					Texture texture;
-					texture.id = TextureFromFile(str.C_Str(), directory);
+					texture.id = TextureFromFile(str.C_Str(), m_Directory); // Assumption made: material stuff is located in the same directory as the model object
 					texture.type = typeName;
 					texture.path = str;
 					textures.push_back(texture);
+					m_LoadedTextures.push_back(texture); // Add to loaded textures, so no duplicate texture gets loaded
 				}
 			}
 			return textures;

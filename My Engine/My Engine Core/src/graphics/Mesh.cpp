@@ -4,9 +4,9 @@ namespace myarcane {
 	namespace graphics {
 		Mesh::Mesh(const std::vector<Vertex>& vertices, const std::vector<unsigned int>& indices, const std::vector<Texture>& textures)
 		{
-			this->vertices = vertices;
-			this->indices = indices;
-			this->textures = textures;
+			this->m_Vertices = vertices;
+			this->m_Indices = indices;
+			this->m_Textures = textures;
 			setupMesh();
 		}
 		void Mesh::setupMesh() {
@@ -17,10 +17,10 @@ namespace myarcane {
 			//绑定VAO
 			glBindVertexArray(m_VAO);
 			glBindBuffer(GL_ARRAY_BUFFER, m_VBO);
-			glBufferData(GL_ARRAY_BUFFER, vertices.size() * sizeof(Vertex), &vertices[0], GL_STATIC_DRAW);
+			glBufferData(GL_ARRAY_BUFFER, m_Vertices.size() * sizeof(Vertex), &m_Vertices[0], GL_STATIC_DRAW);
 			//绑定EBO
 			glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, m_EBO);
-			glBufferData(GL_ELEMENT_ARRAY_BUFFER, indices.size() * sizeof(unsigned int), &indices[0], GL_STATIC_DRAW);
+			glBufferData(GL_ELEMENT_ARRAY_BUFFER, m_Indices.size() * sizeof(unsigned int), &m_Indices[0], GL_STATIC_DRAW);
 
 			//顶点位置
 			glEnableVertexAttribArray(0);
@@ -37,12 +37,12 @@ namespace myarcane {
 			//绑定纹理
 			unsigned int diffuseNr = 1;//漫反射贴图计数
 			unsigned int specularNr = 1;//镜面反射贴图计数
-			for (unsigned int i = 0; i < textures.size(); i++) {
+			for (unsigned int i = 0; i < m_Textures.size(); i++) {
 				glActiveTexture(GL_TEXTURE0 + i);//激活相应的纹理单元
 				//取得纹理序号
 				std::stringstream ss;
 				std::string number;
-				std::string name = textures[i].type;
+				std::string name = m_Textures[i].type;
 				if (name == "texture_diffuse")
 					ss << diffuseNr++;//递增
 				else if (name == "texture_specular")
@@ -51,11 +51,11 @@ namespace myarcane {
 				//设置采样器到对应的纹理单元
 				shader.setUniform1i(("material." + name + number).c_str(), i);//设置采样器i代表第i个纹理单元
 				//绑定纹理
-				glBindTexture(GL_TEXTURE_2D, textures[i].id);
+				glBindTexture(GL_TEXTURE_2D, m_Textures[i].id);
 			}
 			//绘制网格
 			glBindVertexArray(m_VAO);
-			glDrawElements(GL_TRIANGLES, static_cast<unsigned int>(indices.size()), GL_UNSIGNED_INT, 0);
+			glDrawElements(GL_TRIANGLES, static_cast<unsigned int>(m_Indices.size()), GL_UNSIGNED_INT, 0);
 			glBindVertexArray(0);
 		}
 	}
