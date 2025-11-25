@@ -12,6 +12,7 @@
 //#define GLEW_STATIC
 #define STB_IMAGE_IMPLEMENTATION
 #include"stb/stb_image.h"
+#include"graphics/model.h"
 //myarcane::graphics::FPSCamera camera(glm::vec3(0.0f, 0.0f, 0.0f), glm::vec3(0.0f, 1.0f, 0.0f), -90.0f, 0.0f);
 myarcane::graphics::FPSCamera camera(glm::vec3(0.0f, 0.0f, 0.0f), glm::vec3(0.0f, 1.0f, 0.0f), -90.0f, 0.0f);
 myarcane::graphics::Window window("My Engine",1366,768);
@@ -89,7 +90,7 @@ int main() {
 		glm::vec3(-1.3f,  1.0f, -1.5f)
 	};
 	glm::vec3 pointLightPositions[] = {
-		glm::vec3(0.7f,  0.2f,  2.0f),
+		glm::vec3(3.0f,  0.2f,  -1.0f),
 		glm::vec3(2.3f, -3.3f, -4.0f),
 		glm::vec3(-4.0f,  2.0f, -12.0f),
 		glm::vec3(0.0f,  0.0f, -3.0f)
@@ -170,24 +171,23 @@ int main() {
 	stbi_image_free(image);
 
 	shader.enable();
-	shader.setUniform1i("material.diffuse", 0);
+	/*shader.setUniform1i("material.diffuse", 0);
 	shader.setUniform1i("material.specular", 1);
-	shader.setUniform1i("material.emission", 2);
-	////聚光灯属性
-	//shader.setUniform1f("light.cutOff", glm::cos(glm::radians(22.0f)));
-	//shader.setUniform1f("light.outerCutOff", glm::cos(glm::radians(25.0f)));
-	//shader.setUniform1f("light.constant", 1.0f);
-	//shader.setUniform1f("light.linear", 0.09f);
-	//shader.setUniform1f("light.quadratic", 0.032f);
+	shader.setUniform1i("material.emission", 2);*/
+	
 	//绑定纹理(不需要在循环中)
-	glActiveTexture(GL_TEXTURE0);
+	/*glActiveTexture(GL_TEXTURE0);
 	glBindTexture(GL_TEXTURE_2D, diffuseMap);
 	
 	glActiveTexture(GL_TEXTURE1);
 	glBindTexture(GL_TEXTURE_2D, specularMap);
 	
 	glActiveTexture(GL_TEXTURE2);
-	glBindTexture(GL_TEXTURE_2D, emissionMap);
+	glBindTexture(GL_TEXTURE_2D, emissionMap);*/
+	
+	//加载复杂模型
+	std::string test = "res/3D_Models/Crysis/nanosuit.obj";
+	myarcane::graphics::Model nanosuitModel(test.c_str());
 
 	int frames = 0;
 	//temp rotation timer
@@ -201,7 +201,7 @@ int main() {
 
 	//渲染循环
 	while (!window.closed()) {
-		glClearColor(0.2f, 0.0f, 0.0f, 1.0f);
+		glClearColor(0.0f, 0.0f, 0.2f, 1.0f);
 		window.clear();
 		time.update();
 		// 检测鼠标移动
@@ -312,15 +312,22 @@ int main() {
 		
 
 		glBindVertexArray(VAO);
-		//绘制多个立方体
-		for (unsigned int i = 0; i < 10; i++) {
-			glm::mat4 model=glm::mat4(1.0);
-			model = glm::translate(model, cubePositions[i]);
-			model = glm::rotate(model, glm::radians(20.0f * (i + (float)glfwGetTime())), glm::vec3(0.3f, 0.5f, 1.0f));
-			shader.setUniformMat4("model", model);
-			glDrawArrays(GL_TRIANGLES, 0, 36);
-		}
-		glBindVertexArray(0);
+		////绘制多个立方体
+		//for (unsigned int i = 0; i < 10; i++) {
+		//	glm::mat4 model=glm::mat4(1.0);
+		//	model = glm::translate(model, cubePositions[i]);
+		//	model = glm::rotate(model, glm::radians(20.0f * (i + (float)glfwGetTime())), glm::vec3(0.3f, 0.5f, 1.0f));
+		//	shader.setUniformMat4("model", model);
+		//	glDrawArrays(GL_TRIANGLES, 0, 36);
+		//}
+		//glBindVertexArray(0);
+
+		glm::mat4 model=glm::mat4(1.0f);
+		//model = glm::scale(model, glm::vec3(0.01f, 0.01f, 0.01f));
+		model = glm::translate(model, glm::vec3(0.0f, -11.0f, 0.0f));
+		shader.setUniformMat4("model", model);
+		nanosuitModel.Draw(shader);
+		
 
 		glBindVertexArray(lightVAO);
 		lampShader.enable();
