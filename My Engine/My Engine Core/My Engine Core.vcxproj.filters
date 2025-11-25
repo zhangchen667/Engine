@@ -51,6 +51,9 @@
     <ClCompile Include="src\graphics\model.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
+    <ClCompile Include="src\terrain\Terrain.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\graphics\Shader.h">
@@ -78,6 +81,9 @@
       <Filter>头文件</Filter>
     </ClInclude>
     <ClInclude Include="src\graphics\model.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="src\terrain\Terrain.h">
       <Filter>头文件</Filter>
     </ClInclude>
   </ItemGroup>
@@ -112,6 +118,9 @@
       <Filter>Shaders</Filter>
     </None>
     <None Include="src\shaders\multipleLight.frag">
+      <Filter>Shaders</Filter>
+    </None>
+    <None Include="src\shaders\terrain.frag">
       <Filter>Shaders</Filter>
     </None>
   </ItemGroup>
