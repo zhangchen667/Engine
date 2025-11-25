@@ -12,7 +12,7 @@ namespace myarcane {
 	namespace graphics {
 		class Model {
 		public:
-			Model(char* path);
+			Model(const char* path);
 			void Draw(Shader& shader)const;
 		private:
 			std::vector<Texture> m_LoadedTextures;//已加载的纹理，避免重复加载
