@@ -6,6 +6,7 @@ D:\Engine\My Engine\My Engine Core\src\graphics\Window.cpp;D:\Engine\My Engine\M
 D:\Engine\My Engine\My Engine Core\src\main.cpp;D:\Engine\My Engine\My Engine Core\x64\Debug\main.obj
 D:\Engine\My Engine\My Engine Core\src\platform\OpenGL\Buffer.cpp;D:\Engine\My Engine\My Engine Core\x64\Debug\Buffer.obj
 D:\Engine\My Engine\My Engine Core\src\platform\OpenGL\IndexBuffer.cpp;D:\Engine\My Engine\My Engine Core\x64\Debug\IndexBuffer.obj
+D:\Engine\My Engine\My Engine Core\src\platform\OpenGL\Utility.cpp;D:\Engine\My Engine\My Engine Core\x64\Debug\Utility.obj
 D:\Engine\My Engine\My Engine Core\src\platform\OpenGL\VertexArray.cpp;D:\Engine\My Engine\My Engine Core\x64\Debug\VertexArray.obj
 D:\Engine\My Engine\My Engine Core\src\terrain\Terrain.cpp;D:\Engine\My Engine\My Engine Core\x64\Debug\Terrain.obj
 D:\Engine\My Engine\My Engine Core\src\utils\FileUtils.cpp;D:\Engine\My Engine\My Engine Core\x64\Debug\FileUtils.obj
