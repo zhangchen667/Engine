@@ -192,9 +192,9 @@ int main() {
 	myarcane::terrain::Terrain terrain(temp);
 	
 	shader.enable();
-	//std::string test = "res/3D_Models/Crysis/nanosuit.obj";
-	//myarcane::graphics::Model nanosuitModel(test.c_str());
-	glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);//（多边形的面，渲染模式（默认，点，线））
+	std::string test = "res/3D_Models/Crysis/nanosuit.obj";
+	myarcane::graphics::Model nanosuitModel(test.c_str());
+	//glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);//（多边形的面，渲染模式（默认，点，线））
 	int frames = 0;
 	//temp rotation timer
 	myarcane::Timer count;
@@ -306,7 +306,7 @@ int main() {
 		view = camera.getViewMatrix();
 
 		glm::mat4 projection;
-		projection = glm::perspective(glm::radians(camera.getFov()), (float)window.getWidth() / (float)window.getHeight(), 0.1f, 100.0f);
+		projection = glm::perspective(glm::radians(camera.getFov()), (float)window.getWidth() / (float)window.getHeight(), 0.1f, 500.0f);
 	
 		shader.setUniformMat4("view", view);
 		shader.setUniformMat4("projection", projection);
@@ -326,9 +326,9 @@ int main() {
 
 		glm::mat4 model=glm::mat4(1.0f);
 		//model = glm::scale(model, glm::vec3(0.01f, 0.01f, 0.01f));
-		//model = glm::translate(model, glm::vec3(0.0f, -11.0f, 0.0f));
+		//model = glm::translate(model, glm::vec3(0.0f, 0.0f, 10.0f));
 		shader.setUniformMat4("model", model);
-		//nanosuitModel.Draw(shader);
+		nanosuitModel.Draw(shader);
 		//
 
 		//glBindVertexArray(lightVAO);

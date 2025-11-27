@@ -12,7 +12,7 @@ out vec4 color;
 
 uniform Material material;
 uniform vec3 viewPos;
-
+uniform sampler2D texture_diffuse1;
 uniform sampler2D backgroundTexture;
 
 uniform sampler2D rTexture;
@@ -41,5 +41,5 @@ void main() {
 	//// Result
 	//color = terrainColour;
 
-	color = vec4(1.0, 0.0, 1.0, 0.0);
+	color = texture(texture_diffuse1,TexCoords).rgba;
 }
