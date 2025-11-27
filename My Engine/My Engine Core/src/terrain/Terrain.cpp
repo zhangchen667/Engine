@@ -2,42 +2,37 @@
 #include"../platform/OpenGL/Utility.h"
 namespace myarcane {
 	namespace terrain {
-		Terrain::Terrain(glm::vec3& worldPosition) {
-			m_Position = worldPosition;
-			m_VertexSideCount = 1024;
-			m_TerrainSize = 2;
-			m_HeightMapScale = 100;
-
+		Terrain::Terrain(glm::vec3& worldPosition) :m_Position(worldPosition)
+		{
 			std::vector<graphics::Vertex>vertices;
 			std::vector<unsigned int>indices;
 			std::vector<graphics::Texture>textures;
+			// 高度图加载
+			GLint mapWidth, mapHeight, nrComponents;
+			unsigned char* heightMapImage = stbi_load("res/terrain/heightMap.png", &mapWidth, &mapHeight, &nrComponents, 1);
+			if (mapWidth != mapHeight) {
+				std::cout << "ERROR: Can't use a heightmap with a different width and height" << std::endl;
+				// TODO: Log this
+				return;
+			}
+
+			// Map Information
+			m_VertexSideCount = mapWidth;//假设高度图是正方形的，宽度等于高度
+			m_TerrainSize = 4;//每个网格的大小
+			m_HeightMapScale = 100;//高度图缩放倍数
+			
 			for (unsigned int z = 0; z < m_VertexSideCount; z++) {
 				for (unsigned int x = 0; x < m_VertexSideCount; x++) {
 					graphics::Vertex vertex;
-					vertex.Position = glm::vec3(x * m_TerrainSize, 0, z * m_TerrainSize);
-					vertex.Normal = glm::vec3(0, 1, 0);
+					vertex.Position = glm::vec3(x * m_TerrainSize, getVertexHeight(x, z, heightMapImage), z * m_TerrainSize);
+					vertex.Normal = calculateNormal(x, z, heightMapImage);
 					vertex.TexCoords = glm::vec2((GLfloat)x / ((GLfloat)m_VertexSideCount - 1.0f),
 						(GLfloat)z / ((GLfloat)m_VertexSideCount - 1.0f));//转换纹理坐标0-1之间
 
 					vertices.push_back(vertex);
 				}
 			}
-			// 高度图加载
-			GLint mapWidth, mapHeight, nrComponents;
-			unsigned char* heightMapImage = stbi_load("res/terrain/heightMap.png", &mapWidth, &mapHeight, &nrComponents, 1);
 			
-
-			if (!heightMapImage) {
-				std::cout << "Failed to load height map image!" << std::endl;
-			}
-			for (GLuint height = 0; height < mapHeight; ++height) {
-				for (GLuint width = 0; width < mapWidth; ++width) {
-					//根据高度图调整顶点高度到0-1
-					GLfloat temp = (heightMapImage[width + (height * mapWidth)] / 127.5f) - 1;
-					//设置顶点高度
-					vertices[width + (height * mapWidth)].Position.y = temp * m_HeightMapScale;
-				}
-			}
 			stbi_image_free(heightMapImage);
 
 			for (GLuint height = 0; height < m_VertexSideCount - 1; ++height) {
@@ -83,6 +78,26 @@ namespace myarcane {
 		}
 		void Terrain::Draw(graphics::Shader& shader)const {
 			m_Mesh->Draw(shader);
+		}
+		glm::vec3 Terrain::calculateNormal(int x, int z, unsigned char* heightMapData) {
+			GLfloat heightR = getVertexHeight(x + 1, z, heightMapData);//右边高度
+			GLfloat heightL = getVertexHeight(x - 1, z, heightMapData);//左边高度
+			GLfloat heightU = getVertexHeight(x, z + 1, heightMapData);//上边高度
+			GLfloat heightD = getVertexHeight(x, z - 1, heightMapData);//下边高度
+
+			glm::vec3 normal(heightL - heightR, 2.0f, heightD - heightU);
+			normal = glm::normalize(normal);
+
+			return normal;
+		}
+
+		GLfloat Terrain::getVertexHeight(int x, int z, unsigned char* heightMapData) {
+			if (x < 0 || x >= m_VertexSideCount || z < 0 || z >= m_VertexSideCount) {
+				return 0.0f;
+			}
+
+			// Normalize height to [-1, 1] then multiply it by the height map scale
+			return ((heightMapData[x + (z * m_VertexSideCount)] / 127.5f) - 1) * m_HeightMapScale;//为什么除以 127.5？因为 255 / 127.5 = 2，这样能把 0~255 的像素值，先转换成 0~2 的范围
 		}
 	}
 }
