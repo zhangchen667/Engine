@@ -54,6 +54,15 @@
     <ClCompile Include="src\terrain\Terrain.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
+    <ClCompile Include="src\platform\OpenGL\Buffer.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="src\platform\OpenGL\IndexBuffer.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="src\platform\OpenGL\VertexArray.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\graphics\Shader.h">
@@ -84,6 +93,15 @@
       <Filter>头文件</Filter>
     </ClInclude>
     <ClInclude Include="src\terrain\Terrain.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="src\platform\OpenGL\VertexArray.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="src\platform\OpenGL\Buffer.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="src\platform\OpenGL\IndexBuffer.h">
       <Filter>头文件</Filter>
     </ClInclude>
   </ItemGroup>
