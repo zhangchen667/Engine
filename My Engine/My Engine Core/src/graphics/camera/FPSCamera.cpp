@@ -68,9 +68,9 @@ namespace myarcane {
 
 			updateCameraVectors();
 		}
-		void FPSCamera::processMouseScroll(GLfloat yOffset) {
-			if (m_Fov >= 1.0f && m_Fov <= FOV) {
-				m_Fov -= yOffset;
+		void FPSCamera::processMouseScroll(GLfloat offset) {
+			if (offset!=0&&m_Fov >= 1.0f && m_Fov <= FOV) {
+				m_Fov -= offset;
 			}
 			if (m_Fov < 1.0f) {
 				m_Fov = 1.0f;

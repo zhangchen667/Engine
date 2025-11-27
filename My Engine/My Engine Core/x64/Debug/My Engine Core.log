@@ -1,18 +1,4 @@
-﻿  main.cpp
-D:\Engine\My Engine\My Engine Core\src\main.cpp(205,16): warning C4244: “初始化”: 从“int”转换到“GLfloat”，可能丢失数据
-D:\Engine\My Engine\My Engine Core\src\main.cpp(206,16): warning C4244: “初始化”: 从“int”转换到“GLfloat”，可能丢失数据
-D:\Engine\My Engine\My Engine Core\src\main.cpp(215,28): warning C4244: “=”: 从“double”转换到“GLfloat”，可能丢失数据
-D:\Engine\My Engine\My Engine Core\src\main.cpp(216,28): warning C4244: “=”: 从“double”转换到“GLfloat”，可能丢失数据
-D:\Engine\My Engine\My Engine Core\src\main.cpp(219,65): warning C4244: “参数”: 从“double”转换到“GLfloat”，可能丢失数据
-D:\Engine\My Engine\My Engine Core\src\main.cpp(219,50): warning C4244: “参数”: 从“double”转换到“GLfloat”，可能丢失数据
-D:\Engine\My Engine\My Engine Core\src\main.cpp(220,27): warning C4244: “=”: 从“double”转换到“GLfloat”，可能丢失数据
-D:\Engine\My Engine\My Engine Core\src\main.cpp(221,27): warning C4244: “=”: 从“double”转换到“GLfloat”，可能丢失数据
-D:\Engine\My Engine\My Engine Core\src\main.cpp(224,73): warning C4244: “参数”: 从“GLdouble”转换到“GLfloat”，可能丢失数据
-D:\Engine\My Engine\My Engine Core\src\main.cpp(226,74): warning C4244: “参数”: 从“GLdouble”转换到“GLfloat”，可能丢失数据
-D:\Engine\My Engine\My Engine Core\src\main.cpp(228,70): warning C4244: “参数”: 从“GLdouble”转换到“GLfloat”，可能丢失数据
-D:\Engine\My Engine\My Engine Core\src\main.cpp(230,71): warning C4244: “参数”: 从“GLdouble”转换到“GLfloat”，可能丢失数据
-D:\Engine\My Engine\My Engine Core\src\main.cpp(232,73): warning C4244: “参数”: 从“GLdouble”转换到“GLfloat”，可能丢失数据
-D:\Engine\My Engine\My Engine Core\src\main.cpp(234,75): warning C4244: “参数”: 从“GLdouble”转换到“GLfloat”，可能丢失数据
-D:\Engine\My Engine\My Engine Core\src\main.cpp(237,48): warning C4244: “参数”: 从“double”转换到“GLfloat”，可能丢失数据
-D:\Engine\My Engine\My Engine Core\src\main.cpp(313,42): warning C4244: “参数”: 从“double”转换到“float”，可能丢失数据
+﻿  Terrain.cpp
+D:\Engine\My Engine\My Engine Core\src\terrain\Terrain.cpp(95,19): warning C4018: “>=”: 有符号/无符号不匹配
+D:\Engine\My Engine\My Engine Core\src\terrain\Terrain.cpp(95,54): warning C4018: “>=”: 有符号/无符号不匹配
   My Engine Core.vcxproj -> D:\Engine\My Engine\x64\Debug\My Engine Core.exe

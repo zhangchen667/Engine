@@ -18,7 +18,7 @@ namespace myarcane {
 		const GLfloat YAW = -90.0f;//水平偏航角(水平)
 		const GLfloat PITCH = 0.0f;//俯仰角（上下）
 		const GLfloat SPEED = 40.0f;//移动速度
-		const GLfloat SENSITIVITY = 0.25f;//鼠标灵敏度
+		const GLfloat SENSITIVITY = 0.10f;//鼠标灵敏度
 		const GLfloat FOV = 80.0f;//视野范围
 
 		class FPSCamera {
