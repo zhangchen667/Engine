@@ -289,10 +289,10 @@ int main() {
 		shader.setUniform1f("spotLight.cutOff", glm::cos(glm::radians(12.5f)));
 		shader.setUniform1f("spotLight.outerCutOff", glm::cos(glm::radians(15.0f)));
 		shader.enable();
-		glm::mat4 view;
+		glm::mat4 view=glm::mat4(1.0f);
 		view = camera.getViewMatrix();
 
-		glm::mat4 projection;
+		glm::mat4 projection= glm::mat4(1.0f);
 		projection = glm::perspective(glm::radians(camera.getFov()), (float)window.getWidth() / (float)window.getHeight(), 0.1f, 1000.0f);
 	
 		shader.setUniformMat4("view", view);
@@ -301,7 +301,7 @@ int main() {
 		terrain.Draw(shader);//ªÊ÷∆µÿ–Œ
 
 
-		glm::mat4 model=glm::mat4(1.0f);
+		glm::mat4 model = glm::mat4(1.0f);
 		//model = glm::scale(model, glm::vec3(0.01f, 0.01f, 0.01f));
 		//model = glm::translate(model, glm::vec3(0.0f, 0.0f, 10.0f));
 		shader.setUniformMat4("model", model);
