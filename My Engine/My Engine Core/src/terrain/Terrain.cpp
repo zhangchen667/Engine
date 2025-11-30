@@ -12,7 +12,10 @@ namespace myarcane {
 			// 高度图加载
 			GLint mapWidth, mapHeight, nrComponents;
 			unsigned char* heightMapImage = stbi_load("res/terrain/heightMap.png", &mapWidth, &mapHeight, &nrComponents, 1);
-			if (mapWidth != mapHeight + 1) {//高度图必须是正方形
+			if (mapWidth != mapHeight ) {//高度图必须是正方形//
+
+				//问题所在
+
 				std::cout << "ERROR: Can't use a heightmap with a different width and height" << std::endl;
 				utils::Logger::getInstance().error("logged_files/terrain_creation.txt", "terrain initialization", "Can't use a heightmap with a different width and height");
 				return;

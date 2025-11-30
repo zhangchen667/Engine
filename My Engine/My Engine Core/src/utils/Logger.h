@@ -20,7 +20,7 @@ namespace myarcane {
 			* @param module The module the debug information is assosciated with
 			* @param message The debug message that will be logged
 			*/
-			void debug(const std::string& filePath, std::string& module, const std::string& message);
+			void debug(const std::string& filePath, const std::string& module, const std::string& message);
 
 			/**
 			* Logs an information message
@@ -70,7 +70,7 @@ namespace myarcane {
 			enum {
 				DEBUG, INFO, WARNING, ERROR
 			};
-			std::vector<const std::string> filePaths;
+			std::vector<std::string> filePaths;
 
 			std::ofstream filestream;
 			std::string file; // Default value set to: "logged_files/log.txt"

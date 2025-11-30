@@ -22,7 +22,7 @@ namespace myarcane {
 			}
 		}
 
-		void Logger::debug(const std::string& filePath, std::string& module, const std::string& message) {
+		void Logger::debug(const std::string& filePath, const std::string& module, const std::string& message) {
 			setOutputFile(filePath);
 			logMessage(DEBUG, module, message);
 		}

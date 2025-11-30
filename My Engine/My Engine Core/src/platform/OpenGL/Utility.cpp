@@ -38,7 +38,7 @@ namespace myarcane {
 			}
 			else {
 				std::cout << "Texture failed to load at path: " << path << std::endl;
-				utils::Logger::getInstance().error("logged_files/texture_loading.txt", "texture load (OpenGL) fail path:", path);
+				//utils::Logger::getInstance().error("logged_files/texture_loading.txt", "texture load (OpenGL) fail path:", path);
 				stbi_image_free(data);
 			}
 			return textureID;

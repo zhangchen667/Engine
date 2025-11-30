@@ -1,1 +1,1 @@
-[ERROR] (terrain initialization): Can't use a heightmap with a different width and height
+(terrain initialization): Can't use a heightmap with a different width and height
