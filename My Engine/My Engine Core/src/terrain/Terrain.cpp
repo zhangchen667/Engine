@@ -1,18 +1,20 @@
 #include"Terrain.h"
 #include"../platform/OpenGL/Utility.h"
+#include"../utils/Logger.h"
 namespace myarcane {
 	namespace terrain {
 		Terrain::Terrain(glm::vec3& worldPosition) :m_Position(worldPosition)
 		{
+			m_ModelMatrix = glm::translate(m_ModelMatrix, worldPosition);//设置地形位置
 			std::vector<graphics::Vertex>vertices;
 			std::vector<unsigned int>indices;
 			std::vector<graphics::Texture>textures;
 			// 高度图加载
 			GLint mapWidth, mapHeight, nrComponents;
 			unsigned char* heightMapImage = stbi_load("res/terrain/heightMap.png", &mapWidth, &mapHeight, &nrComponents, 1);
-			if (mapWidth != mapHeight) {
+			if (mapWidth != mapHeight + 1) {//高度图必须是正方形
 				std::cout << "ERROR: Can't use a heightmap with a different width and height" << std::endl;
-				// TODO: Log this
+				utils::Logger::getInstance().error("logged_files/terrain_creation.txt", "terrain initialization", "Can't use a heightmap with a different width and height");
 				return;
 			}
 
@@ -77,6 +79,7 @@ namespace myarcane {
 			delete m_Mesh;
 		}
 		void Terrain::Draw(graphics::Shader& shader)const {
+			shader.setUniformMat4("model", m_ModelMatrix);
 			m_Mesh->Draw(shader);
 		}
 		glm::vec3 Terrain::calculateNormal(int x, int z, unsigned char* heightMapData) {
