@@ -2,43 +2,79 @@
 
 #include <iostream>
 #include <fstream>
+#include <vector>
+#include"Singleton.h"
 
 namespace myarcane {
+	namespace utils {
 
-	class Logger {
-	private:
-		enum {
-			DEBUG, INFO, WARNING, ERROR
+		class Logger : public Singleton {
+		private:
+			Logger();
+		public:
+			static Logger& getInstance();
+
+			/**
+			* Logs an debug message
+			*
+			* @param module The module the debug information is assosciated with
+			* @param message The debug message that will be logged
+			*/
+			void debug(const std::string& filePath, std::string& module, const std::string& message);
+
+			/**
+			* Logs an information message
+			*
+			* @param module The module the info is assosciated with
+			* @param message The info message that will be logged
+			*/
+			void info(const std::string& filePath, const std::string& module, const std::string& message);
+
+			/**
+			* Logs an warning message
+			*
+			* @param module The module the warning is assosciated with
+			* @param message The warning message that will be logged
+			*/
+			void warning(const std::string& filePath, const std::string& module, const std::string& message);
+
+			/**
+			* Logs an error message
+			*
+			* @param module The module the error is assosciated with
+			* @param message The error message that will be logged
+			*/
+			void error(const std::string& filePath, const std::string& module, const std::string& message);
+		private:
+			/**
+			* Logs a message
+			*
+			* @param priority The level of priority that the message is given (higher = more important)
+			* @param module The module the message is assosciated with
+			* @param message The message that will be logged
+			*/
+			void logMessage(const int& priority, const std::string& module, const std::string& message);
+
+			/**
+			* Clears out the contents all of the different files that have been assigned to
+			*/
+			void clearFileContents();
+
+			/**
+			* Sets the output file
+			*
+			* @param filename The file that you want to set the logger to output to
+			*/
+			void setOutputFile(const std::string& filename);
+
+			enum {
+				DEBUG, INFO, WARNING, ERROR
+			};
+			std::vector<const std::string> filePaths;
+
+			std::ofstream filestream;
+			std::string file; // Default value set to: "logged_files/log.txt"
 		};
 
-		std::ofstream filestream;
-		std::string file; // Default value set to: "logged_files/log.txt"
-	public:
-		Logger(const std::string& filePath = "logged_files/log.txt");
-
-		inline void setOutputFile(const std::string& filename) {
-			file = filename;
-		}
-
-		void clearFileContents();
-
-		inline void debug(const std::string& module, const std::string& message) {
-			logMessage(DEBUG, module, message);
-		}
-
-		inline void info(const std::string& module, const std::string& message) {
-			logMessage(INFO, module, message);
-		}
-
-		inline void warning(const std::string& module, const std::string& message) {
-			logMessage(WARNING, module, message);
-		}
-
-		inline void error(const std::string& module, const std::string& message) {
-			logMessage(ERROR, module, message);
-		}
-	private:
-		void logMessage(const int& priority, const std::string& module, const std::string& message);
-	};
-
+	}
 }

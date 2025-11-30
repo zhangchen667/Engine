@@ -1,6 +1,6 @@
 #include"Model.h"
 #include<iostream>
-
+#include"../utils/Logger.h"
 #include"../stb/stb_image.h"
 namespace myarcane {
 	namespace graphics {
@@ -13,11 +13,12 @@ namespace myarcane {
 			}
 		}
 		void Model::loadModel(const std::string& path) {
-			Assimp::Importer importer;
+			Assimp::Importer import;
 			//读取文件
-			const aiScene* scene = importer.ReadFile(path, aiProcess_Triangulate | aiProcess_FlipUVs);
-			if (!scene || scene->mFlags & AI_SCENE_FLAGS_INCOMPLETE || !scene->mRootNode) {
-				std::cout << "ERROR::ASSIMP::" << importer.GetErrorString() << std::endl;
+			const aiScene* scene = import.ReadFile(path, aiProcess_Triangulate | aiProcess_FlipUVs);
+			if (!scene || scene->mFlags & AI_SCENE_FLAGS_INCOMPLETE || !scene->mRootNode) {//检查错误
+				std::cout << "ERROR::ASSIMP::" << import.GetErrorString() << std::endl;
+				utils::Logger::getInstance().error("logged_files/log.txt", "model initialization", import.GetErrorString());
 				return;
 			}
 			//获取目录路径
