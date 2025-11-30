@@ -1,5 +1,4 @@
-﻿  Shader.cpp
-  Window.cpp
-  model.cpp
-  正在生成代码...
+﻿  Terrain.cpp
+D:\Engine\My Engine\My Engine Core\src\terrain\Terrain.cpp(102,19): warning C4018: “>=”: 有符号/无符号不匹配
+D:\Engine\My Engine\My Engine Core\src\terrain\Terrain.cpp(102,54): warning C4018: “>=”: 有符号/无符号不匹配
   My Engine Core.vcxproj -> D:\Engine\My Engine\x64\Debug\My Engine Core.exe
