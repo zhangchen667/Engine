@@ -9,6 +9,7 @@
 #include <glm/gtc/type_ptr.hpp>
 #include"utils/Timer.h"
 #include"utils\Logger.h"
+#include<ft2build.h>
 //#define GLEW_STATIC
 #define STB_IMAGE_IMPLEMENTATION
 #include"stb/stb_image.h"
