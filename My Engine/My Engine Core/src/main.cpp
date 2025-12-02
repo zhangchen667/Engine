@@ -15,6 +15,8 @@
 #include"stb/stb_image.h"
 #include"graphics/model.h"
 #include"terrain/Terrain.h"
+#include FT_FREETYPE_H 
+#include<freetype-gl/freetype-gl.h>
 //myarcane::graphics::FPSCamera camera(glm::vec3(0.0f, 0.0f, 0.0f), glm::vec3(0.0f, 1.0f, 0.0f), -90.0f, 0.0f);
 myarcane::graphics::FPSCamera camera(glm::vec3(0.0f, 0.0f, 0.0f), glm::vec3(0.0f, 1.0f, 0.0f), -90.0f, 0.0f);
 myarcane::graphics::Window window("My Engine",1366,768);
@@ -226,9 +228,10 @@ int main() {
 		shader.setUniform1f("material.shininess", 32.0f);
 		//
 		// directional light
+		float sinTime = sin(glfwGetTime())/2+0.5f;
 		shader.setUniform3f("dirLight.direction", glm::vec3(-0.2f, -1.0f, -0.3f));
 		shader.setUniform3f("dirLight.ambient", glm::vec3(0.05f, 0.05f, 0.05f));
-		shader.setUniform3f("dirLight.diffuse", glm::vec3(0.1f, 0.1f, 0.1f));
+		shader.setUniform3f("dirLight.diffuse", glm::vec3(sinTime, sinTime,sinTime));
 		shader.setUniform3f("dirLight.specular", glm::vec3(0.5f, 0.5f, 0.5f));
 
 		//// point lights
