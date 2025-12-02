@@ -345,7 +345,7 @@
               "RelativeDocumentMoniker": "My Engine Core\\src\\main.cpp",
               "ToolTip": "D:\\Engine\\My Engine\\My Engine Core\\src\\main.cpp",
               "RelativeToolTip": "My Engine Core\\src\\main.cpp",
-              "ViewState": "AgIAAAYAAAAAAAAAAAAAAAoAAAAYAAAAAAAAAA==",
+              "ViewState": "AgIAAAkAAAAAAAAAAAAAABEAAAAXAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
               "WhenOpened": "2025-11-19T13:00:39.273Z",
               "EditorCaption": ""
@@ -384,8 +384,7 @@
               "RelativeToolTip": "My Engine Core\\src\\utils\\Logger.h",
               "ViewState": "AgIAACgAAAAAAAAAAAAAAEsAAABEAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
-              "WhenOpened": "2025-11-19T13:15:25.969Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-11-19T13:15:25.969Z"
             }
           ]
         }
