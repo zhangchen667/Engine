@@ -21,6 +21,8 @@ namespace myarcane {
 				glfwDestroyWindow(m_Window);//销毁窗口
 				glfwTerminate();//释放资源
 			}
+			memset(m_Keys, 0, sizeof(bool) * MAX_KEYS);//初始化按键数组
+			memset(m_Buttons, 0, sizeof(bool) * MAX_BUTTONS);//初始化鼠标按钮数组
 		}
 		Window::~Window() {
 			glfwDestroyWindow(m_Window);
@@ -107,6 +109,8 @@ namespace myarcane {
 
 		bool Window::isKeyPressed(unsigned int code)const {
 			if (code >= MAX_KEYS) {
+				std::cout << "Max keys overflow in window" << std::endl;
+				utils::Logger::getInstance().error("logged_files/input_errors.txt", "Input Check", "Key checked is out of bounds (ie not supported)");
 				return false;
 			}
 			else {
@@ -116,6 +120,8 @@ namespace myarcane {
 		bool Window::isMouseButtonPressed(unsigned int code) const {
 			if (code >= MAX_BUTTONS) {
 				//TODO: LOG THIS
+				std::cout << "Max mouse buttons overflow in window" << std::endl;//溢出
+				utils::Logger::getInstance().error("logged_files/input_errors.txt", "Input Check", "Mouse button checked is out of bounds (ie not supported)");
 				return false;
 			}
 			else {

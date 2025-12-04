@@ -7,7 +7,7 @@ struct Material{//ÎïÌå²ÄÖÊ
 	sampler2D texture_specular1;
 	sampler2D texture_specular2;
 	sampler2D texture_specular3;
-	sampler2D emission;
+	
 	float shininess;
 };
 struct DirLight {
@@ -42,7 +42,7 @@ struct SpotLight {
 	vec3 diffuse;
 	vec3 specular;
 };
-#define NR_POINT_LIGHTS 4
+#define NR_POINT_LIGHTS 1
 
 in vec2 TexCoords;
 in vec3 Normal;
@@ -84,7 +84,7 @@ vec3 CalcDirLight(DirLight light, vec3 normal, vec3 viewDir) {
 	vec3 ambient = light.ambient * texture(material.texture_diffuse1, TexCoords).rgb;
 	vec3 diffuse = light.diffuse * diff * texture(material.texture_diffuse1, TexCoords).rgb;
 	vec3 specular = light.specular * spec * texture(material.texture_specular1, TexCoords).rgb;
-	//vec3 emission = texture(material.emission, TexCoords).rgb * clamp((sin(time) * 2) - 1, 0, 1);
+	
 	
 	return (ambient + diffuse + specular);
 }
@@ -104,7 +104,7 @@ vec3 CalcPointLight(PointLight light, vec3 normal, vec3 fragPos, vec3 viewDir) {
 	vec3 ambient = light.ambient * texture(material.texture_diffuse1, TexCoords).rgb;
 	vec3 diffuse = light.diffuse * diff * texture(material.texture_diffuse1, TexCoords).rgb;
 	vec3 specular = light.specular * spec * texture(material.texture_specular1, TexCoords).rgb;
-	/vec3 emission = texture(material.emission, TexCoords).rgb * clamp((sin(time) * 2) - 1, 0, 1);
+	
 
 	// Apply attenuation
 	ambient *= attenuation;
