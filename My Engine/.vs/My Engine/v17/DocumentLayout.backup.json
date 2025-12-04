@@ -3,20 +3,44 @@
   "WorkspaceRootPath": "D:\\Engine\\My Engine\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{526F8AD7-F98C-4A4A-90A6-249560DD2E0F}|My Engine Core\\My Engine Core.vcxproj|D:\\Engine\\My Engine\\My Engine Core\\src\\Scene3D.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{526F8AD7-F98C-4A4A-90A6-249560DD2E0F}|My Engine Core\\My Engine Core.vcxproj|solutionrelative:My Engine Core\\src\\Scene3D.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{526F8AD7-F98C-4A4A-90A6-249560DD2E0F}|My Engine Core\\My Engine Core.vcxproj|D:\\Engine\\My Engine\\My Engine Core\\src\\graphics\\renderer\\Renderable3D.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{526F8AD7-F98C-4A4A-90A6-249560DD2E0F}|My Engine Core\\My Engine Core.vcxproj|solutionrelative:My Engine Core\\src\\graphics\\renderer\\Renderable3D.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{526F8AD7-F98C-4A4A-90A6-249560DD2E0F}|My Engine Core\\My Engine Core.vcxproj|D:\\Engine\\My Engine\\My Engine Core\\src\\graphics\\renderer\\Renderer.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{526F8AD7-F98C-4A4A-90A6-249560DD2E0F}|My Engine Core\\My Engine Core.vcxproj|solutionrelative:My Engine Core\\src\\graphics\\renderer\\Renderer.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+      "AbsoluteMoniker": "D:0:0:{526F8AD7-F98C-4A4A-90A6-249560DD2E0F}|My Engine Core\\My Engine Core.vcxproj|D:\\Engine\\My Engine\\My Engine Core\\src\\utils\\FileUtils.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{526F8AD7-F98C-4A4A-90A6-249560DD2E0F}|My Engine Core\\My Engine Core.vcxproj|solutionrelative:My Engine Core\\src\\utils\\FileUtils.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{526F8AD7-F98C-4A4A-90A6-249560DD2E0F}|My Engine Core\\My Engine Core.vcxproj|D:\\Engine\\My Engine\\My Engine Core\\src\\main.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
       "RelativeMoniker": "D:0:0:{526F8AD7-F98C-4A4A-90A6-249560DD2E0F}|My Engine Core\\My Engine Core.vcxproj|solutionrelative:My Engine Core\\src\\main.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{526F8AD7-F98C-4A4A-90A6-249560DD2E0F}|My Engine Core\\My Engine Core.vcxproj|D:\\Engine\\My Engine\\My Engine Core\\src\\Scene3D.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{526F8AD7-F98C-4A4A-90A6-249560DD2E0F}|My Engine Core\\My Engine Core.vcxproj|solutionrelative:My Engine Core\\src\\Scene3D.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{526F8AD7-F98C-4A4A-90A6-249560DD2E0F}|My Engine Core\\My Engine Core.vcxproj|D:\\Engine\\My Engine\\My Engine Core\\src\\shaders\\terrain.frag||{8B382828-6202-11D1-8870-0000F87579D2}",
+      "RelativeMoniker": "D:0:0:{526F8AD7-F98C-4A4A-90A6-249560DD2E0F}|My Engine Core\\My Engine Core.vcxproj|solutionrelative:My Engine Core\\src\\shaders\\terrain.frag||{8B382828-6202-11D1-8870-0000F87579D2}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{526F8AD7-F98C-4A4A-90A6-249560DD2E0F}|My Engine Core\\My Engine Core.vcxproj|D:\\Engine\\My Engine\\My Engine Core\\src\\utils\\FileUtils.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{526F8AD7-F98C-4A4A-90A6-249560DD2E0F}|My Engine Core\\My Engine Core.vcxproj|solutionrelative:My Engine Core\\src\\utils\\FileUtils.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{526F8AD7-F98C-4A4A-90A6-249560DD2E0F}|My Engine Core\\My Engine Core.vcxproj|D:\\Engine\\My Engine\\My Engine Core\\src\\graphics\\Window.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{526F8AD7-F98C-4A4A-90A6-249560DD2E0F}|My Engine Core\\My Engine Core.vcxproj|solutionrelative:My Engine Core\\src\\graphics\\Window.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{526F8AD7-F98C-4A4A-90A6-249560DD2E0F}|My Engine Core\\My Engine Core.vcxproj|D:\\Engine\\My Engine\\My Engine Core\\src\\graphics\\Window.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{526F8AD7-F98C-4A4A-90A6-249560DD2E0F}|My Engine Core\\My Engine Core.vcxproj|solutionrelative:My Engine Core\\src\\graphics\\Window.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{526F8AD7-F98C-4A4A-90A6-249560DD2E0F}|My Engine Core\\My Engine Core.vcxproj|D:\\Engine\\My Engine\\My Engine Core\\src\\utils\\Logger.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{526F8AD7-F98C-4A4A-90A6-249560DD2E0F}|My Engine Core\\My Engine Core.vcxproj|solutionrelative:My Engine Core\\src\\utils\\Logger.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{526F8AD7-F98C-4A4A-90A6-249560DD2E0F}|My Engine Core\\My Engine Core.vcxproj|D:\\Engine\\My Engine\\My Engine Core\\src\\Scene3D.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{526F8AD7-F98C-4A4A-90A6-249560DD2E0F}|My Engine Core\\My Engine Core.vcxproj|solutionrelative:My Engine Core\\src\\Scene3D.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{526F8AD7-F98C-4A4A-90A6-249560DD2E0F}|My Engine Core\\My Engine Core.vcxproj|D:\\Engine\\My Engine\\My Engine Core\\src\\terrain\\Terrain.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{526F8AD7-F98C-4A4A-90A6-249560DD2E0F}|My Engine Core\\My Engine Core.vcxproj|solutionrelative:My Engine Core\\src\\terrain\\Terrain.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{526F8AD7-F98C-4A4A-90A6-249560DD2E0F}|My Engine Core\\My Engine Core.vcxproj|D:\\Engine\\My Engine\\My Engine Core\\src\\graphics\\renderer\\Renderable3D.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
@@ -27,8 +51,32 @@
       "RelativeMoniker": "D:0:0:{526F8AD7-F98C-4A4A-90A6-249560DD2E0F}|My Engine Core\\My Engine Core.vcxproj|solutionrelative:My Engine Core\\src\\graphics\\renderer\\Renderer.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
     {
+      "AbsoluteMoniker": "D:0:0:{526F8AD7-F98C-4A4A-90A6-249560DD2E0F}|My Engine Core\\My Engine Core.vcxproj|D:\\Engine\\My Engine\\My Engine Core\\src\\graphics\\renderer\\Renderable3D.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{526F8AD7-F98C-4A4A-90A6-249560DD2E0F}|My Engine Core\\My Engine Core.vcxproj|solutionrelative:My Engine Core\\src\\graphics\\renderer\\Renderable3D.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{526F8AD7-F98C-4A4A-90A6-249560DD2E0F}|My Engine Core\\My Engine Core.vcxproj|D:\\Engine\\My Engine\\My Engine Core\\src\\graphics\\renderer\\Renderer.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{526F8AD7-F98C-4A4A-90A6-249560DD2E0F}|My Engine Core\\My Engine Core.vcxproj|solutionrelative:My Engine Core\\src\\graphics\\renderer\\Renderer.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{526F8AD7-F98C-4A4A-90A6-249560DD2E0F}|My Engine Core\\My Engine Core.vcxproj|D:\\Engine\\My Engine\\My Engine Core\\src\\utils\\Logger.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
       "RelativeMoniker": "D:0:0:{526F8AD7-F98C-4A4A-90A6-249560DD2E0F}|My Engine Core\\My Engine Core.vcxproj|solutionrelative:My Engine Core\\src\\utils\\Logger.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{526F8AD7-F98C-4A4A-90A6-249560DD2E0F}|My Engine Core\\My Engine Core.vcxproj|D:\\Engine\\My Engine\\My Engine Core\\src\\shaders\\multipleLight.frag||{8B382828-6202-11D1-8870-0000F87579D2}",
+      "RelativeMoniker": "D:0:0:{526F8AD7-F98C-4A4A-90A6-249560DD2E0F}|My Engine Core\\My Engine Core.vcxproj|solutionrelative:My Engine Core\\src\\shaders\\multipleLight.frag||{8B382828-6202-11D1-8870-0000F87579D2}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{526F8AD7-F98C-4A4A-90A6-249560DD2E0F}|My Engine Core\\My Engine Core.vcxproj|D:\\Engine\\My Engine\\My Engine Core\\src\\shaders\\basic.vert||{8B382828-6202-11D1-8870-0000F87579D2}",
+      "RelativeMoniker": "D:0:0:{526F8AD7-F98C-4A4A-90A6-249560DD2E0F}|My Engine Core\\My Engine Core.vcxproj|solutionrelative:My Engine Core\\src\\shaders\\basic.vert||{8B382828-6202-11D1-8870-0000F87579D2}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{526F8AD7-F98C-4A4A-90A6-249560DD2E0F}|My Engine Core\\My Engine Core.vcxproj|D:\\Engine\\My Engine\\My Engine Core\\src\\graphics\\Mesh.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{526F8AD7-F98C-4A4A-90A6-249560DD2E0F}|My Engine Core\\My Engine Core.vcxproj|solutionrelative:My Engine Core\\src\\graphics\\Mesh.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{526F8AD7-F98C-4A4A-90A6-249560DD2E0F}|My Engine Core\\My Engine Core.vcxproj|D:\\Engine\\My Engine\\My Engine Core\\src\\graphics\\Shader.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{526F8AD7-F98C-4A4A-90A6-249560DD2E0F}|My Engine Core\\My Engine Core.vcxproj|solutionrelative:My Engine Core\\src\\graphics\\Shader.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{526F8AD7-F98C-4A4A-90A6-249560DD2E0F}|My Engine Core\\My Engine Core.vcxproj|D:\\Engine\\My Engine\\My Engine Core\\src\\terrain\\Terrain.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
@@ -39,24 +87,8 @@
       "RelativeMoniker": "D:0:0:{526F8AD7-F98C-4A4A-90A6-249560DD2E0F}|My Engine Core\\My Engine Core.vcxproj|solutionrelative:My Engine Core\\src\\platform\\OpenGL\\Utility.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{526F8AD7-F98C-4A4A-90A6-249560DD2E0F}|My Engine Core\\My Engine Core.vcxproj|D:\\Engine\\My Engine\\My Engine Core\\src\\shaders\\terrain.frag||{8B382828-6202-11D1-8870-0000F87579D2}",
-      "RelativeMoniker": "D:0:0:{526F8AD7-F98C-4A4A-90A6-249560DD2E0F}|My Engine Core\\My Engine Core.vcxproj|solutionrelative:My Engine Core\\src\\shaders\\terrain.frag||{8B382828-6202-11D1-8870-0000F87579D2}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{526F8AD7-F98C-4A4A-90A6-249560DD2E0F}|My Engine Core\\My Engine Core.vcxproj|D:\\Engine\\My Engine\\My Engine Core\\src\\graphics\\Mesh.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{526F8AD7-F98C-4A4A-90A6-249560DD2E0F}|My Engine Core\\My Engine Core.vcxproj|solutionrelative:My Engine Core\\src\\graphics\\Mesh.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{526F8AD7-F98C-4A4A-90A6-249560DD2E0F}|My Engine Core\\My Engine Core.vcxproj|D:\\Engine\\My Engine\\My Engine Core\\src\\graphics\\model.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
       "RelativeMoniker": "D:0:0:{526F8AD7-F98C-4A4A-90A6-249560DD2E0F}|My Engine Core\\My Engine Core.vcxproj|solutionrelative:My Engine Core\\src\\graphics\\model.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{526F8AD7-F98C-4A4A-90A6-249560DD2E0F}|My Engine Core\\My Engine Core.vcxproj|D:\\Engine\\My Engine\\My Engine Core\\src\\graphics\\Shader.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{526F8AD7-F98C-4A4A-90A6-249560DD2E0F}|My Engine Core\\My Engine Core.vcxproj|solutionrelative:My Engine Core\\src\\graphics\\Shader.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{526F8AD7-F98C-4A4A-90A6-249560DD2E0F}|My Engine Core\\My Engine Core.vcxproj|D:\\Engine\\My Engine\\My Engine Core\\src\\graphics\\Window.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{526F8AD7-F98C-4A4A-90A6-249560DD2E0F}|My Engine Core\\My Engine Core.vcxproj|solutionrelative:My Engine Core\\src\\graphics\\Window.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{526F8AD7-F98C-4A4A-90A6-249560DD2E0F}|My Engine Core\\My Engine Core.vcxproj|D:\\Engine\\My Engine\\My Engine Core\\src\\graphics\\Mesh.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
@@ -71,44 +103,12 @@
       "RelativeMoniker": "D:0:0:{526F8AD7-F98C-4A4A-90A6-249560DD2E0F}|My Engine Core\\My Engine Core.vcxproj|solutionrelative:My Engine Core\\src\\platform\\OpenGL\\Utility.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{526F8AD7-F98C-4A4A-90A6-249560DD2E0F}|My Engine Core\\My Engine Core.vcxproj|D:\\Engine\\My Engine\\My Engine Core\\src\\utils\\Logger.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{526F8AD7-F98C-4A4A-90A6-249560DD2E0F}|My Engine Core\\My Engine Core.vcxproj|solutionrelative:My Engine Core\\src\\utils\\Logger.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{526F8AD7-F98C-4A4A-90A6-249560DD2E0F}|My Engine Core\\My Engine Core.vcxproj|D:\\Engine\\My Engine\\My Engine Core\\src\\graphics\\camera\\FPSCamera.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
       "RelativeMoniker": "D:0:0:{526F8AD7-F98C-4A4A-90A6-249560DD2E0F}|My Engine Core\\My Engine Core.vcxproj|solutionrelative:My Engine Core\\src\\graphics\\camera\\FPSCamera.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{526F8AD7-F98C-4A4A-90A6-249560DD2E0F}|My Engine Core\\My Engine Core.vcxproj|D:\\Engine\\My Engine\\My Engine Core\\src\\graphics\\camera\\FPSCamera.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{526F8AD7-F98C-4A4A-90A6-249560DD2E0F}|My Engine Core\\My Engine Core.vcxproj|solutionrelative:My Engine Core\\src\\graphics\\camera\\FPSCamera.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{526F8AD7-F98C-4A4A-90A6-249560DD2E0F}|My Engine Core\\My Engine Core.vcxproj|D:\\Engine\\My Engine\\My Engine Core\\src\\shaders\\multipleLight.frag||{8B382828-6202-11D1-8870-0000F87579D2}",
-      "RelativeMoniker": "D:0:0:{526F8AD7-F98C-4A4A-90A6-249560DD2E0F}|My Engine Core\\My Engine Core.vcxproj|solutionrelative:My Engine Core\\src\\shaders\\multipleLight.frag||{8B382828-6202-11D1-8870-0000F87579D2}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{526F8AD7-F98C-4A4A-90A6-249560DD2E0F}|My Engine Core\\My Engine Core.vcxproj|D:\\Engine\\My Engine\\My Engine Core\\src\\graphics\\Window.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{526F8AD7-F98C-4A4A-90A6-249560DD2E0F}|My Engine Core\\My Engine Core.vcxproj|solutionrelative:My Engine Core\\src\\graphics\\Window.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{526F8AD7-F98C-4A4A-90A6-249560DD2E0F}|My Engine Core\\My Engine Core.vcxproj|D:\\Engine\\My Engine\\My Engine Core\\src\\terrain\\Terrain.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{526F8AD7-F98C-4A4A-90A6-249560DD2E0F}|My Engine Core\\My Engine Core.vcxproj|solutionrelative:My Engine Core\\src\\terrain\\Terrain.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{526F8AD7-F98C-4A4A-90A6-249560DD2E0F}|My Engine Core\\My Engine Core.vcxproj|D:\\Engine\\My Engine\\My Engine Core\\src\\graphics\\model.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
       "RelativeMoniker": "D:0:0:{526F8AD7-F98C-4A4A-90A6-249560DD2E0F}|My Engine Core\\My Engine Core.vcxproj|solutionrelative:My Engine Core\\src\\graphics\\model.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{526F8AD7-F98C-4A4A-90A6-249560DD2E0F}|My Engine Core\\My Engine Core.vcxproj|D:\\Engine\\My Engine\\My Engine Core\\src\\shaders\\basic.vert||{8B382828-6202-11D1-8870-0000F87579D2}",
-      "RelativeMoniker": "D:0:0:{526F8AD7-F98C-4A4A-90A6-249560DD2E0F}|My Engine Core\\My Engine Core.vcxproj|solutionrelative:My Engine Core\\src\\shaders\\basic.vert||{8B382828-6202-11D1-8870-0000F87579D2}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{526F8AD7-F98C-4A4A-90A6-249560DD2E0F}|My Engine Core\\My Engine Core.vcxproj|D:\\Engine\\My Engine\\My Engine Core\\src\\shaders\\directionalLight.frag||{8B382828-6202-11D1-8870-0000F87579D2}",
-      "RelativeMoniker": "D:0:0:{526F8AD7-F98C-4A4A-90A6-249560DD2E0F}|My Engine Core\\My Engine Core.vcxproj|solutionrelative:My Engine Core\\src\\shaders\\directionalLight.frag||{8B382828-6202-11D1-8870-0000F87579D2}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{526F8AD7-F98C-4A4A-90A6-249560DD2E0F}|My Engine Core\\My Engine Core.vcxproj|D:\\Engine\\My Engine\\My Engine Core\\src\\shaders\\pointlight.frag||{8B382828-6202-11D1-8870-0000F87579D2}",
-      "RelativeMoniker": "D:0:0:{526F8AD7-F98C-4A4A-90A6-249560DD2E0F}|My Engine Core\\My Engine Core.vcxproj|solutionrelative:My Engine Core\\src\\shaders\\pointlight.frag||{8B382828-6202-11D1-8870-0000F87579D2}"
     }
   ],
   "DocumentGroupContainers": [
@@ -118,11 +118,11 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 10,
+          "SelectedChildIndex": 6,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 8,
+              "DocumentIndex": 20,
               "Title": "Utility.h",
               "DocumentMoniker": "D:\\Engine\\My Engine\\My Engine Core\\src\\platform\\OpenGL\\Utility.h",
               "RelativeDocumentMoniker": "My Engine Core\\src\\platform\\OpenGL\\Utility.h",
@@ -155,105 +155,145 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 0,
+              "Title": "FileUtils.cpp",
+              "DocumentMoniker": "D:\\Engine\\My Engine\\My Engine Core\\src\\utils\\FileUtils.cpp",
+              "RelativeDocumentMoniker": "My Engine Core\\src\\utils\\FileUtils.cpp",
+              "ToolTip": "D:\\Engine\\My Engine\\My Engine Core\\src\\utils\\FileUtils.cpp",
+              "RelativeToolTip": "My Engine Core\\src\\utils\\FileUtils.cpp",
+              "ViewState": "AgIAAAMAAAAAAAAAAAAAAAkAAAAiAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2025-12-04T11:52:06.84Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "FileUtils.h",
+              "DocumentMoniker": "D:\\Engine\\My Engine\\My Engine Core\\src\\utils\\FileUtils.h",
+              "RelativeDocumentMoniker": "My Engine Core\\src\\utils\\FileUtils.h",
+              "ToolTip": "D:\\Engine\\My Engine\\My Engine Core\\src\\utils\\FileUtils.h",
+              "RelativeToolTip": "My Engine Core\\src\\utils\\FileUtils.h",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2025-12-04T11:52:24.239Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "Scene3D.cpp",
+              "DocumentMoniker": "D:\\Engine\\My Engine\\My Engine Core\\src\\Scene3D.cpp",
+              "RelativeDocumentMoniker": "My Engine Core\\src\\Scene3D.cpp",
+              "ToolTip": "D:\\Engine\\My Engine\\My Engine Core\\src\\Scene3D.cpp",
+              "RelativeToolTip": "My Engine Core\\src\\Scene3D.cpp",
+              "ViewState": "AgIAAAsAAAAAAAAAAADwvwcAAAA3AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2025-12-04T09:26:25.958Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
               "Title": "Renderer.cpp",
               "DocumentMoniker": "D:\\Engine\\My Engine\\My Engine Core\\src\\graphics\\renderer\\Renderer.cpp",
               "RelativeDocumentMoniker": "My Engine Core\\src\\graphics\\renderer\\Renderer.cpp",
               "ToolTip": "D:\\Engine\\My Engine\\My Engine Core\\src\\graphics\\renderer\\Renderer.cpp",
               "RelativeToolTip": "My Engine Core\\src\\graphics\\renderer\\Renderer.cpp",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAAmAAAAAAAAAA==",
+              "ViewState": "AgIAABUAAAAAAAAAAAAAAAQAAAAnAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
               "WhenOpened": "2025-12-03T11:34:41.774Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 13,
               "Title": "Renderer.h",
               "DocumentMoniker": "D:\\Engine\\My Engine\\My Engine Core\\src\\graphics\\renderer\\Renderer.h",
               "RelativeDocumentMoniker": "My Engine Core\\src\\graphics\\renderer\\Renderer.h",
               "ToolTip": "D:\\Engine\\My Engine\\My Engine Core\\src\\graphics\\renderer\\Renderer.h",
               "RelativeToolTip": "My Engine Core\\src\\graphics\\renderer\\Renderer.h",
-              "ViewState": "AgIAAAEAAAAAAAAAAAAcwBMAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAAwAAAAAAAAAAAAYwBMAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
               "WhenOpened": "2025-12-03T11:28:49.369Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 10,
               "Title": "Renderable3D.cpp",
               "DocumentMoniker": "D:\\Engine\\My Engine\\My Engine Core\\src\\graphics\\renderer\\Renderable3D.cpp",
               "RelativeDocumentMoniker": "My Engine Core\\src\\graphics\\renderer\\Renderable3D.cpp",
               "ToolTip": "D:\\Engine\\My Engine\\My Engine Core\\src\\graphics\\renderer\\Renderable3D.cpp",
               "RelativeToolTip": "My Engine Core\\src\\graphics\\renderer\\Renderable3D.cpp",
-              "ViewState": "AgIAAAgAAAAAAAAAAAAcwBAAAAABAAAAAAAAAA==",
+              "ViewState": "AgIAAAIAAAAAAAAAAAAcwAYAAAADAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
               "WhenOpened": "2025-12-03T11:28:53.253Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 12,
               "Title": "Renderable3D.h",
               "DocumentMoniker": "D:\\Engine\\My Engine\\My Engine Core\\src\\graphics\\renderer\\Renderable3D.h",
               "RelativeDocumentMoniker": "My Engine Core\\src\\graphics\\renderer\\Renderable3D.h",
               "ToolTip": "D:\\Engine\\My Engine\\My Engine Core\\src\\graphics\\renderer\\Renderable3D.h",
               "RelativeToolTip": "My Engine Core\\src\\graphics\\renderer\\Renderable3D.h",
-              "ViewState": "AgIAAA8AAAAAAAAAAAAAAAYAAAAjAAAAAAAAAA==",
+              "ViewState": "AgIAAAYAAAAAAAAAAAAAAAgAAAA0AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
-              "WhenOpened": "2025-12-03T11:20:44.713Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-12-03T11:20:44.713Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 8,
               "Title": "Scene3D.h",
               "DocumentMoniker": "D:\\Engine\\My Engine\\My Engine Core\\src\\Scene3D.h",
               "RelativeDocumentMoniker": "My Engine Core\\src\\Scene3D.h",
-              "ToolTip": "D:\\Engine\\My Engine\\My Engine Core\\src\\Scene3D.h*",
-              "RelativeToolTip": "My Engine Core\\src\\Scene3D.h*",
-              "ViewState": "AgIAAAkAAAAAAAAAAAAcwAwAAAASAAAAAAAAAA==",
+              "ToolTip": "D:\\Engine\\My Engine\\My Engine Core\\src\\Scene3D.h",
+              "RelativeToolTip": "My Engine Core\\src\\Scene3D.h",
+              "ViewState": "AgIAABUAAAAAAAAAAAAAAA0AAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
               "WhenOpened": "2025-12-03T11:11:36.216Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 21,
+              "DocumentIndex": 6,
               "Title": "Window.h",
               "DocumentMoniker": "D:\\Engine\\My Engine\\My Engine Core\\src\\graphics\\Window.h",
               "RelativeDocumentMoniker": "My Engine Core\\src\\graphics\\Window.h",
               "ToolTip": "D:\\Engine\\My Engine\\My Engine Core\\src\\graphics\\Window.h",
               "RelativeToolTip": "My Engine Core\\src\\graphics\\Window.h",
-              "ViewState": "AgIAAAkAAAAAAAAAAAAAAA8AAAADAAAAAAAAAA==",
+              "ViewState": "AgIAAA8AAAAAAAAAAAAAAA8AAAADAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
-              "WhenOpened": "2025-11-29T12:42:11.251Z"
+              "WhenOpened": "2025-11-29T12:42:11.251Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 13,
+              "DocumentIndex": 5,
               "Title": "Window.cpp",
               "DocumentMoniker": "D:\\Engine\\My Engine\\My Engine Core\\src\\graphics\\Window.cpp",
               "RelativeDocumentMoniker": "My Engine Core\\src\\graphics\\Window.cpp",
               "ToolTip": "D:\\Engine\\My Engine\\My Engine Core\\src\\graphics\\Window.cpp",
               "RelativeToolTip": "My Engine Core\\src\\graphics\\Window.cpp",
-              "ViewState": "AgIAAJkAAAAAAAAAAAAAABMAAAAEAAAAAAAAAA==",
+              "ViewState": "AgIAABUAAAAAAAAAAAAAAHsAAAAEAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
-              "WhenOpened": "2025-11-29T12:39:33.416Z"
+              "WhenOpened": "2025-11-29T12:39:33.416Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 12,
+              "DocumentIndex": 18,
               "Title": "Shader.cpp",
               "DocumentMoniker": "D:\\Engine\\My Engine\\My Engine Core\\src\\graphics\\Shader.cpp",
               "RelativeDocumentMoniker": "My Engine Core\\src\\graphics\\Shader.cpp",
               "ToolTip": "D:\\Engine\\My Engine\\My Engine Core\\src\\graphics\\Shader.cpp",
               "RelativeToolTip": "My Engine Core\\src\\graphics\\Shader.cpp",
-              "ViewState": "AgIAAGYAAAAAAAAAAAAAACQAAAAEAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAACQAAAAEAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
               "WhenOpened": "2025-11-29T12:36:43.403Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 15,
+              "DocumentIndex": 23,
               "Title": "Singleton.h",
               "DocumentMoniker": "D:\\Engine\\My Engine\\My Engine Core\\src\\utils\\Singleton.h",
               "RelativeDocumentMoniker": "My Engine Core\\src\\utils\\Singleton.h",
@@ -265,7 +305,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 16,
+              "DocumentIndex": 24,
               "Title": "Utility.cpp",
               "DocumentMoniker": "D:\\Engine\\My Engine\\My Engine Core\\src\\platform\\OpenGL\\Utility.cpp",
               "RelativeDocumentMoniker": "My Engine Core\\src\\platform\\OpenGL\\Utility.cpp",
@@ -277,7 +317,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 14,
+              "DocumentIndex": 22,
               "Title": "Mesh.h",
               "DocumentMoniker": "D:\\Engine\\My Engine\\My Engine Core\\src\\graphics\\Mesh.h",
               "RelativeDocumentMoniker": "My Engine Core\\src\\graphics\\Mesh.h",
@@ -289,7 +329,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 9,
+              "DocumentIndex": 3,
               "Title": "terrain.frag",
               "DocumentMoniker": "D:\\Engine\\My Engine\\My Engine Core\\src\\shaders\\terrain.frag",
               "RelativeDocumentMoniker": "My Engine Core\\src\\shaders\\terrain.frag",
@@ -297,11 +337,12 @@
               "RelativeToolTip": "My Engine Core\\src\\shaders\\terrain.frag",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAFwAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
-              "WhenOpened": "2025-11-25T08:25:01.215Z"
+              "WhenOpened": "2025-11-25T08:25:01.215Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
+              "DocumentIndex": 19,
               "Title": "Terrain.cpp",
               "DocumentMoniker": "D:\\Engine\\My Engine\\My Engine Core\\src\\terrain\\Terrain.cpp",
               "RelativeDocumentMoniker": "My Engine Core\\src\\terrain\\Terrain.cpp",
@@ -313,19 +354,20 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 22,
+              "DocumentIndex": 9,
               "Title": "Terrain.h",
               "DocumentMoniker": "D:\\Engine\\My Engine\\My Engine Core\\src\\terrain\\Terrain.h",
               "RelativeDocumentMoniker": "My Engine Core\\src\\terrain\\Terrain.h",
               "ToolTip": "D:\\Engine\\My Engine\\My Engine Core\\src\\terrain\\Terrain.h",
               "RelativeToolTip": "My Engine Core\\src\\terrain\\Terrain.h",
-              "ViewState": "AgIAAAwAAAAAAAAAAAAAABEAAAAsAAAAAAAAAA==",
+              "ViewState": "AgIAABIAAAAAAAAAAAAuwAoAAAAPAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
-              "WhenOpened": "2025-11-25T07:23:16.064Z"
+              "WhenOpened": "2025-11-25T07:23:16.064Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 11,
+              "DocumentIndex": 21,
               "Title": "model.cpp",
               "DocumentMoniker": "D:\\Engine\\My Engine\\My Engine Core\\src\\graphics\\model.cpp",
               "RelativeDocumentMoniker": "My Engine Core\\src\\graphics\\model.cpp",
@@ -337,7 +379,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 23,
+              "DocumentIndex": 26,
               "Title": "model.h",
               "DocumentMoniker": "D:\\Engine\\My Engine\\My Engine Core\\src\\graphics\\model.h",
               "RelativeDocumentMoniker": "My Engine Core\\src\\graphics\\model.h",
@@ -349,103 +391,69 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 10,
+              "DocumentIndex": 17,
               "Title": "Mesh.cpp",
               "DocumentMoniker": "D:\\Engine\\My Engine\\My Engine Core\\src\\graphics\\Mesh.cpp",
               "RelativeDocumentMoniker": "My Engine Core\\src\\graphics\\Mesh.cpp",
               "ToolTip": "D:\\Engine\\My Engine\\My Engine Core\\src\\graphics\\Mesh.cpp",
               "RelativeToolTip": "My Engine Core\\src\\graphics\\Mesh.cpp",
-              "ViewState": "AgIAADkAAAAAAAAAAAAAADkAAAA9AAAAAAAAAA==",
+              "ViewState": "AgIAADYAAAAAAAAAAAAAADIAAAATAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
               "WhenOpened": "2025-11-22T08:46:14.853Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 20,
+              "DocumentIndex": 15,
               "Title": "multipleLight.frag",
               "DocumentMoniker": "D:\\Engine\\My Engine\\My Engine Core\\src\\shaders\\multipleLight.frag",
               "RelativeDocumentMoniker": "My Engine Core\\src\\shaders\\multipleLight.frag",
               "ToolTip": "D:\\Engine\\My Engine\\My Engine Core\\src\\shaders\\multipleLight.frag",
               "RelativeToolTip": "My Engine Core\\src\\shaders\\multipleLight.frag",
-              "ViewState": "AgIAACQAAAAAAAAAAAAAACwAAAAZAAAAAAAAAA==",
+              "ViewState": "AgIAADYAAAAAAAAAAAAgwFYAAAABAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
               "WhenOpened": "2025-11-22T07:45:11.689Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 26,
-              "Title": "pointlight.frag",
-              "DocumentMoniker": "D:\\Engine\\My Engine\\My Engine Core\\src\\shaders\\pointlight.frag",
-              "RelativeDocumentMoniker": "My Engine Core\\src\\shaders\\pointlight.frag",
-              "ToolTip": "D:\\Engine\\My Engine\\My Engine Core\\src\\shaders\\pointlight.frag",
-              "RelativeToolTip": "My Engine Core\\src\\shaders\\pointlight.frag",
-              "ViewState": "AgIAACIAAAAAAAAAAAAowCkAAABSAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
-              "WhenOpened": "2025-11-21T13:39:37.917Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 25,
-              "Title": "directionalLight.frag",
-              "DocumentMoniker": "D:\\Engine\\My Engine\\My Engine Core\\src\\shaders\\directionalLight.frag",
-              "RelativeDocumentMoniker": "My Engine Core\\src\\shaders\\directionalLight.frag",
-              "ToolTip": "D:\\Engine\\My Engine\\My Engine Core\\src\\shaders\\directionalLight.frag",
-              "RelativeToolTip": "My Engine Core\\src\\shaders\\directionalLight.frag",
-              "ViewState": "AgIAACMAAAAAAAAAAAAowCkAAAAvAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
-              "WhenOpened": "2025-11-21T13:38:42.127Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 19,
-              "Title": "FPSCamera.h",
-              "DocumentMoniker": "D:\\Engine\\My Engine\\My Engine Core\\src\\graphics\\camera\\FPSCamera.h",
-              "RelativeDocumentMoniker": "My Engine Core\\src\\graphics\\camera\\FPSCamera.h",
-              "ToolTip": "D:\\Engine\\My Engine\\My Engine Core\\src\\graphics\\camera\\FPSCamera.h",
-              "RelativeToolTip": "My Engine Core\\src\\graphics\\camera\\FPSCamera.h",
-              "ViewState": "AgIAABIAAAAAAAAAAAAAABQAAAAiAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
-              "WhenOpened": "2025-11-21T06:29:11.524Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 24,
+              "DocumentIndex": 16,
               "Title": "basic.vert",
               "DocumentMoniker": "D:\\Engine\\My Engine\\My Engine Core\\src\\shaders\\basic.vert",
               "RelativeDocumentMoniker": "My Engine Core\\src\\shaders\\basic.vert",
               "ToolTip": "D:\\Engine\\My Engine\\My Engine Core\\src\\shaders\\basic.vert",
               "RelativeToolTip": "My Engine Core\\src\\shaders\\basic.vert",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAAYAAAAAAAAAAAAAAAUAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
               "WhenOpened": "2025-11-19T13:31:23.37Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 1,
               "Title": "main.cpp",
               "DocumentMoniker": "D:\\Engine\\My Engine\\My Engine Core\\src\\main.cpp",
               "RelativeDocumentMoniker": "My Engine Core\\src\\main.cpp",
               "ToolTip": "D:\\Engine\\My Engine\\My Engine Core\\src\\main.cpp",
               "RelativeToolTip": "My Engine Core\\src\\main.cpp",
-              "ViewState": "AgIAAEcBAAAAAAAAAAAcwEsBAAAaAAAAAAAAAA==",
+              "ViewState": "AgIAABIAAAAAAAAAAAAAABUAAAAnAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
-              "WhenOpened": "2025-11-19T13:00:39.273Z"
+              "WhenOpened": "2025-11-19T13:00:39.273Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 17,
+              "DocumentIndex": 7,
               "Title": "Logger.cpp",
               "DocumentMoniker": "D:\\Engine\\My Engine\\My Engine Core\\src\\utils\\Logger.cpp",
               "RelativeDocumentMoniker": "My Engine Core\\src\\utils\\Logger.cpp",
               "ToolTip": "D:\\Engine\\My Engine\\My Engine Core\\src\\utils\\Logger.cpp",
               "RelativeToolTip": "My Engine Core\\src\\utils\\Logger.cpp",
-              "ViewState": "AgIAAA8AAAAAAAAAAAAUwAgAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAC0AAAAAAAAAAAAwwC0AAABHAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
-              "WhenOpened": "2025-11-30T12:46:59.35Z"
+              "WhenOpened": "2025-11-30T12:46:59.35Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 18,
+              "DocumentIndex": 25,
               "Title": "FPSCamera.cpp",
               "DocumentMoniker": "D:\\Engine\\My Engine\\My Engine Core\\src\\graphics\\camera\\FPSCamera.cpp",
               "RelativeDocumentMoniker": "My Engine Core\\src\\graphics\\camera\\FPSCamera.cpp",
@@ -457,13 +465,13 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 14,
               "Title": "Logger.h",
               "DocumentMoniker": "D:\\Engine\\My Engine\\My Engine Core\\src\\utils\\Logger.h",
               "RelativeDocumentMoniker": "My Engine Core\\src\\utils\\Logger.h",
               "ToolTip": "D:\\Engine\\My Engine\\My Engine Core\\src\\utils\\Logger.h",
               "RelativeToolTip": "My Engine Core\\src\\utils\\Logger.h",
-              "ViewState": "AgIAACgAAAAAAAAAAAAAAEsAAABEAAAAAAAAAA==",
+              "ViewState": "AgIAADQAAAAAAAAAAAAAAEsAAABEAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
               "WhenOpened": "2025-11-19T13:15:25.969Z"
             }

@@ -6,12 +6,26 @@ namespace myarcane {
 	{
 		class Renderable3D {//三维可渲染对象封装容器
 		public:
-			Renderable3D(glm::vec3& position, Model* model);
+			Renderable3D(glm::vec3& position,glm::vec3&scale,glm::vec3&rotationAxis,float radianRation, Model* model);
+			//Renderable3D(glm::vec3& position,glm::vec3&scale,glm::vec3&rotationAxis,float radianRation, Model* model);
 			~Renderable3D();
 			void draw(Shader& shader)const;
+			inline glm::vec3& getPosition() { return m_Position; }
+			inline glm::vec3 getScale() { return m_Scale; }//返回缩放比例
+			inline glm::vec3 getRotationAxis() { return m_RotationAxis; }//返回旋转轴
+			inline float getRadianRotation() { return m_RadianRotation; }//返回旋转弧度比例
+
+			inline void setPosition(glm::vec3& position) { m_Position = position; }
+			inline void setScale(glm::vec3& scale) { m_Scale = scale; }
+			inline void setRotationAxis(glm::vec3& rotationAxis) { m_RotationAxis = rotationAxis; }
+			inline void setRadianRotation(float radianRotation) { m_RadianRotation = radianRotation; }
 		private:
-			glm::vec3 m_Position;
-			Model* m_Model;
+			//model矩阵相关属性
+			glm::vec3 m_Position;//位置
+			glm::vec3 m_Scale;//缩放比例
+			glm::vec3 m_RotationAxis;//旋转轴
+			float m_RadianRotation;//旋转弧度比例,就是旋转角度乘以π/180得到的值
+			Model* m_Model;//模型指针
 		};
 	}
 }

@@ -12,8 +12,8 @@ namespace myarcane {
 			void submit(Renderable3D* renderable);//提交渲染对象到渲染队列,不立即渲染
 			void flush(Shader& shader);//执行渲染队列中的所有渲染对象,并清空渲染队列
 		private:
-			void init();
-			std::deque<const Renderable3D*> m_RenderQueue;//存储渲染队列，渲染队列是一个双端队列
+			
+			std::deque<Renderable3D*> m_RenderQueue;//存储渲染队列，渲染队列是一个双端队列
 		};
 	}
 }

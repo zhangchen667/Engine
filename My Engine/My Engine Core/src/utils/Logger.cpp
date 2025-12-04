@@ -43,6 +43,7 @@ namespace myarcane {
 		}
 
 		void Logger::logMessage(const int& priority, const std::string& module, const std::string& message) {
+			std::cout << module.c_str() << ": " << message.c_str() << std::endl;
 			filestream.open(file, std::ofstream::app);
 			if (!filestream) {
 				std::cout << "Error: Logger Can't Log To: " << file.c_str() << std::endl;
