@@ -119,7 +119,7 @@ vec3 CalcSpotLight(SpotLight light, vec3 normal, vec3 fragPos) {
 	// check if its in the spotlight's circle
 	float theta = dot(-fragToLight, normalize(light.direction));//计算光线方向与聚光灯方向的夹角余弦值，负号是因为光线是从片段指向光源
 	float difference = light.cutOff - light.outerCutOff;
-	float intensity = clamp((theta - light.outerCutOff) / difference, 0.0, 1.0);
+	float intensity = clamp((theta - light.outerCutOff)/difference, 0.0, 1.0);
 
 	vec3 ambient = light.ambient *  attenuation;
 	vec3 diffuse = light.diffuse * intensity * attenuation;

@@ -9,14 +9,14 @@
 #include <glm/gtc/type_ptr.hpp>
 #include"utils/Timer.h"
 #include"utils\Logger.h"
-#include<ft2build.h>
+//#include<ft2build.h>
 //#define GLEW_STATIC
 #define STB_IMAGE_IMPLEMENTATION
 #include"stb/stb_image.h"
 #include"graphics/model.h"
 #include"terrain/Terrain.h"
-#include FT_FREETYPE_H 
-#include<freetype-gl/freetype-gl.h>
+//#include FT_FREETYPE_H 
+//#include<freetype-gl/freetype-gl.h>
 #include"Scene3D.h"
 int main(){
 	myarcane::graphics::FPSCamera camera(glm::vec3(0.0f, 0.0f, 0.0f),glm::vec3(0.0f,1.0f,0.0f),-90,0.0f);

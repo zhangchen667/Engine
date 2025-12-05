@@ -18,14 +18,19 @@ namespace myarcane {
 	}
 	void Scene3D::init() {
 		//加载模型
-		glm::vec3 temp1 = glm::vec3(30.0f, -10.0f, 30.0f);
-		glm::vec3 temp2 = glm::vec3(3.0f, 3.0f, 3.0f);
-		glm::vec3 temp3 = glm::vec3(0.0f, 1.0f, 0.0f);
-		Add(new graphics::Renderable3D(temp1,temp2,temp3,
+		glm::vec3 temp11 = glm::vec3(30.0f, -10.0f, 30.0f);
+		glm::vec3 temp12 = glm::vec3(3.0f, 3.0f, 3.0f);
+		glm::vec3 temp13 = glm::vec3(0.0f, 1.0f, 0.0f);
+		Add(new graphics::Renderable3D(temp11,temp12,temp13,
 			0.0f,new myarcane::graphics::Model("res/3D_Models/Crysis/nanosuit.obj")));
+		glm::vec3 temp21 = glm::vec3(200.0f, 200.0f, 100.0f);
+		glm::vec3 temp22 = glm::vec3(0.2f, 0.2f, 0.2f);
+		glm::vec3 temp23 = glm::vec3(0.0f, 0.0f, 0.0f);
+		Add(new graphics::Renderable3D(temp21,temp22 ,temp23 ,
+			0.0f, new myarcane::graphics::Model("res/3D_Models/Sponza/sponza.gltf")));
 		//地形着色器配置
 		terrainShader.enable();
-		terrainShader.setUniform1f("material.shininess", 32.0f);
+		terrainShader.setUniform1f("material.shininess", 128.0f);
 		terrainShader.setUniform3f("dirLight.direction", glm::vec3(-0.3f, -1.0f, -0.3f));
 		terrainShader.setUniform3f("dirLight.ambient", glm::vec3(0.1f, 0.1f, 0.1f));
 		terrainShader.setUniform3f("dirLight.diffuse", glm::vec3(0.4f, 0.4f, 0.4f));
@@ -46,7 +51,7 @@ namespace myarcane {
 		terrainShader.setUniform1f("pointLight.quadratic", 0.0002);
 		//模型着色器配置
 		modelShader.enable();
-		modelShader.setUniform1f("material.shininess", 32.0f);
+		modelShader.setUniform1f("material.shininess", 128.0f);
 		modelShader.setUniform3f("dirLight.direction", glm::vec3(-0.3f, -1.0f, -0.3f));
 		modelShader.setUniform3f("dirLight.ambient", glm::vec3(0.1f, 0.1f, 0.1f));
 		modelShader.setUniform3f("dirLight.diffuse", glm::vec3(0.4f, 0.4f, 0.4f));
