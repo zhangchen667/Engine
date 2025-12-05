@@ -33,7 +33,7 @@ int main(){
 
 	//渲染循环
 	while (!window.closed()) {
-		glClearColor(0.26f, 0.95f, 0.9f, 1.0f);
+		glClearColor(0.5f, 0.0f, 0.0f, 1.0f);
 		window.clear();
 		deltaTime.update();//更新帧时间
 		// 检测鼠标移动
@@ -78,8 +78,6 @@ int main(){
 			frames++;
 		}
 	}
-
-	
 	return 0;
 }
 
