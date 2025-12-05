@@ -13,7 +13,7 @@ namespace myarcane {
 		terrain::Terrain* m_Terrain;
 
 		std::vector<graphics::Renderable3D*> m_Renderables;//场景中的所有三维可渲染对象
-		graphics::Shader terrainShader,modelShader;
+		graphics::Shader terrainShader,modelShader,outlineShader;
 	public:
 		Scene3D(graphics::FPSCamera* camera, graphics::Window* window);//构造函数，传入摄像机指针和窗口指针
 		~Scene3D();

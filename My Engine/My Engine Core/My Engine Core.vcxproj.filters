@@ -150,9 +150,6 @@
     <None Include="src\shaders\basic.vert">
       <Filter>Shaders</Filter>
     </None>
-    <None Include="src\shaders\lightCube.frag">
-      <Filter>Shaders</Filter>
-    </None>
     <None Include="src\shaders\directionalLight.frag">
       <Filter>Shaders</Filter>
     </None>
@@ -166,6 +163,9 @@
       <Filter>Shaders</Filter>
     </None>
     <None Include="src\shaders\terrain.frag">
+      <Filter>Shaders</Filter>
+    </None>
+    <None Include="src\shaders\basic.frag">
       <Filter>Shaders</Filter>
     </None>
   </ItemGroup>
