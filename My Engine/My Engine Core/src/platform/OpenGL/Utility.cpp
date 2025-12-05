@@ -3,7 +3,7 @@
 //加载图像库纹理
 namespace myarcane {
 	namespace opengl {
-		GLuint Utility::loadTextureFromFile(const char* path) {
+		GLuint Utility::loadTextureFromFile(const char* path, bool containsTransparencyOnSides) {
 			GLuint textureID;
 			glGenTextures(1, &textureID);
 			int width, height, nrComponents;
@@ -28,8 +28,15 @@ namespace myarcane {
 				glTexImage2D(GL_TEXTURE_2D, 0, format, width, height, 0, format, GL_UNSIGNED_BYTE, data);
 				glGenerateMipmap(GL_TEXTURE_2D);
 
-				glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
-				glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
+				if (containsTransparencyOnSides) {
+					//如果纹理在侧面包含透明度则设置相应参数
+					glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_CLAMP_TO_EDGE);//设置环绕方式为夹边模式,防止边缘出现透明像素
+					glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_CLAMP_TO_EDGE);
+				}
+				else {//否则设置为重复模式
+					glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
+					glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
+				}
 				glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR_MIPMAP_LINEAR);
 				glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
 				glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_LOD_BIAS, -0.4f);//各向异性过滤,提高纹理清晰度
@@ -38,7 +45,7 @@ namespace myarcane {
 			}
 			else {
 				std::cout << "Texture failed to load at path: " << path << std::endl;
-				//utils::Logger::getInstance().error("logged_files/texture_loading.txt", "texture load (OpenGL) fail path:", path);
+				utils::Logger::getInstance().error("logged_files/texture_loading.txt", "texture load (OpenGL) fail path:", path);
 				stbi_image_free(data);
 			}
 			return textureID;

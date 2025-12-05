@@ -7,6 +7,9 @@ namespace myarcane {
 		Model::Model(const char* path) {
 			loadModel(path);
 		}
+		Model::Model(const std::vector<Mesh>& meshes) :m_Meshes(meshes) {
+
+		}
 		void Model::Draw(Shader& shader)const {
 			for (unsigned int i = 0; i < m_Meshes.size(); i++) {
 				m_Meshes[i].Draw(shader);

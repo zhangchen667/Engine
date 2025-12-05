@@ -60,6 +60,9 @@ vec3 CalcDirLight(DirLight light, vec3 normal, vec3 viewDir);
 vec3 CalcPointLight(PointLight light, vec3 normal, vec3 fragPos, vec3 viewDir);
 vec3 CalcSpotLight(SpotLight light, vec3 normal, vec3 fragPos, vec3 viewDir);
 void main() {
+	float textureAlpha= texture(material.texture_diffuse1, TexCoords).w;//获取纹理的alpha值
+	if(textureAlpha<0.1)discard;//如果alpha值小于0.1则丢弃该片元,即实现透明效果
+	
 	vec3 norm = normalize(Normal);
 	vec3 viewDir = normalize(viewPos - FragPos);
 	
@@ -70,7 +73,7 @@ void main() {
 	result += CalcSpotLight(spotLight, norm, FragPos, viewDir);
 
 	// Result
-	color = vec4(result, 1.0);
+	color = vec4(result, textureAlpha);//最终片元颜色的alpha值与纹理的alpha值相同
 }
 
 vec3 CalcDirLight(DirLight light, vec3 normal, vec3 viewDir) {

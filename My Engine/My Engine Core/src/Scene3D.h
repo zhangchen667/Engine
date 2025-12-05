@@ -4,6 +4,7 @@
 #include"graphics/renderer/Renderer.h"
 #include"terrain/Terrain.h"
 #include"graphics/Window.h"
+#include"graphics/MeshFactory.h"
 namespace myarcane {
 	class Scene3D {
 	private:
@@ -11,6 +12,7 @@ namespace myarcane {
 		graphics::Renderer* m_Renderer;
 		graphics::FPSCamera* m_Camera;
 		terrain::Terrain* m_Terrain;
+		graphics::MeshFactory m_MeshFactory;//网格工厂指针
 
 		std::vector<graphics::Renderable3D*> m_Renderables;//场景中的所有三维可渲染对象
 		graphics::Shader terrainShader,modelShader,outlineShader;

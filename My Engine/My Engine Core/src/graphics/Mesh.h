@@ -8,8 +8,11 @@ namespace myarcane {
 	namespace graphics {
 		struct Vertex {
 			glm::vec3 Position;
-			glm::vec2 Normal;
+			glm::vec3 Normal;
 			glm::vec2 TexCoords;
+			Vertex() {}
+			Vertex(glm::vec3 position, glm::vec3 normal, glm::vec2 texCoords)
+				:Position(position), Normal(normal), TexCoords(texCoords) {}
 		};
 		struct Texture {
 			unsigned int id;//Œ∆¿ÌID
