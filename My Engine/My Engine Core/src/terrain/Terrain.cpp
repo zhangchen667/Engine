@@ -83,7 +83,7 @@ namespace myarcane {
 			delete m_Mesh;
 		}
 		void Terrain::Draw(graphics::Shader& shader)const {
-			shader.setUniformMat4("model", m_ModelMatrix);
+			//shader.setUniformMat4("model", m_ModelMatrix);//在Scene3D.cpp中已经设置过model矩阵了，这里就不需要再设置一次了
 			m_Mesh->Draw(shader);
 		}
 		glm::vec3 Terrain::calculateNormal(int x, int z, unsigned char* heightMapData) {
