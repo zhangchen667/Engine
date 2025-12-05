@@ -10,11 +10,13 @@ namespace myarcane {
 		class Renderer {
 		public:
 			Renderer();
-			void submit(Renderable3D* renderable);//提交渲染对象到渲染队列,不立即渲染
+			void submitOpaque(Renderable3D* renderable);//提交不透明渲染对象到渲染队列,不立即渲染
+			void submitTransparent(Renderable3D* renderable);//提交透明渲染对象到渲染队列,不立即渲染
 			void flush(Shader& shader,Shader&outlineShader);//执行渲染队列中的所有渲染对象,并清空渲染队列
 		private:
 			
-			std::deque<Renderable3D*> m_RenderQueue;//存储渲染队列，渲染队列是一个双端队列
+			std::deque<Renderable3D*>  m_OpaqueRenderQueue;//不透明渲染队列
+			std::deque<Renderable3D*>  m_TransparentRenderQueue;//透明渲染队列
 		};
 	}
 }

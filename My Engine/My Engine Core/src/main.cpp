@@ -22,7 +22,7 @@ int main(){
 	myarcane::graphics::FPSCamera camera(glm::vec3(0.0f, 0.0f, 0.0f),glm::vec3(0.0f,1.0f,0.0f),-90,0.0f);
 	myarcane::graphics::Window window("MyArcane Engine",1366,768);
 	myarcane::Scene3D scene(&camera, &window);
-	glEnable(GL_DEPTH_TEST);
+	
 	myarcane::Timer fpsTimer;//FPS计时器,用于计算每秒帧数
 	int frames = 0;
 	myarcane::Time deltaTime;//帧时间计算,用于平滑移动
