@@ -1,35 +1,4 @@
-﻿  Scene3D.cpp
-D:\Engine\My Engine\My Engine Core\src\Scene3D.cpp(51,50): warning C4305: “参数”: 从“double”到“float”截断
-D:\Engine\My Engine\My Engine Core\src\Scene3D.cpp(52,53): warning C4305: “参数”: 从“double”到“float”截断
-D:\Engine\My Engine\My Engine Core\src\Scene3D.cpp(59,51): warning C4305: “参数”: 从“double”到“float”截断
-D:\Engine\My Engine\My Engine Core\src\Scene3D.cpp(60,54): warning C4305: “参数”: 从“double”到“float”截断
-D:\Engine\My Engine\My Engine Core\src\Scene3D.cpp(72,48): warning C4305: “参数”: 从“double”到“float”截断
-D:\Engine\My Engine\My Engine Core\src\Scene3D.cpp(73,51): warning C4305: “参数”: 从“double”到“float”截断
-D:\Engine\My Engine\My Engine Core\src\Scene3D.cpp(80,53): warning C4305: “参数”: 从“double”到“float”截断
-D:\Engine\My Engine\My Engine Core\src\Scene3D.cpp(81,56): warning C4305: “参数”: 从“double”到“float”截断
-  Mesh.cpp
-  MeshFactory.cpp
-  Window.cpp
-  model.cpp
-  Renderable3D.cpp
-  Renderer.cpp
-  main.cpp
-D:\Engine\My Engine\My Engine Core\src\main.cpp(31,16): warning C4244: “初始化”: 从“int”转换到“GLfloat”，可能丢失数据
-D:\Engine\My Engine\My Engine Core\src\main.cpp(32,16): warning C4244: “初始化”: 从“int”转换到“GLfloat”，可能丢失数据
-D:\Engine\My Engine\My Engine Core\src\main.cpp(41,28): warning C4244: “=”: 从“double”转换到“GLfloat”，可能丢失数据
-D:\Engine\My Engine\My Engine Core\src\main.cpp(42,28): warning C4244: “=”: 从“double”转换到“GLfloat”，可能丢失数据
-D:\Engine\My Engine\My Engine Core\src\main.cpp(46,65): warning C4244: “参数”: 从“double”转换到“GLfloat”，可能丢失数据
-D:\Engine\My Engine\My Engine Core\src\main.cpp(46,50): warning C4244: “参数”: 从“double”转换到“GLfloat”，可能丢失数据
-D:\Engine\My Engine\My Engine Core\src\main.cpp(47,27): warning C4244: “=”: 从“double”转换到“GLfloat”，可能丢失数据
-D:\Engine\My Engine\My Engine Core\src\main.cpp(48,27): warning C4244: “=”: 从“double”转换到“GLfloat”，可能丢失数据
-D:\Engine\My Engine\My Engine Core\src\main.cpp(51,78): warning C4244: “参数”: 从“GLdouble”转换到“GLfloat”，可能丢失数据
-D:\Engine\My Engine\My Engine Core\src\main.cpp(53,79): warning C4244: “参数”: 从“GLdouble”转换到“GLfloat”，可能丢失数据
-D:\Engine\My Engine\My Engine Core\src\main.cpp(55,75): warning C4244: “参数”: 从“GLdouble”转换到“GLfloat”，可能丢失数据
-D:\Engine\My Engine\My Engine Core\src\main.cpp(57,76): warning C4244: “参数”: 从“GLdouble”转换到“GLfloat”，可能丢失数据
-D:\Engine\My Engine\My Engine Core\src\main.cpp(59,78): warning C4244: “参数”: 从“GLdouble”转换到“GLfloat”，可能丢失数据
-D:\Engine\My Engine\My Engine Core\src\main.cpp(61,80): warning C4244: “参数”: 从“GLdouble”转换到“GLfloat”，可能丢失数据
-D:\Engine\My Engine\My Engine Core\src\main.cpp(64,48): warning C4244: “参数”: 从“double”转换到“GLfloat”，可能丢失数据
-D:\Engine\My Engine\My Engine Core\src\main.cpp(67,40): warning C4244: “参数”: 从“GLdouble”转换到“float”，可能丢失数据
+﻿  Renderer.cpp
   Terrain.cpp
 D:\Engine\My Engine\My Engine Core\src\terrain\Terrain.cpp(102,19): warning C4018: “>=”: 有符号/无符号不匹配
 D:\Engine\My Engine\My Engine Core\src\terrain\Terrain.cpp(102,54): warning C4018: “>=”: 有符号/无符号不匹配

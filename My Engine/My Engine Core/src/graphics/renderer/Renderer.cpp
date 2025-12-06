@@ -57,6 +57,7 @@ namespace myarcane {
 				
 				m_OpaqueRenderQueue.pop_front();
 			}
+			//透明对象渲染，按照与相机的距离从远到近排序后再渲染
 			std::sort(m_TransparentRenderQueue.begin(), m_TransparentRenderQueue.end(),
 				[this](Renderable3D* a, Renderable3D* b)->bool {//比较距离的平方
 					return (glm::length2(m_Camera->getPosition() - a->getPosition()) > glm::length2(m_Camera->getPosition() - b->getPosition()));
