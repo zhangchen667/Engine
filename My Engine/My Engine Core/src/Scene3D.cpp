@@ -8,7 +8,7 @@ namespace myarcane {
 		:terrainShader("src/shaders/basic.vert", "src/shaders/terrain.frag"), modelShader("src/shaders/basic.vert", "src/shaders/model.frag"), m_Camera(camera), m_Window(window)
 		,  outlineShader("src/shaders/basic.vert", "src/shaders/basic.frag")
 	{
-		m_Renderer = new graphics::Renderer();
+		m_Renderer = new graphics::Renderer(camera);
 		glm::vec3 tempworldposition = glm::vec3(0.0f, -20.0f, 0.0f);//地形位置
 		m_Terrain = new terrain::Terrain(tempworldposition);
 		init();
@@ -27,13 +27,16 @@ namespace myarcane {
 		glm::vec3 temp12 = glm::vec3(3.0f, 3.0f, 3.0f);
 		glm::vec3 temp13 = glm::vec3(0.0f, 1.0f, 0.0f);
 		Add(new graphics::Renderable3D(temp11,temp12,temp13,
-			0.0f,new myarcane::graphics::Model("res/3D_Models/Crysis/nanosuit.obj"),true));
+			0.0f,new myarcane::graphics::Model("res/3D_Models/Crysis/nanosuit.obj"),false));
 		/*glm::vec3 temp21 = glm::vec3(200.0f, 200.0f, 100.0f);
 		glm::vec3 temp22 = glm::vec3(0.2f, 0.2f, 0.2f);
 		glm::vec3 temp23 = glm::vec3(0.0f, 0.0f, 0.0f);
 		Add(new graphics::Renderable3D(temp21,temp22 ,temp23 ,
 			0.0f, new myarcane::graphics::Model("res/3D_Models/Sponza/sponza.gltf")));*/
 		Add(new graphics::Renderable3D(glm::vec3(40, 10, 40), glm::vec3(10, 10, 10), glm::vec3(1.0, 0.0, 0.0), glm::radians(90.0f), new graphics::Model(meshes), false, true));
+		Add(new graphics::Renderable3D(glm::vec3(60, 20, 60), glm::vec3(15, 15, 15), glm::vec3(1.0, 0.0, 0.0), glm::radians(90.0f), new graphics::Model(meshes), false, true));
+		Add(new graphics::Renderable3D(glm::vec3(80, 20, 80), glm::vec3(15, 15, 15), glm::vec3(1.0, 0.0, 0.0), glm::radians(90.0f), new graphics::Model(meshes), false, true));
+		Add(new graphics::Renderable3D(glm::vec3(120,20,120), glm::vec3(15, 15, 15), glm::vec3(1.0, 0.0, 0.0), glm::radians(90.0f), new graphics::Model(meshes), false, true));
 		//地形着色器配置
 		terrainShader.enable();
 		terrainShader.setUniform1f("material.shininess", 128.0f);
@@ -81,6 +84,8 @@ namespace myarcane {
 		//m_Renderables[0]->setRadianRotation(m_Renderables[0]->getRadianRotation() + deltaTime);//让场景中的第一个三维可渲染对象持续旋转
 	}
 	void Scene3D::onRender() {
+		
+
 		//描边shader配置
 		outlineShader.enable();
 		outlineShader.setUniformMat4("view", m_Camera->getViewMatrix());
@@ -92,12 +97,13 @@ namespace myarcane {
 		terrainShader.setUniform3f("spotLight.position", m_Camera->getPosition());
 		terrainShader.setUniform3f("spotLight.direction", m_Camera->getFront());
 		terrainShader.setUniform3f("viewPos", m_Camera->getPosition());
-		glm::mat4 modelMatrix(1);
+		glm::mat4 modelMatrix(1.0f);
 		modelMatrix = glm::translate(modelMatrix, m_Terrain->getPosition());
 		terrainShader.setUniformMat4("model", modelMatrix);
 		terrainShader.setUniformMat4("view", m_Camera->getViewMatrix());
 		terrainShader.setUniformMat4("projection", glm::perspective(glm::radians(m_Camera->getFov()), (float)m_Window->getWidth() / (float)m_Window->getHeight(), 0.1f, 1000.0f));
 		m_Terrain->Draw(terrainShader);
+	
 		//模型渲染
 		modelShader.enable();
 		modelShader.setUniform3f("pointLights[0].position", glm::vec3(200.0f, 215.0f, 100.0f));
