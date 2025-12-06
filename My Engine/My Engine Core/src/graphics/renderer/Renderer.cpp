@@ -15,6 +15,7 @@ namespace myarcane {
 		}
 		void Renderer::flush(Shader& shader,Shader &outlineShader)
 		{
+			glEnable(GL_CULL_FACE);//启用面剔除
 			while (!m_OpaqueRenderQueue.empty())
 			{
 				Renderable3D*current = m_OpaqueRenderQueue.front();
@@ -57,6 +58,7 @@ namespace myarcane {
 				
 				m_OpaqueRenderQueue.pop_front();
 			}
+			glDisable(GL_CULL_FACE);//禁用面剔除
 			//透明对象渲染，按照与相机的距离从远到近排序后再渲染
 			std::sort(m_TransparentRenderQueue.begin(), m_TransparentRenderQueue.end(),
 				[this](Renderable3D* a, Renderable3D* b)->bool {//比较距离的平方

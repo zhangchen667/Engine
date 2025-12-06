@@ -20,6 +20,7 @@ namespace myarcane {
 	void Scene3D::init() {
 		glEnable(GL_DEPTH_TEST);//启用深度测试
 		glEnable(GL_STENCIL_TEST);//启用模板缓冲测试，用于描边效果
+		glEnable(GL_CULL_FACE);//启用面剔除
 		//加载模型
 		std::vector<graphics::Mesh> meshes;
 		meshes.push_back(*m_MeshFactory.CreateQuad("res/textures/window.png", false));
@@ -92,6 +93,7 @@ namespace myarcane {
 		outlineShader.setUniformMat4("projection", glm::perspective(glm::radians(m_Camera->getFov()), (float)m_Window->getWidth() / (float)m_Window->getHeight(), 0.1f, 1000.0f));
 		//地形渲染
 		glStencilMask(0x00); // Don't update the stencil buffer
+		glEnable(GL_CULL_FACE);//启用面剔除
 		terrainShader.enable();
 		terrainShader.setUniform3f("pointLight.position", glm::vec3(200.0f, 200.0f, 100.0f));
 		terrainShader.setUniform3f("spotLight.position", m_Camera->getPosition());
