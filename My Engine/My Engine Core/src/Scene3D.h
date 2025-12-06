@@ -23,8 +23,8 @@ namespace myarcane {
 		
 		void onUpdate(float deltaTime);
 		void onRender();
-		inline graphics::FPSCamera* getCamera() { return m_Camera; }
-		inline graphics::Renderer* getRenderer() { return m_Renderer; }
+		inline graphics::FPSCamera* getCamera()const { return m_Camera; }
+		inline graphics::Renderer* getRenderer() const{ return m_Renderer; }
 	private:
 		void init();
 	};

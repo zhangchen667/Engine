@@ -2,7 +2,7 @@
 namespace myarcane {
 	namespace graphics
 	{
-		Renderer::Renderer()
+		Renderer::Renderer(FPSCamera*camera):m_Camera(camera)
 		{
 		}
 		void Renderer::submitOpaque(Renderable3D* renderable)
@@ -57,6 +57,11 @@ namespace myarcane {
 				
 				m_OpaqueRenderQueue.pop_front();
 			}
+			std::sort(m_TransparentRenderQueue.begin(), m_TransparentRenderQueue.end(),
+				[this](Renderable3D* a, Renderable3D* b)->bool {//比较距离的平方
+					return (glm::length2(m_Camera->getPosition() - a->getPosition()) > glm::length2(m_Camera->getPosition() - b->getPosition()));
+				});
+			
 			while (!m_TransparentRenderQueue.empty()) {
 				Renderable3D* current = m_TransparentRenderQueue.front();
 

@@ -12,7 +12,7 @@ namespace myarcane {
 	public:
 		Time();
 		void update();
-		inline GLdouble getDeltaTime() { return delta; };
+		inline GLdouble getDeltaTime() const{ return delta; };
 	};
 
 }

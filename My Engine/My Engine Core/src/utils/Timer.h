@@ -9,7 +9,7 @@ namespace myarcane {
 	public:
 		Timer();
 		void reset();
-		inline double elapsed() {
+		inline double elapsed()const {
 			return glfwGetTime() - startTime;
 		};
 	};

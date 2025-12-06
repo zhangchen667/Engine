@@ -6,16 +6,17 @@ namespace myarcane {
 	{
 		class Renderable3D {//三维可渲染对象封装容器
 		public:
-			Renderable3D(glm::vec3 position,glm::vec3 scale,glm::vec3 rotationAxis,float radianRation, Model* model,bool shouldOutline =false,bool transparent=false);
+			Renderable3D(glm::vec3 position, glm::vec3 scale, glm::vec3 rotationAxis, float radianRation, Model* model,
+				bool shouldOutline = false, bool transparent = false);    //构造函数
 			
 			~Renderable3D();
 			void draw(Shader& shader)const;
-			inline glm::vec3& getPosition() { return m_Position; }
-			inline glm::vec3 getScale() { return m_Scale; }//返回缩放比例
-			inline glm::vec3 getRotationAxis() { return m_RotationAxis; }//返回旋转轴
-			inline float getRadianRotation() { return m_RadianRotation; }//返回旋转弧度比例
-			inline bool getShouldOutline() { return m_ShouldOutline; }//是否需要描边
-			inline bool getTransparent() { return m_Transparent; }//是否为透明对象
+			inline const glm::vec3& getPosition() const{ return m_Position; }
+			inline const glm::vec3& getScale()const { return m_Scale; }//返回缩放比例
+			inline const glm::vec3& getRotationAxis()const { return m_RotationAxis; }//返回旋转轴
+			inline float getRadianRotation()const { return m_RadianRotation; }//返回旋转弧度比例
+			inline bool getShouldOutline() const{ return m_ShouldOutline; }//是否需要描边
+			inline bool getTransparent() const{ return m_Transparent; }//是否为透明对象
 
 			inline void setPosition(glm::vec3& position) { m_Position = position; }
 			inline void setScale(glm::vec3& scale) { m_Scale = scale; }

@@ -47,13 +47,13 @@ namespace myarcane {
 			void processMouseMovement(GLfloat xOffset, GLfloat yOffset, GLboolean constrainPitch);
 			void processMouseScroll(GLfloat yOffset);
 
-			inline GLfloat getYaw() { return m_Yaw; };
-			inline GLfloat getPitch() { return m_Pitch; };
-			inline GLfloat getFov() { return m_Fov; };
-			inline GLfloat getMovementSpeed() { return m_MovementSpeed; };
-			inline GLfloat getMouseSensitivity() { return m_MouseSensitivity; };
-			inline glm::vec3 getFront() { return m_Front; };
-			inline glm::vec3 getPosition() { return m_Position; };
+			inline GLfloat getYaw() const{ return m_Yaw; };
+			inline GLfloat getPitch() const{ return m_Pitch; };
+			inline GLfloat getFov()const { return m_Fov; };
+			inline GLfloat getMovementSpeed()const { return m_MovementSpeed; };
+			inline GLfloat getMouseSensitivity()const { return m_MouseSensitivity; };
+			inline const glm::vec3& getFront()const { return m_Front; };
+			inline const glm::vec3 getPosition()const { return m_Position; };
 		private:
 			void updateCameraVectors();
 		};
