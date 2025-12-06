@@ -46,9 +46,9 @@ namespace myarcane {
 					//对每个网格遍历，每个网格生成两个三角形
 					// Triangle 1
 					indices.push_back(width + (height * m_VertexSideCount));
-					indices.push_back(1 + width + (height * m_VertexSideCount));
+					
 					indices.push_back(1 + m_VertexSideCount + width + (height * m_VertexSideCount));
-
+					indices.push_back(1 + width + (height * m_VertexSideCount));
 					// Triangle 2
 					indices.push_back(width + (height * m_VertexSideCount));
 					indices.push_back(m_VertexSideCount + width + (height * m_VertexSideCount));
