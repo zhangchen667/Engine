@@ -180,5 +180,11 @@
     <None Include="src\shaders\model.frag">
       <Filter>Shaders</Filter>
     </None>
+    <None Include="src\shaders\framebufferColourBuffer.frag">
+      <Filter>Shaders</Filter>
+    </None>
+    <None Include="src\shaders\framebufferColourBuffer.vert">
+      <Filter>Shaders</Filter>
+    </None>
   </ItemGroup>
 </Project>

@@ -18,11 +18,18 @@
 //#include FT_FREETYPE_H 
 //#include<freetype-gl/freetype-gl.h>
 #include"Scene3D.h"
+#include"platform/OpenGL/Framebuffer.h"
+#include"graphics/MeshFactory.h"
 int main(){
 	myarcane::graphics::FPSCamera camera(glm::vec3(0.0f, 0.0f, 0.0f),glm::vec3(0.0f,1.0f,0.0f),-90,0.0f);
 	myarcane::graphics::Window window("MyArcane Engine",1366,768);
 	myarcane::Scene3D scene(&camera, &window);
 	
+	myarcane::opengl::Framebuffer framebuffer(window.getWidth(), window.getHeight());//创建帧缓冲对象
+	myarcane::graphics::Shader framebufferShader("src/shaders/framebufferColourBuffer.vert", "src/shaders/framebufferColourBuffer.frag");
+	myarcane::graphics::MeshFactory meshFactory;//网格工厂,用于创建常用网格
+	myarcane::graphics::Mesh* colourBufferMesh = meshFactory.CreateScreenQuad(framebuffer.getColourBufferTexture());//创建屏幕四边形网格,用于后期处理
+
 	myarcane::Timer fpsTimer;//FPS计时器,用于计算每秒帧数
 	int frames = 0;
 	myarcane::Time deltaTime;//帧时间计算,用于平滑移动
@@ -64,8 +71,12 @@ int main(){
 		camera.processMouseScroll(window.getScrollY()*6);
 		window.resetScroll();
 
+		//先渲染到帧缓冲
+		//framebuffer.bind();
+		glEnable(GL_DEPTH_TEST);
+		glDepthFunc(GL_LESS);//启用深度测试
 		scene.onUpdate(deltaTime.getDeltaTime());//把场景绘制复杂步骤集合到一起
-		scene.onRender();//
+		scene.onRender();//渲染场景
 		
 		
 		window.update();
