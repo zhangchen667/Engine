@@ -40,7 +40,7 @@ int main(){
 
 	//渲染循环
 	while (!window.closed()) {
-		glClearColor(0.5f, 0.0f, 0.0f, 1.0f);
+		glClearColor(0.5f, 1.0f, 1.0f, 1.0f);
 		window.clear();
 		deltaTime.update();//更新帧时间
 		// 检测鼠标移动
@@ -72,13 +72,30 @@ int main(){
 		window.resetScroll();
 
 		//先渲染到帧缓冲
-		//framebuffer.bind();
-		glEnable(GL_DEPTH_TEST);
-		glDepthFunc(GL_LESS);//启用深度测试
+		framebuffer.bind();
+		window.clear();
+
+		glEnable(GL_DEPTH_TEST); // 场景渲染需要深度测试
+		glClearColor(0.1f, 0.1f, 0.1f, 1.0f); // 帧缓冲背景色（非纯色，区分场景）
+		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT); // 清空帧缓冲（替代window.clear()）
+
 		scene.onUpdate(deltaTime.getDeltaTime());//把场景绘制复杂步骤集合到一起
 		scene.onRender();//渲染场景
+		// 读取帧缓冲中(100,100)位置的像素值
+		unsigned char pixel[3];
+		glReadPixels(100, 100, 1, 1, GL_RGB, GL_UNSIGNED_BYTE, pixel);
+		std::cout << "Framebuffer pixel(100,100): "
+			<< (int)pixel[0] << "," << (int)pixel[1] << "," << (int)pixel[2] << std::endl;
 		
-		
+		framebuffer.unbind();//解绑帧缓冲，恢复默认帧缓冲,此时所有渲染操作都渲染到默认帧缓冲，也就是屏幕上
+		//再把帧缓冲的颜色纹理绘制到屏幕四边形上
+		glDisable(GL_DEPTH_TEST);  // 禁用深度测试，确保四边形总是被渲染
+		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);  // 清除所有缓冲
+
+		framebufferShader.enable();// 启用着色器
+		colourBufferMesh->DrawFramebufferQuad(framebufferShader);
+		framebufferShader.disable();
+
 		window.update();
 		if (fpsTimer.elapsed() >= 1) {
 			std::cout << "FPS: " << frames << std::endl;
