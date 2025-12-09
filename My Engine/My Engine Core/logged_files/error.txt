@@ -1,0 +1,1 @@
+(framebuffer initialization): ERROR: Framebuffer is not complete!

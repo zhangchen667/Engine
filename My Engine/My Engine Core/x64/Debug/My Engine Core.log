@@ -14,7 +14,7 @@ D:\Engine\My Engine\My Engine Core\src\main.cpp(64,76): warning C4244: “参数
 D:\Engine\My Engine\My Engine Core\src\main.cpp(66,78): warning C4244: “参数”: 从“GLdouble”转换到“GLfloat”，可能丢失数据
 D:\Engine\My Engine\My Engine Core\src\main.cpp(68,80): warning C4244: “参数”: 从“GLdouble”转换到“GLfloat”，可能丢失数据
 D:\Engine\My Engine\My Engine Core\src\main.cpp(71,48): warning C4244: “参数”: 从“double”转换到“GLfloat”，可能丢失数据
-D:\Engine\My Engine\My Engine Core\src\main.cpp(78,40): warning C4244: “参数”: 从“GLdouble”转换到“float”，可能丢失数据
+D:\Engine\My Engine\My Engine Core\src\main.cpp(82,40): warning C4244: “参数”: 从“GLdouble”转换到“float”，可能丢失数据
   My Engine Core.vcxproj -> D:\Engine\My Engine\x64\Debug\My Engine Core.exe
   'pwsh.exe' 不是内部或外部命令，也不是可运行的程序
   或批处理文件。

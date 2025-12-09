@@ -58,5 +58,17 @@ namespace myarcane {
 			glDrawElements(GL_TRIANGLES, static_cast<unsigned int>(m_Indices.size()), GL_UNSIGNED_INT, 0);
 			glBindVertexArray(0);
 		}
+		void Mesh::DrawFramebufferQuad(Shader& shader) const {
+			// 仅绑定纹理，不拼接material前缀
+			for (unsigned int i = 0; i < m_Textures.size(); i++) {
+				glActiveTexture(GL_TEXTURE0 + i);
+				// 直接用纹理类型名作为uniform名，无material.前缀
+				shader.setUniform1i(m_Textures[i].type.c_str(), i);
+				glBindTexture(GL_TEXTURE_2D, m_Textures[i].id);
+			}
+			glBindVertexArray(m_VAO);
+			glDrawElements(GL_TRIANGLES, static_cast<unsigned int>(m_Indices.size()), GL_UNSIGNED_INT, 0);
+			glBindVertexArray(0);
+		}
 	}
 }

@@ -25,7 +25,7 @@ namespace myarcane {
 			Mesh(const std::vector<Vertex>& vertices, const std::vector<unsigned int>& indices,
 				const std::vector<Texture>& textures);
 			void Draw(Shader& shader)const;
-
+			void DrawFramebufferQuad(Shader& shader) const;
 			inline const std::vector<Vertex> & getVertices() const { return m_Vertices; }
 			inline const std::vector<unsigned int>& getIndices() const { return m_Indices; }
 			inline const std::vector<Texture>& getTextures() const { return m_Textures; }
