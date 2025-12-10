@@ -153,7 +153,7 @@ namespace myarcane {
 		//再渲染天空盒
 		m_Skybox->Draw();
 		//启用透明对象渲染
-		//m_ModelShader.enable();
+		m_ModelShader.enable();//重新启用模型着色器，因为天空盒绘制过程中会切换着色器
 		m_Renderer->flushTransparent(m_ModelShader, m_OutlineShader);
 
 		

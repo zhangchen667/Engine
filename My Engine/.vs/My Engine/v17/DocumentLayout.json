@@ -3,16 +3,16 @@
   "WorkspaceRootPath": "D:\\Engine\\My Engine\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{526F8AD7-F98C-4A4A-90A6-249560DD2E0F}|My Engine Core\\My Engine Core.vcxproj|D:\\Engine\\My Engine\\My Engine Core\\src\\graphics\\Skybox.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{526F8AD7-F98C-4A4A-90A6-249560DD2E0F}|My Engine Core\\My Engine Core.vcxproj|solutionrelative:My Engine Core\\src\\graphics\\Skybox.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{526F8AD7-F98C-4A4A-90A6-249560DD2E0F}|My Engine Core\\My Engine Core.vcxproj|D:\\Engine\\My Engine\\My Engine Core\\src\\Scene3D.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
       "RelativeMoniker": "D:0:0:{526F8AD7-F98C-4A4A-90A6-249560DD2E0F}|My Engine Core\\My Engine Core.vcxproj|solutionrelative:My Engine Core\\src\\Scene3D.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{526F8AD7-F98C-4A4A-90A6-249560DD2E0F}|My Engine Core\\My Engine Core.vcxproj|D:\\Engine\\My Engine\\My Engine Core\\src\\Scene3D.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
       "RelativeMoniker": "D:0:0:{526F8AD7-F98C-4A4A-90A6-249560DD2E0F}|My Engine Core\\My Engine Core.vcxproj|solutionrelative:My Engine Core\\src\\Scene3D.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{526F8AD7-F98C-4A4A-90A6-249560DD2E0F}|My Engine Core\\My Engine Core.vcxproj|D:\\Engine\\My Engine\\My Engine Core\\src\\graphics\\Skybox.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{526F8AD7-F98C-4A4A-90A6-249560DD2E0F}|My Engine Core\\My Engine Core.vcxproj|solutionrelative:My Engine Core\\src\\graphics\\Skybox.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{526F8AD7-F98C-4A4A-90A6-249560DD2E0F}|My Engine Core\\My Engine Core.vcxproj|D:\\Engine\\My Engine\\My Engine Core\\src\\shaders\\skybox.vert||{8B382828-6202-11D1-8870-0000F87579D2}",
@@ -118,7 +118,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 7,
+          "SelectedChildIndex": 23,
           "Children": [
             {
               "$type": "Bookmark",
@@ -150,8 +150,7 @@
               "RelativeToolTip": "My Engine Core\\src\\graphics\\renderer\\Renderer.h",
               "ViewState": "AgIAAAwAAAAAAAAAAAAAABIAAABKAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
-              "WhenOpened": "2025-12-10T13:05:44.614Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-12-10T13:05:44.614Z"
             },
             {
               "$type": "Document",
@@ -168,7 +167,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 2,
               "Title": "Skybox.cpp",
               "DocumentMoniker": "D:\\Engine\\My Engine\\My Engine Core\\src\\graphics\\Skybox.cpp",
               "RelativeDocumentMoniker": "My Engine Core\\src\\graphics\\Skybox.cpp",
@@ -189,8 +188,7 @@
               "RelativeToolTip": "My Engine Core\\src\\graphics\\Skybox.h",
               "ViewState": "AgIAABEAAAAAAAAAAAAUwBIAAAAaAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
-              "WhenOpened": "2025-12-10T11:38:21.098Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-12-10T11:38:21.098Z"
             },
             {
               "$type": "Document",
@@ -202,8 +200,7 @@
               "RelativeToolTip": "My Engine Core\\src\\platform\\OpenGL\\Buffer.cpp",
               "ViewState": "AgIAAA8AAAAAAAAAAAAcwAcAAAADAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
-              "WhenOpened": "2025-12-10T11:27:15.004Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-12-10T11:27:15.004Z"
             },
             {
               "$type": "Document",
@@ -215,8 +212,7 @@
               "RelativeToolTip": "My Engine Core\\src\\platform\\OpenGL\\Buffer.h",
               "ViewState": "AgIAAAkAAAAAAAAAAAAAAA8AAAAVAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
-              "WhenOpened": "2025-12-10T11:27:11.941Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-12-10T11:27:11.941Z"
             },
             {
               "$type": "Document",
@@ -228,8 +224,7 @@
               "RelativeToolTip": "My Engine Core\\src\\platform\\OpenGL\\IndexBuffer.cpp",
               "ViewState": "AgIAABkAAAAAAAAAAAAcwBkAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
-              "WhenOpened": "2025-12-10T11:04:46.765Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-12-10T11:04:46.765Z"
             },
             {
               "$type": "Document",
@@ -241,8 +236,7 @@
               "RelativeToolTip": "My Engine Core\\src\\platform\\OpenGL\\IndexBuffer.h",
               "ViewState": "AgIAAAkAAAAAAAAAAAAAAA8AAAApAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
-              "WhenOpened": "2025-12-10T11:04:42.629Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-12-10T11:04:42.629Z"
             },
             {
               "$type": "Document",
@@ -254,8 +248,7 @@
               "RelativeToolTip": "My Engine Core\\src\\platform\\OpenGL\\Utility.cpp",
               "ViewState": "AgIAADYAAAAAAAAAAAAYwFYAAAAfAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
-              "WhenOpened": "2025-12-10T11:01:55.839Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-12-10T11:01:55.839Z"
             },
             {
               "$type": "Document",
@@ -267,8 +260,7 @@
               "RelativeToolTip": "My Engine Core\\src\\platform\\OpenGL\\Utility.h",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAEAAAAbAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
-              "WhenOpened": "2025-12-10T10:59:10.424Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-12-10T10:59:10.424Z"
             },
             {
               "$type": "Document",
@@ -280,8 +272,7 @@
               "RelativeToolTip": "My Engine Core\\src\\shaders\\skybox.frag",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAIAAAAgAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
-              "WhenOpened": "2025-12-10T10:56:00.036Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-12-10T10:56:00.036Z"
             },
             {
               "$type": "Document",
@@ -293,8 +284,7 @@
               "RelativeToolTip": "My Engine Core\\src\\shaders\\skybox.vert",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAEAAAAXAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
-              "WhenOpened": "2025-12-10T10:51:05.757Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-12-10T10:51:05.757Z"
             },
             {
               "$type": "Document",
@@ -306,8 +296,7 @@
               "RelativeToolTip": "My Engine Core\\src\\shaders\\framebufferColourBuffer.vert",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAIAAABPAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
-              "WhenOpened": "2025-12-09T06:11:08.359Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-12-09T06:11:08.359Z"
             },
             {
               "$type": "Document",
@@ -319,8 +308,7 @@
               "RelativeToolTip": "My Engine Core\\src\\shaders\\framebufferColourBuffer.frag",
               "ViewState": "AgIAABYAAAAAAAAAAAAAABUAAAACAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
-              "WhenOpened": "2025-12-09T06:11:07.959Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-12-09T06:11:07.959Z"
             },
             {
               "$type": "Document",
@@ -372,13 +360,13 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 0,
               "Title": "Scene3D.cpp",
               "DocumentMoniker": "D:\\Engine\\My Engine\\My Engine Core\\src\\Scene3D.cpp",
               "RelativeDocumentMoniker": "My Engine Core\\src\\Scene3D.cpp",
               "ToolTip": "D:\\Engine\\My Engine\\My Engine Core\\src\\Scene3D.cpp",
               "RelativeToolTip": "My Engine Core\\src\\Scene3D.cpp",
-              "ViewState": "AgIAABwAAAAAAAAAAAAAACAAAAAtAAAAAAAAAA==",
+              "ViewState": "AgIAAIUAAAAAAAAAAAAAwJcAAAAVAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
               "WhenOpened": "2025-12-04T09:26:25.958Z",
               "EditorCaption": ""
@@ -397,7 +385,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 1,
               "Title": "Scene3D.h",
               "DocumentMoniker": "D:\\Engine\\My Engine\\My Engine Core\\src\\Scene3D.h",
               "RelativeDocumentMoniker": "My Engine Core\\src\\Scene3D.h",
@@ -466,8 +454,7 @@
               "RelativeToolTip": "My Engine Core\\src\\main.cpp",
               "ViewState": "AgIAAEsAAAAAAAAAAAA0wFUAAAA/AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
-              "WhenOpened": "2025-11-19T13:00:39.273Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-11-19T13:00:39.273Z"
             },
             {
               "$type": "Document",
