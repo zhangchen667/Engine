@@ -40,7 +40,7 @@ int main(){
 
 	//渲染循环
 	while (!window.closed()) {
-		glClearColor(0.5f, 1.0f, 1.0f, 1.0f);
+		glClearColor(1.0f, 1.0f, 1.0f, 1.0f);
 		window.clear();
 		deltaTime.update();//更新帧时间
 		// 检测鼠标移动
@@ -81,11 +81,7 @@ int main(){
 
 		scene.onUpdate(deltaTime.getDeltaTime());//把场景绘制复杂步骤集合到一起
 		scene.onRender();//渲染场景
-		// 读取帧缓冲中(100,100)位置的像素值
-		unsigned char pixel[3];
-		glReadPixels(100, 100, 1, 1, GL_RGB, GL_UNSIGNED_BYTE, pixel);
-		std::cout << "Framebuffer pixel(100,100): "
-			<< (int)pixel[0] << "," << (int)pixel[1] << "," << (int)pixel[2] << std::endl;
+		
 		
 		framebuffer.unbind();//解绑帧缓冲，恢复默认帧缓冲,此时所有渲染操作都渲染到默认帧缓冲，也就是屏幕上
 		//再把帧缓冲的颜色纹理绘制到屏幕四边形上
