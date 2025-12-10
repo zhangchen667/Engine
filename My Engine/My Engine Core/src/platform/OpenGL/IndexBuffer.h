@@ -9,8 +9,11 @@ namespace myarcane {
 			GLuint m_BufferID;//缓冲区ID
 			GLsizei m_Count;//索引数量
 		public:
+			IndexBuffer();
 			IndexBuffer(GLuint* data, GLsizei count);//count表示索引数量
 			~IndexBuffer();
+
+			void load(GLuint* data, GLsizei amount);//加载索引数据
 			void bind() const;
 			void unbind() const;
 			inline GLsizei getCount() const { return m_Count; };

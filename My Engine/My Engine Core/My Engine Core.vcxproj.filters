@@ -81,6 +81,9 @@
     <ClCompile Include="src\platform\OpenGL\Framebuffer.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
+    <ClCompile Include="src\graphics\Skybox.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\graphics\Shader.h">
@@ -143,6 +146,9 @@
     <ClInclude Include="src\platform\OpenGL\Framebuffer.h">
       <Filter>头文件</Filter>
     </ClInclude>
+    <ClInclude Include="src\graphics\Skybox.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Image Include="res\awesomeface.png">
@@ -184,6 +190,12 @@
       <Filter>Shaders</Filter>
     </None>
     <None Include="src\shaders\framebufferColourBuffer.vert">
+      <Filter>Shaders</Filter>
+    </None>
+    <None Include="src\shaders\skybox.frag">
+      <Filter>Shaders</Filter>
+    </None>
+    <None Include="src\shaders\skybox.vert">
       <Filter>Shaders</Filter>
     </None>
   </ItemGroup>

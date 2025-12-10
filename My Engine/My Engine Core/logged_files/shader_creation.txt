@@ -1,1 +1,1 @@
-(shader initialization): Could not initialize window class
+(shader initialization): nitialization

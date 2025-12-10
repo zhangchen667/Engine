@@ -15,7 +15,8 @@ namespace myarcane {
 			Renderer(FPSCamera*camera);
 			void submitOpaque(Renderable3D* renderable);//提交不透明渲染对象到渲染队列,不立即渲染
 			void submitTransparent(Renderable3D* renderable);//提交透明渲染对象到渲染队列,不立即渲染
-			void flush(Shader& shader,Shader&outlineShader);//执行渲染队列中的所有渲染对象,并清空渲染队列
+			void flushOpaque(Shader& shader, Shader& outlineShader);//渲染不透明对象队列
+			void flushTransparent(Shader& shader, Shader& outlineShader);//渲染透明对象队列
 		private:
 			
 			std::deque<Renderable3D*>  m_OpaqueRenderQueue;//不透明渲染队列
