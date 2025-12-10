@@ -9,8 +9,10 @@ namespace myarcane {
 			GLuint m_BufferID;//缓冲区ID
 			GLuint m_ComponentCount;//每个顶点的分量数量(就是纹理（2）+位置（3）+颜色（3||4）等等的值)
 		public:
+			Buffer();
 			Buffer(GLfloat* data, GLsizei amount, GLuint componentCount);//amount表示顶点数量, componentCount表示每个顶点的分量数量
 			~Buffer();
+			void load(GLfloat* data, GLsizei amount,GLuint componentCount);//加载顶点数据
 			void bind() const;
 			void unbind() const;
 			inline GLuint getComponentCount() const { return m_ComponentCount; };

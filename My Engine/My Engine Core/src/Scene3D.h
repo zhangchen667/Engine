@@ -5,6 +5,7 @@
 #include"terrain/Terrain.h"
 #include"graphics/Window.h"
 #include"graphics/MeshFactory.h"
+#include"graphics/Skybox.h"
 namespace myarcane {
 	class Scene3D {
 	private:
@@ -13,9 +14,10 @@ namespace myarcane {
 		graphics::FPSCamera* m_Camera;
 		terrain::Terrain* m_Terrain;
 		graphics::MeshFactory m_MeshFactory;//网格工厂指针
+		graphics::Skybox* m_Skybox;//天空盒指针,属于场景的一部分
 
 		std::vector<graphics::Renderable3D*> m_Renderables;//场景中的所有三维可渲染对象
-		graphics::Shader terrainShader,modelShader,outlineShader;
+		graphics::Shader m_TerrainShader,m_ModelShader,m_OutlineShader;
 	public:
 		Scene3D(graphics::FPSCamera* camera, graphics::Window* window);//构造函数，传入摄像机指针和窗口指针
 		~Scene3D();

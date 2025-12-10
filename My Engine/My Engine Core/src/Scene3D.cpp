@@ -5,8 +5,8 @@
 
 namespace myarcane {
 	Scene3D::Scene3D(graphics::FPSCamera* camera, graphics::Window* window)
-		:terrainShader("src/shaders/basic.vert", "src/shaders/terrain.frag"), modelShader("src/shaders/basic.vert", "src/shaders/model.frag"), m_Camera(camera), m_Window(window)
-		,  outlineShader("src/shaders/basic.vert", "src/shaders/basic.frag")
+		:m_TerrainShader("src/shaders/basic.vert", "src/shaders/terrain.frag"), m_ModelShader("src/shaders/basic.vert", "src/shaders/model.frag"), m_Camera(camera), m_Window(window)
+		,  m_OutlineShader("src/shaders/basic.vert", "src/shaders/basic.frag")
 	{
 		m_Renderer = new graphics::Renderer(camera);
 		glm::vec3 tempworldposition = glm::vec3(0.0f, -20.0f, 0.0f);//地形位置
@@ -26,9 +26,12 @@ namespace myarcane {
 		meshes.push_back(*m_MeshFactory.CreateQuad("res/textures/window.png", false));
 		glm::vec3 temp11 = glm::vec3(30.0f, -10.0f, 30.0f);
 		glm::vec3 temp12 = glm::vec3(3.0f, 3.0f, 3.0f);
+		glm::vec3 temp22 = glm::vec3(0.3f, 0.3f, 0.3f);
 		glm::vec3 temp13 = glm::vec3(0.0f, 1.0f, 0.0f);
 		Add(new graphics::Renderable3D(temp11,temp12,temp13,
 			0.0f,new myarcane::graphics::Model("res/3D_Models/Crysis/nanosuit.obj"),false));
+		Add(new graphics::Renderable3D(temp11,temp22,temp13,
+			0.0f,new myarcane::graphics::Model("res/3D_Models/Duck/Duck.gltf"),false));
 		/*glm::vec3 temp21 = glm::vec3(200.0f, 200.0f, 100.0f);
 		glm::vec3 temp22 = glm::vec3(0.2f, 0.2f, 0.2f);
 		glm::vec3 temp23 = glm::vec3(0.0f, 0.0f, 0.0f);
@@ -39,47 +42,65 @@ namespace myarcane {
 		Add(new graphics::Renderable3D(glm::vec3(80, 20, 80), glm::vec3(15, 15, 15), glm::vec3(1.0, 0.0, 0.0), glm::radians(90.0f), new graphics::Model(meshes), false, true));
 		Add(new graphics::Renderable3D(glm::vec3(120,20,120), glm::vec3(15, 15, 15), glm::vec3(1.0, 0.0, 0.0), glm::radians(90.0f), new graphics::Model(meshes), false, true));
 		//地形着色器配置
-		terrainShader.enable();
-		terrainShader.setUniform1f("material.shininess", 128.0f);
-		terrainShader.setUniform3f("dirLight.direction", glm::vec3(-0.3f, -1.0f, -0.3f));
-		terrainShader.setUniform3f("dirLight.ambient", glm::vec3(0.1f, 0.1f, 0.1f));
-		terrainShader.setUniform3f("dirLight.diffuse", glm::vec3(0.6f, 0.6f, 0.6f));
-		terrainShader.setUniform3f("dirLight.specular", glm::vec3(0.5f, 0.5f, 0.5f));
-		terrainShader.setUniform3f("spotLight.ambient", glm::vec3(0.2f, 0.2f, 0.2f));
-		terrainShader.setUniform3f("spotLight.diffuse", glm::vec3(1.0f, 1.0f, 1.0f));
-		terrainShader.setUniform3f("spotLight.specular", glm::vec3(1.0f, 1.0f, 1.0f));
-		terrainShader.setUniform1f("spotLight.constant", 1.0f);
-		terrainShader.setUniform1f("spotLight.linear", 0.022);
-		terrainShader.setUniform1f("spotLight.quadratic", 0.0019);
-		terrainShader.setUniform1f("spotLight.cutOff", glm::cos(glm::radians(12.5f)));
-		terrainShader.setUniform1f("spotLight.outerCutOff", glm::cos(glm::radians(15.0f)));
-		terrainShader.setUniform3f("pointLight.ambient", glm::vec3(0.05f, 0.05f, 0.05f));
-		terrainShader.setUniform3f("pointLight.diffuse", glm::vec3(0.85f, 0.85f, 0.85f));
-		terrainShader.setUniform3f("pointLight.specular", glm::vec3(1.0f, 1.0f, 1.0f));
-		terrainShader.setUniform1f("pointLight.constant", 1.0f);
-		terrainShader.setUniform1f("pointLight.linear", 0.007);
-		terrainShader.setUniform1f("pointLight.quadratic", 0.0002);
+		m_TerrainShader.enable();
+		m_TerrainShader.setUniform1f("material.shininess", 128.0f);
+		m_TerrainShader.setUniform3f("dirLight.direction", glm::vec3(-0.3f, -1.0f, -0.3f));
+		m_TerrainShader.setUniform3f("dirLight.ambient", glm::vec3(0.1f, 0.1f, 0.1f));
+		m_TerrainShader.setUniform3f("dirLight.diffuse", glm::vec3(0.6f, 0.6f, 0.6f));
+		m_TerrainShader.setUniform3f("dirLight.specular", glm::vec3(0.5f, 0.5f, 0.5f));
+		m_TerrainShader.setUniform3f("spotLight.ambient", glm::vec3(0.2f, 0.2f, 0.2f));
+		m_TerrainShader.setUniform3f("spotLight.diffuse", glm::vec3(1.0f, 1.0f, 1.0f));
+		m_TerrainShader.setUniform3f("spotLight.specular", glm::vec3(1.0f, 1.0f, 1.0f));
+		m_TerrainShader.setUniform1f("spotLight.constant", 1.0f);
+		m_TerrainShader.setUniform1f("spotLight.linear", 0.022);
+		m_TerrainShader.setUniform1f("spotLight.quadratic", 0.0019);
+		m_TerrainShader.setUniform1f("spotLight.cutOff", glm::cos(glm::radians(12.5f)));
+		m_TerrainShader.setUniform1f("spotLight.outerCutOff", glm::cos(glm::radians(15.0f)));
+		m_TerrainShader.setUniform3f("pointLight.ambient", glm::vec3(0.05f, 0.05f, 0.05f));
+		m_TerrainShader.setUniform3f("pointLight.diffuse", glm::vec3(0.85f, 0.85f, 0.85f));
+		m_TerrainShader.setUniform3f("pointLight.specular", glm::vec3(1.0f, 1.0f, 1.0f));
+		m_TerrainShader.setUniform1f("pointLight.constant", 1.0f);
+		m_TerrainShader.setUniform1f("pointLight.linear", 0.007);
+		m_TerrainShader.setUniform1f("pointLight.quadratic", 0.0002);
 		//模型着色器配置
-		modelShader.enable();
-		modelShader.setUniform1f("material.shininess", 128.0f);
-		modelShader.setUniform3f("dirLight.direction", glm::vec3(-0.3f, -1.0f, -0.3f));
-		modelShader.setUniform3f("dirLight.ambient", glm::vec3(0.1f, 0.1f, 0.1f));
-		modelShader.setUniform3f("dirLight.diffuse", glm::vec3(0.6f, 0.6f, 0.6f));
-		modelShader.setUniform3f("dirLight.specular", glm::vec3(0.5f, 0.5f, 0.5f));
-		modelShader.setUniform3f("spotLight.ambient", glm::vec3(0.2f, 0.2f, 0.2f));
-		modelShader.setUniform3f("spotLight.diffuse", glm::vec3(1.0f, 1.0f, 1.0f));
-		modelShader.setUniform3f("spotLight.specular", glm::vec3(1.0f, 1.0f, 1.0f));
-		modelShader.setUniform1f("spotLight.constant", 1.0f);
-		modelShader.setUniform1f("spotLight.linear", 0.022);
-		modelShader.setUniform1f("spotLight.quadratic", 0.0019);
-		modelShader.setUniform1f("spotLight.cutOff", glm::cos(glm::radians(12.5f)));
-		modelShader.setUniform1f("spotLight.outerCutOff", glm::cos(glm::radians(15.0f)));
-		modelShader.setUniform3f("pointLights[0].ambient", glm::vec3(0.05f, 0.05f, 0.05f));
-		modelShader.setUniform3f("pointLights[0].diffuse", glm::vec3(0.85f, 0.85f, 0.85f));
-		modelShader.setUniform3f("pointLights[0].specular", glm::vec3(1.0f, 1.0f, 1.0f));
-		modelShader.setUniform1f("pointLights[0].constant", 1.0f);
-		modelShader.setUniform1f("pointLights[0].linear", 0.007);
-		modelShader.setUniform1f("pointLights[0].quadratic", 0.0002);
+		m_ModelShader.enable();
+		m_ModelShader.setUniform1f("material.shininess", 128.0f);
+		m_ModelShader.setUniform3f("dirLight.direction", glm::vec3(-0.3f, -1.0f, -0.3f));
+		m_ModelShader.setUniform3f("dirLight.ambient", glm::vec3(0.1f, 0.1f, 0.1f));
+		m_ModelShader.setUniform3f("dirLight.diffuse", glm::vec3(0.6f, 0.6f, 0.6f));
+		m_ModelShader.setUniform3f("dirLight.specular", glm::vec3(0.5f, 0.5f, 0.5f));
+		m_ModelShader.setUniform3f("spotLight.ambient", glm::vec3(0.2f, 0.2f, 0.2f));
+		m_ModelShader.setUniform3f("spotLight.diffuse", glm::vec3(1.0f, 1.0f, 1.0f));
+		m_ModelShader.setUniform3f("spotLight.specular", glm::vec3(1.0f, 1.0f, 1.0f));
+		m_ModelShader.setUniform1f("spotLight.constant", 1.0f);
+		m_ModelShader.setUniform1f("spotLight.linear", 0.022);
+		m_ModelShader.setUniform1f("spotLight.quadratic", 0.0019);
+		m_ModelShader.setUniform1f("spotLight.cutOff", glm::cos(glm::radians(12.5f)));
+		m_ModelShader.setUniform1f("spotLight.outerCutOff", glm::cos(glm::radians(15.0f)));
+		m_ModelShader.setUniform3f("pointLights[0].ambient", glm::vec3(0.05f, 0.05f, 0.05f));
+		m_ModelShader.setUniform3f("pointLights[0].diffuse", glm::vec3(0.85f, 0.85f, 0.85f));
+		m_ModelShader.setUniform3f("pointLights[0].specular", glm::vec3(1.0f, 1.0f, 1.0f));
+		m_ModelShader.setUniform1f("pointLights[0].constant", 1.0f);
+		m_ModelShader.setUniform1f("pointLights[0].linear", 0.007);
+		m_ModelShader.setUniform1f("pointLights[0].quadratic", 0.0002);
+
+		// Skybox
+		//std::vector<const char*> skyboxFilePaths;
+		//skyboxFilePaths.push_back("res/skybox1/right.jpg");
+		//skyboxFilePaths.push_back("res/skybox1/left.jpg");
+		//skyboxFilePaths.push_back("res/skybox1/top.jpg");
+		//skyboxFilePaths.push_back("res/skybox1/bottom.jpg");
+		//skyboxFilePaths.push_back("res/skybox1/back.jpg");
+		//skyboxFilePaths.push_back("res/skybox1/front.jpg");
+		//m_Skybox = new graphics::Skybox(skyboxFilePaths, m_Camera, m_Window);//创建天空盒
+		std::vector<const char*> skyboxFilePaths;
+		skyboxFilePaths.push_back("res/skybox/right.png");
+		skyboxFilePaths.push_back("res/skybox/left.png");
+		skyboxFilePaths.push_back("res/skybox/top.png");
+		skyboxFilePaths.push_back("res/skybox/bottom.png");
+		skyboxFilePaths.push_back("res/skybox/back.png");
+		skyboxFilePaths.push_back("res/skybox/front.png");
+		m_Skybox = new graphics::Skybox(skyboxFilePaths, m_Camera, m_Window);
 	}
 	void Scene3D::onUpdate(float deltaTime) {
 		//m_Renderables[0]->setRadianRotation(m_Renderables[0]->getRadianRotation() + deltaTime);//让场景中的第一个三维可渲染对象持续旋转
@@ -88,32 +109,33 @@ namespace myarcane {
 		
 
 		//描边shader配置
-		outlineShader.enable();
-		outlineShader.setUniformMat4("view", m_Camera->getViewMatrix());
-		outlineShader.setUniformMat4("projection", glm::perspective(glm::radians(m_Camera->getFov()), (float)m_Window->getWidth() / (float)m_Window->getHeight(), 0.1f, 1000.0f));
+		m_OutlineShader.enable();
+		m_OutlineShader.setUniformMat4("view", m_Camera->getViewMatrix());
+		m_OutlineShader.setUniformMat4("projection", glm::perspective(glm::radians(m_Camera->getFov()), (float)m_Window->getWidth() / (float)m_Window->getHeight(), 0.1f, 1000.0f));
+		
 		//地形渲染
 		glStencilMask(0x00); // Don't update the stencil buffer
 		glEnable(GL_CULL_FACE);//启用面剔除
-		terrainShader.enable();
-		terrainShader.setUniform3f("pointLight.position", glm::vec3(200.0f, 200.0f, 100.0f));
-		terrainShader.setUniform3f("spotLight.position", m_Camera->getPosition());
-		terrainShader.setUniform3f("spotLight.direction", m_Camera->getFront());
-		terrainShader.setUniform3f("viewPos", m_Camera->getPosition());
+		m_TerrainShader.enable();
+		m_TerrainShader.setUniform3f("pointLight.position", glm::vec3(200.0f, 200.0f, 100.0f));
+		m_TerrainShader.setUniform3f("spotLight.position", m_Camera->getPosition());
+		m_TerrainShader.setUniform3f("spotLight.direction", m_Camera->getFront());
+		m_TerrainShader.setUniform3f("viewPos", m_Camera->getPosition());
 		glm::mat4 modelMatrix(1.0f);
 		modelMatrix = glm::translate(modelMatrix, m_Terrain->getPosition());
-		terrainShader.setUniformMat4("model", modelMatrix);
-		terrainShader.setUniformMat4("view", m_Camera->getViewMatrix());
-		terrainShader.setUniformMat4("projection", glm::perspective(glm::radians(m_Camera->getFov()), (float)m_Window->getWidth() / (float)m_Window->getHeight(), 0.1f, 1000.0f));
-		m_Terrain->Draw(terrainShader);
+		m_TerrainShader.setUniformMat4("model", modelMatrix);
+		m_TerrainShader.setUniformMat4("view", m_Camera->getViewMatrix());
+		m_TerrainShader.setUniformMat4("projection", glm::perspective(glm::radians(m_Camera->getFov()), (float)m_Window->getWidth() / (float)m_Window->getHeight(), 0.1f, 1000.0f));
+		m_Terrain->Draw(m_TerrainShader);
 	
 		//模型渲染
-		modelShader.enable();
-		modelShader.setUniform3f("pointLights[0].position", glm::vec3(200.0f, 215.0f, 100.0f));
-		modelShader.setUniform3f("spotLight.position", m_Camera->getPosition());
-		modelShader.setUniform3f("spotLight.direction", m_Camera->getFront());
-		modelShader.setUniform3f("viewPos", m_Camera->getPosition());
-		modelShader.setUniformMat4("view", m_Camera->getViewMatrix());
-		modelShader.setUniformMat4("projection", glm::perspective(glm::radians(m_Camera->getFov()), (float)m_Window->getWidth() / (float)m_Window->getHeight(), 0.1f, 1000.0f));
+		m_ModelShader.enable();
+		m_ModelShader.setUniform3f("pointLights[0].position", glm::vec3(200.0f, 215.0f, 100.0f));
+		m_ModelShader.setUniform3f("spotLight.position", m_Camera->getPosition());
+		m_ModelShader.setUniform3f("spotLight.direction", m_Camera->getFront());
+		m_ModelShader.setUniform3f("viewPos", m_Camera->getPosition());
+		m_ModelShader.setUniformMat4("view", m_Camera->getViewMatrix());
+		m_ModelShader.setUniformMat4("projection", glm::perspective(glm::radians(m_Camera->getFov()), (float)m_Window->getWidth() / (float)m_Window->getHeight(), 0.1f, 1000.0f));
 
 		std::vector<graphics::Renderable3D*>::iterator iter = m_Renderables.begin();
 		//遍历场景中的所有三维可渲染对象并提交给渲染器
@@ -127,7 +149,12 @@ namespace myarcane {
 			}
 			iter++;
 		}
-		m_Renderer->flush(modelShader,outlineShader);
+		m_Renderer->flushOpaque(m_ModelShader, m_OutlineShader);//先渲染不透明对象队列
+		//再渲染天空盒
+		m_Skybox->Draw();
+		//启用透明对象渲染
+		//m_ModelShader.enable();
+		m_Renderer->flushTransparent(m_ModelShader, m_OutlineShader);
 
 		
 	}
