@@ -15,6 +15,7 @@ namespace myarcane {
 			Skybox(const std::vector<const char*>& faces, FPSCamera* camera, Window* window);//构造函数,传入六个面的文件路径和摄像机指针和窗口指针
 			~Skybox();
 			void Draw();//渲染天空盒
+			inline unsigned int getSkyboxCubemap(){ return m_SkyboxCubemap; }//返回天空盒立方体贴图ID
 		private:
 			opengl::VertexArray m_SkyboxVAO;
 			opengl::IndexBuffer m_SkyboxIBO;
