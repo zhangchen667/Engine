@@ -119,20 +119,7 @@ namespace myarcane {
 		m_ModelReflectionShader.setUniformMat4("view", m_Camera->getViewMatrix());
 		m_ModelReflectionShader.setUniformMat4("projection", glm::perspective(glm::radians(m_Camera->getFov()), (float)m_Window->getWidth() / (float)m_Window->getHeight(), 0.1f, 1000.0f));
 
-		//地形渲染
-		glStencilMask(0x00); // Don't update the stencil buffer
-		glEnable(GL_CULL_FACE);//启用面剔除
-		m_TerrainShader.enable();
-		m_TerrainShader.setUniform3f("pointLight.position", glm::vec3(200.0f, 200.0f, 100.0f));
-		m_TerrainShader.setUniform3f("spotLight.position", m_Camera->getPosition());
-		m_TerrainShader.setUniform3f("spotLight.direction", m_Camera->getFront());
-		m_TerrainShader.setUniform3f("viewPos", m_Camera->getPosition());
-		glm::mat4 modelMatrix(1.0f);
-		modelMatrix = glm::translate(modelMatrix, m_Terrain->getPosition());
-		m_TerrainShader.setUniformMat4("model", modelMatrix);
-		m_TerrainShader.setUniformMat4("view", m_Camera->getViewMatrix());
-		m_TerrainShader.setUniformMat4("projection", glm::perspective(glm::radians(m_Camera->getFov()), (float)m_Window->getWidth() / (float)m_Window->getHeight(), 0.1f, 1000.0f));
-		m_Terrain->Draw(m_TerrainShader);
+		
 	
 		//模型渲染
 		m_ModelShader.enable();
@@ -156,6 +143,20 @@ namespace myarcane {
 			iter++;
 		}
 		m_Renderer->flushOpaque(m_ModelShader, m_OutlineShader);//先渲染不透明对象队列
+		//地形渲染
+		glStencilMask(0x00); // Don't update the stencil buffer
+		glEnable(GL_CULL_FACE);//启用面剔除
+		m_TerrainShader.enable();
+		m_TerrainShader.setUniform3f("pointLight.position", glm::vec3(200.0f, 200.0f, 100.0f));
+		m_TerrainShader.setUniform3f("spotLight.position", m_Camera->getPosition());
+		m_TerrainShader.setUniform3f("spotLight.direction", m_Camera->getFront());
+		m_TerrainShader.setUniform3f("viewPos", m_Camera->getPosition());
+		glm::mat4 modelMatrix(1.0f);
+		modelMatrix = glm::translate(modelMatrix, m_Terrain->getPosition());
+		m_TerrainShader.setUniformMat4("model", modelMatrix);
+		m_TerrainShader.setUniformMat4("view", m_Camera->getViewMatrix());
+		m_TerrainShader.setUniformMat4("projection", glm::perspective(glm::radians(m_Camera->getFov()), (float)m_Window->getWidth() / (float)m_Window->getHeight(), 0.1f, 1000.0f));
+		m_Terrain->Draw(m_TerrainShader);
 		//再渲染天空盒
 		m_Skybox->Draw();
 		//启用透明对象渲染

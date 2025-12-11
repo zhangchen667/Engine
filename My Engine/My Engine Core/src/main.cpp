@@ -26,12 +26,15 @@ int main(){
 	myarcane::Scene3D scene(&camera, &window);
 	
 	myarcane::opengl::Framebuffer framebuffer(window.getWidth(), window.getHeight());//创建帧缓冲对象
-	myarcane::graphics::Shader framebufferShader("src/shaders/framebufferColourBuffer.vert", "src/shaders/framebufferColourBuffer.frag");
+	myarcane::graphics::Shader fxaaShader("src/shaders/fxaa.vert", "src/shaders/fxaa.frag");
 	myarcane::graphics::MeshFactory meshFactory;//网格工厂,用于创建常用网格
 	myarcane::graphics::Mesh* colourBufferMesh = meshFactory.CreateScreenQuad(framebuffer.getColourBufferTexture());//创建屏幕四边形网格,用于后期处理
 
 	myarcane::Timer fpsTimer;//FPS计时器,用于计算每秒帧数
 	int frames = 0;
+	fxaaShader.enable();
+	fxaaShader.setUniform2f("sampleOffset", glm::vec2(1.0f / window.getWidth(), 1.0f / window.getHeight()));
+	fxaaShader.disable();
 	myarcane::Time deltaTime;//帧时间计算,用于平滑移动
 
 	bool firstMove= true;
@@ -88,9 +91,9 @@ int main(){
 		glDisable(GL_DEPTH_TEST);  // 禁用深度测试，确保四边形总是被渲染
 		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);  // 清除所有缓冲
 
-		framebufferShader.enable();// 启用着色器
-		colourBufferMesh->DrawFramebufferQuad(framebufferShader);
-		framebufferShader.disable();
+		fxaaShader.enable();// 启用着色器
+		colourBufferMesh->DrawFramebufferQuad(fxaaShader);
+		fxaaShader.disable();
 
 		window.update();
 		if (fpsTimer.elapsed() >= 1) {
