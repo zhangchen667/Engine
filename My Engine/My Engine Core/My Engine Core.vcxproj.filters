@@ -198,5 +198,11 @@
     <None Include="src\shaders\skybox.vert">
       <Filter>Shaders</Filter>
     </None>
+    <None Include="src\shaders\modelReflection.frag">
+      <Filter>Shaders</Filter>
+    </None>
+    <None Include="src\shaders\modelRefraction.frag">
+      <Filter>Shaders</Filter>
+    </None>
   </ItemGroup>
 </Project>

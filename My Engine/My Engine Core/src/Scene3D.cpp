@@ -6,7 +6,7 @@
 namespace myarcane {
 	Scene3D::Scene3D(graphics::FPSCamera* camera, graphics::Window* window)
 		:m_TerrainShader("src/shaders/basic.vert", "src/shaders/terrain.frag"), m_ModelShader("src/shaders/basic.vert", "src/shaders/model.frag"), m_Camera(camera), m_Window(window)
-		,  m_OutlineShader("src/shaders/basic.vert", "src/shaders/basic.frag")
+		, m_OutlineShader("src/shaders/basic.vert", "src/shaders/basic.frag"), m_ModelReflectionShader("src/shaders/basic.vert", "src/shaders/modelReflection.frag")
 	{
 		m_Renderer = new graphics::Renderer(camera);
 		glm::vec3 tempworldposition = glm::vec3(0.0f, -20.0f, 0.0f);//地形位置
@@ -113,6 +113,12 @@ namespace myarcane {
 		m_OutlineShader.setUniformMat4("view", m_Camera->getViewMatrix());
 		m_OutlineShader.setUniformMat4("projection", glm::perspective(glm::radians(m_Camera->getFov()), (float)m_Window->getWidth() / (float)m_Window->getHeight(), 0.1f, 1000.0f));
 		
+		//反射shader配置
+		m_ModelReflectionShader.enable();
+		m_ModelReflectionShader.setUniform3f("cameraPos", m_Camera->getPosition());
+		m_ModelReflectionShader.setUniformMat4("view", m_Camera->getViewMatrix());
+		m_ModelReflectionShader.setUniformMat4("projection", glm::perspective(glm::radians(m_Camera->getFov()), (float)m_Window->getWidth() / (float)m_Window->getHeight(), 0.1f, 1000.0f));
+
 		//地形渲染
 		glStencilMask(0x00); // Don't update the stencil buffer
 		glEnable(GL_CULL_FACE);//启用面剔除

@@ -17,7 +17,7 @@ namespace myarcane {
 		graphics::Skybox* m_Skybox;//天空盒指针,属于场景的一部分
 
 		std::vector<graphics::Renderable3D*> m_Renderables;//场景中的所有三维可渲染对象
-		graphics::Shader m_TerrainShader,m_ModelShader,m_OutlineShader;
+		graphics::Shader m_TerrainShader,m_ModelShader,m_OutlineShader,m_ModelReflectionShader;
 	public:
 		Scene3D(graphics::FPSCamera* camera, graphics::Window* window);//构造函数，传入摄像机指针和窗口指针
 		~Scene3D();

@@ -53,11 +53,12 @@ namespace myarcane {
 					glStencilMask(0xFF);//启用模板写入，允许更新模板缓冲区
 
 					shader.enable();
-					glClear(GL_STENCIL_BUFFER_BIT);
+					
 				}
 
 				m_OpaqueRenderQueue.pop_front();
 			}
+			glClear(GL_STENCIL_BUFFER_BIT);
 		}
 		void Renderer::flushTransparent(Shader& shader, Shader& outlineShader){
 			glDisable(GL_CULL_FACE);//禁用面剔除
