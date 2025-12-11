@@ -204,5 +204,11 @@
     <None Include="src\shaders\modelRefraction.frag">
       <Filter>Shaders</Filter>
     </None>
+    <None Include="src\shaders\fxaa.vert">
+      <Filter>Shaders</Filter>
+    </None>
+    <None Include="src\shaders\fxaa.frag">
+      <Filter>Shaders</Filter>
+    </None>
   </ItemGroup>
 </Project>
