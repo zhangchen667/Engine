@@ -4,7 +4,7 @@ in vec2 TexCoords;
 uniform sampler2D texture_diffuse1;// 输入的屏幕纹理
 uniform vec2 sampleOffset;// 屏幕像素大小的倒数（1/宽度, 1/高度）,用于计算相邻像素坐标,就是分辨率的倒数
 // FXAA 参数（可调整）
-#define FXAA_SPAN_MAX 8.0// 最大采样跨度
+#define FXAA_SPAN_MAX 4.0// 最大采样跨度
 #define FXAA_REDUCE_MUL 1.0/8.0     // 降低阈值的乘数
 #define FXAA_REDUCE_MIN 1.0/128.0   // 最小降低阈值
 
@@ -43,8 +43,8 @@ void main() {
 
     // 3. 检测边缘方向（水平/垂直）
     vec2 dir;
-    dir.x = -((lumaE - lumaW) + (lumaE - lumaW));// 水平方向梯度
-    dir.y = -((lumaN - lumaS) + (lumaN - lumaS));
+    dir.x = -((lumaE - lumaW) + (lumaE - lumaW));// 水平方向梯度亮度差
+    dir.y = -((lumaN - lumaS) + (lumaN - lumaS));//垂直方向梯度亮度差
 
     // 归一化边缘方向
     dir = normalize(dir);

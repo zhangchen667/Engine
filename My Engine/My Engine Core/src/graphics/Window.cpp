@@ -34,7 +34,8 @@ namespace myarcane {
 				utils::Logger::getInstance().error("logged_files/window_creation.txt", "Window Initialization", "Could not initialize the GLFW window");
 				return false;
 			}
-
+			//设置GLFW窗口属性
+			glfwWindowHint(GLFW_SAMPLES, MSAA_SAMPLE_AMOUNT);//多重采样抗锯齿
 			// Create the window
 			if (FULLSCREEN_MODE) {//全屏
 				setFullscreenResolution();//获得主显示屏分辨率
