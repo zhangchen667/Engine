@@ -42,6 +42,7 @@
     <ClCompile Include="src\utils\Timer.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="src\Defs.h" />
     <ClInclude Include="src\graphics\camera\FPSCamera.h" />
     <ClInclude Include="src\graphics\Mesh.h" />
     <ClInclude Include="src\graphics\MeshFactory.h" />
@@ -74,8 +75,8 @@
     <None Include="src\shaders\basic.frag" />
     <None Include="src\shaders\basic.vert" />
     <None Include="src\shaders\directionalLight.frag" />
-    <None Include="src\shaders\framebufferColourBuffer.frag" />
-    <None Include="src\shaders\framebufferColourBuffer.vert" />
+    <None Include="src\shaders\framebuffer.frag" />
+    <None Include="src\shaders\framebuffer.vert" />
     <None Include="src\shaders\fxaa.frag" />
     <None Include="src\shaders\fxaa.vert" />
     <None Include="src\shaders\model.frag" />

@@ -149,6 +149,9 @@
     <ClInclude Include="src\graphics\Skybox.h">
       <Filter>头文件</Filter>
     </ClInclude>
+    <ClInclude Include="src\Defs.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Image Include="res\awesomeface.png">
@@ -186,10 +189,10 @@
     <None Include="src\shaders\model.frag">
       <Filter>Shaders</Filter>
     </None>
-    <None Include="src\shaders\framebufferColourBuffer.frag">
+    <None Include="src\shaders\framebuffer.frag">
       <Filter>Shaders</Filter>
     </None>
-    <None Include="src\shaders\framebufferColourBuffer.vert">
+    <None Include="src\shaders\framebuffer.vert">
       <Filter>Shaders</Filter>
     </None>
     <None Include="src\shaders\skybox.frag">

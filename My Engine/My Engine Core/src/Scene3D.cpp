@@ -18,6 +18,7 @@ namespace myarcane {
 		
 	}
 	void Scene3D::init() {
+		glEnable(GL_MULTISAMPLE);//启用多重采样抗锯齿
 		glEnable(GL_DEPTH_TEST);//启用深度测试
 		glEnable(GL_STENCIL_TEST);//启用模板缓冲测试，用于描边效果
 		glEnable(GL_CULL_FACE);//启用面剔除
