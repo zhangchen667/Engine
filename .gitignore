@@ -289,12 +289,13 @@ __pycache__/
 *.xsd.cs
 
 # Visual Studio 相关忽略规则
-.vs/                  # 你的截图里的.vs文件夹（VS缓存目录）
+.vs/                 
 *.suo                 # .suo文件（VS解决方案用户配置）
 *.VC.db               # VS的浏览数据库文件
 *.VC.db-shm
 *.VC.db-wal
-*.vcxproj.user        # 项目的用户配置文件（本地路径、调试设置等）
-CodeChunks.db         # 你的截图里的CodeChunks.db
-SemanticSymbols.db*   # 你的截图里的SemanticSymbols相关文件
-DocumentLayout.*      # 你的截图里的DocumentLayout文件
+*.vcxproj.user       
+CodeChunks.db        
+SemanticSymbols.db*  
+DocumentLayout.*      
+.vs/
