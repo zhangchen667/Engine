@@ -107,7 +107,12 @@ namespace myarcane {
 		//m_Renderables[0]->setRadianRotation(m_Renderables[0]->getRadianRotation() + deltaTime);//让场景中的第一个三维可渲染对象持续旋转
 	}
 	void Scene3D::onRender() {
-		
+		// 1. 渲染到MSAA FBO时，先重置深度状态（核心！）
+		glEnable(GL_DEPTH_TEST);
+		glDepthFunc(GL_LESS);       // 恢复默认深度测试规则
+		glDepthMask(GL_TRUE);       // 允许深度缓冲写入（MSAA下必须开启）
+		glDisable(GL_STENCIL_TEST); // MSAA下先禁用模板测试（描边后续修复）
+		glEnable(GL_MULTISAMPLE);   // 确保MSAA启用（部分显卡需显式开启）
 
 		//描边shader配置
 		m_OutlineShader.enable();
