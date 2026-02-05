@@ -27,17 +27,17 @@ namespace myarcane {
 		meshes.push_back(*m_MeshFactory.CreateQuad("res/textures/window.png", false));
 		glm::vec3 temp11 = glm::vec3(30.0f, -10.0f, 30.0f);
 		glm::vec3 temp12 = glm::vec3(3.0f, 3.0f, 3.0f);
-		glm::vec3 temp22 = glm::vec3(0.3f, 0.3f, 0.3f);
+		glm::vec3 temp22 = glm::vec3(0.1f, 0.1f, 0.1f);
 		glm::vec3 temp13 = glm::vec3(0.0f, 1.0f, 0.0f);
-		Add(new graphics::Renderable3D(temp11,temp12,temp13,
-			0.0f,new myarcane::graphics::Model("res/3D_Models/Crysis/nanosuit.obj"),false));
+		//Add(new graphics::Renderable3D(temp11,temp12,temp13,
+			//0.0f,new myarcane::graphics::Model("res/3D_Models/Crysis/nanosuit.obj"),false));
 		Add(new graphics::Renderable3D(temp11,temp22,temp13,
 			0.0f,new myarcane::graphics::Model("res/3D_Models/Duck/Duck.gltf"),false));
-		/*glm::vec3 temp21 = glm::vec3(200.0f, 200.0f, 100.0f);
-		glm::vec3 temp22 = glm::vec3(0.2f, 0.2f, 0.2f);
+		glm::vec3 temp21 = glm::vec3(200.0f, 200.0f, 100.0f);
+		glm::vec3 temp222 = glm::vec3(0.2f, 0.2f, 0.2f);
 		glm::vec3 temp23 = glm::vec3(0.0f, 0.0f, 0.0f);
-		Add(new graphics::Renderable3D(temp21,temp22 ,temp23 ,
-			0.0f, new myarcane::graphics::Model("res/3D_Models/Sponza/sponza.gltf")));*/
+		Add(new graphics::Renderable3D(temp21,temp222 ,temp23 ,
+			0.0f, new myarcane::graphics::Model("res/3D_Models/Sponza/sponza.gltf")));
 		Add(new graphics::Renderable3D(glm::vec3(40, 10, 40), glm::vec3(10, 10, 10), glm::vec3(1.0, 0.0, 0.0), glm::radians(90.0f), new graphics::Model(meshes), false, true));
 		Add(new graphics::Renderable3D(glm::vec3(60, 20, 60), glm::vec3(15, 15, 15), glm::vec3(1.0, 0.0, 0.0), glm::radians(90.0f), new graphics::Model(meshes), false, true));
 		Add(new graphics::Renderable3D(glm::vec3(80, 20, 80), glm::vec3(15, 15, 15), glm::vec3(1.0, 0.0, 0.0), glm::radians(90.0f), new graphics::Model(meshes), false, true));

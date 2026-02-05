@@ -13,6 +13,15 @@ namespace myarcane {
 			Vertex() {}
 			Vertex(glm::vec3 position, glm::vec3 normal, glm::vec2 texCoords)
 				:Position(position), Normal(normal), TexCoords(texCoords) {}
+			Vertex(float xPos, float yPos, float zPos, 
+				float xNorm, float yNorm, float zNorm, 
+				float xTexCoords, float yTexCoords) {
+				Position.x = xPos; Position.y = yPos; Position.z = zPos;
+				Normal.x = xNorm;
+				Normal.y = yNorm;
+				Normal.z = zNorm;
+				TexCoords.x = xTexCoords; TexCoords.y = yTexCoords;
+			}
 		};
 		struct Texture {
 			unsigned int id;//Œ∆¿ÌID

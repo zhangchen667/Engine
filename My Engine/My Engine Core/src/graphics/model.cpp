@@ -45,33 +45,24 @@ namespace myarcane {
 			std::vector<Vertex> vertices;
 			std::vector<unsigned int> indices;
 			std::vector<Texture> textures;
+			vertices.reserve(mesh->mNumVertices);//预留空间
+			indices.reserve(mesh->mNumFaces * 3);//预留空间
 			//处理顶点
 			for (unsigned int i = 0; i < mesh->mNumVertices; i++) {
-				Vertex vertex;//定义顶点
-				//位置
-				glm::vec3 vector;
-				vector.x = mesh->mVertices[i].x;
-				vector.y = mesh->mVertices[i].y;
-				vector.z = mesh->mVertices[i].z;
-				vertex.Position = vector;
-				//法线
-				if (mesh->HasNormals()) {
-					vector.x = mesh->mNormals[i].x;
-					vector.y = mesh->mNormals[i].y;
-					vector.z = mesh->mNormals[i].z;
-					vertex.Normal = vector;
-				}
+				glm::vec2 vec;
 				//纹理坐标
 				if (mesh->mTextureCoords[0]) {
-					glm::vec2 vec;
+					
 					vec.x = mesh->mTextureCoords[0][i].x;
 					vec.y = mesh->mTextureCoords[0][i].y;
-					vertex.TexCoords = vec;
+					
 				}
 				else {
-					vertex.TexCoords = glm::vec2(0.0f, 0.0f);
+					vec.x = 0.0f;
+					vec.y = 0.0f;
 				}
-				vertices.push_back(vertex);
+				vertices.emplace_back(mesh->mVertices[i].x,mesh->mVertices[i].y,mesh->mVertices[i].z,
+					mesh->mNormals[i].x,mesh->mNormals[i].y,mesh->mNormals[i].z,vec.x,vec.y);
 			}
 			//处理索引
 			for (unsigned int i = 0; i < mesh->mNumFaces; i++) {
@@ -94,6 +85,7 @@ namespace myarcane {
 		}
 		std::vector<Texture>Model::loadMaterialTextures(aiMaterial* mat, aiTextureType type, std::string typeName) {
 			std::vector<Texture> textures;
+			textures.reserve(mat->GetTextureCount(type));//预留空间,提高效率，避免多次分配内存
 			for (unsigned int i = 0; i < mat->GetTextureCount(type); i++) {
 				aiString str;
 				mat->GetTexture(type, i, &str);
