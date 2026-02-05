@@ -299,3 +299,8 @@ CodeChunks.db
 SemanticSymbols.db*  
 DocumentLayout.*      
 .vs/
+My Engine/.vs/
+# 强制忽略所有 VC.db 文件（不管在哪个路径）
+*.VC.db
+*.VC.db-shm
+*.VC.db-wal
