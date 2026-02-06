@@ -26,7 +26,7 @@ namespace myarcane {
 				}
 				glBindTexture(GL_TEXTURE_2D, textureID);
 				glTexImage2D(GL_TEXTURE_2D, 0, format, width, height, 0, format, GL_UNSIGNED_BYTE, data);
-				glGenerateMipmap(GL_TEXTURE_2D);
+				
 
 				if (containsTransparencyOnSides) {
 					//如果纹理在侧面包含透明度则设置相应参数
@@ -38,8 +38,17 @@ namespace myarcane {
 					glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
 				}
 				glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR_MIPMAP_LINEAR);
-				glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
-				glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_LOD_BIAS, -0.4f);//各向异性过滤,提高纹理清晰度
+				glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);//线性过滤，不能mipmap，因为mipmap只对缩小过滤有效
+				//生成mipmap
+				glGenerateMipmap(GL_TEXTURE_2D);
+				glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_LOD_BIAS, 0);//设置LOD偏移量为0，保持默认mipmap级别,
+				//lod是mipmap级别的缩放因子，负值会使纹理看起来更清晰，正值会使纹理看起来更模糊
+				//如果需要更清晰的纹理可以设置为负值，如-0.5f，但过大的负值可能会导致性能问题
+				GLfloat maxAnisotropy;//各向异性过滤等级,各向异性就是根据视角不同调整纹理采样的方式,提高斜视角下的纹理质量
+				glGetFloatv(GL_MAX_TEXTURE_MAX_ANISOTROPY_EXT, &maxAnisotropy);//获取最大各向异性过滤等级,为了不超过硬件支持的最大值
+				GLfloat anistropyAmount = glm::min(maxAnisotropy, ANISOTROPIC_FILTERING);//使用Defs.h中定义的各向异性过滤等级
+				glTexParameterf(GL_TEXTURE_2D, GL_TEXTURE_MAX_ANISOTROPY_EXT, anistropyAmount);//设置各向异性过滤等级
+				
 
 				stbi_image_free(data);
 			}

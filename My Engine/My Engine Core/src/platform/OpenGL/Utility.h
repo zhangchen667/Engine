@@ -7,6 +7,8 @@
 #include<iostream>
 #include<vector>
 #include"../../utils/Logger.h"
+#include<glm/common.hpp>//包含glm库的公共头文件，提供了常用的数学函数和类型定义
+#include"../../Defs.h"
 namespace myarcane {
 	namespace opengl {
 		class Utility {
