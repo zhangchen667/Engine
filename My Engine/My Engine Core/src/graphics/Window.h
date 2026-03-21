@@ -15,11 +15,11 @@ namespace myarcane {
 			int m_Width, m_Height;
 			GLFWwindow* m_Window;
 			
-
+			 
 			bool m_Keys[MAX_KEYS];	
 			bool m_Buttons[MAX_BUTTONS];
 			double mx, my;
-			double scrollX, scrollY;
+			double scrollX, scrollY;//¹öÂÖ¹ö¶¯¾àÀë
 		public:
 			Window(const char* title, int width, int height);//¹¹Ôì
 			~Window();

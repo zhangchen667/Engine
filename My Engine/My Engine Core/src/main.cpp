@@ -36,7 +36,7 @@ int main(){
 	
 	myarcane::Time deltaTime;//帧时间计算,用于平滑移动
 
-	bool firstMove= true;
+	bool firstMove= true; 
 	GLfloat lastX = window.getWidth();
 	GLfloat lastY = window.getHeight();//屏幕极限
 
