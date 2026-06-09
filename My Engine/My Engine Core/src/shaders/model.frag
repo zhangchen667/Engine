@@ -1,52 +1,40 @@
 #version 460 core
 
-struct Material{//物体材质
+const float PI = 3.14159265359;
+
+struct Material{
 	sampler2D texture_diffuse1;
-	sampler2D texture_diffuse2;
-	sampler2D texture_diffuse3;
-	sampler2D texture_specular1;
-	sampler2D texture_specular2;
-	sampler2D texture_specular3;
-	
-	float shininess;
+	sampler2D texture_normal1;
+	float metallic;
+	float roughness;
+	float ao;
 };
 struct DirLight {
 	vec3 direction;
-
-	vec3 ambient;
-	vec3 diffuse;
-	vec3 specular;
+	vec3 color;
 };
 struct PointLight {
 	vec3 position;
-
 	float constant;
 	float linear;
 	float quadratic;
-
-	vec3 ambient;
-	vec3 diffuse;
-	vec3 specular;
+	vec3 color;
 };
 struct SpotLight {
 	vec3 position;
 	vec3 direction;
 	float cutOff;
 	float outerCutOff;
-
 	float constant;
 	float linear;
 	float quadratic;
-
-	vec3 ambient;
-	vec3 diffuse;
-	vec3 specular;
+	vec3 color;
 };
 #define NR_POINT_LIGHTS 1
 
-in vec2 TexCoords;
-in vec3 Normal;
 in vec3 FragPos;
+in vec2 TexCoords;
+in mat3 TBN;
 
 out vec4 color;
 
@@ -56,93 +44,110 @@ uniform vec3 viewPos;
 uniform DirLight dirLight;
 uniform PointLight pointLights[NR_POINT_LIGHTS];
 uniform SpotLight spotLight;
-vec3 CalcDirLight(DirLight light, vec3 normal, vec3 fragToCam);
-vec3 CalcPointLight(PointLight light, vec3 normal, vec3 fragPos, vec3 fragToCam);
-vec3 CalcSpotLight(SpotLight light, vec3 normal, vec3 fragPos, vec3 fragToCam);
+uniform bool useNormalMap;
+
+float DistributionGGX(vec3 N, vec3 H, float roughness);
+float GeometrySchlickGGX(float NdotV, float roughness);
+float GeometrySmith(vec3 N, vec3 V, vec3 L, float roughness);
+vec3 FresnelSchlick(float cosTheta, vec3 F0);
+
+vec3 getNormal();
+vec3 calcPBR(vec3 N, vec3 V, vec3 L, vec3 radiance, vec3 albedo, float metallic, float roughness);
+vec3 CalcPBRDirLight(DirLight light, vec3 N, vec3 V, vec3 albedo, float metallic, float roughness);
+vec3 CalcPBRPointLight(PointLight light, vec3 N, vec3 V, vec3 fragPos, vec3 albedo, float metallic, float roughness);
+vec3 CalcPBRSpotLight(SpotLight light, vec3 N, vec3 V, vec3 fragPos, vec3 albedo, float metallic, float roughness);
+
 void main() {
-	float textureAlpha= texture(material.texture_diffuse1, TexCoords).w;//获取纹理的alpha值
-	if(textureAlpha<0.1)discard;//如果alpha值小于0.1则丢弃该片元,即实现透明效果
-	
-	vec3 norm = normalize(Normal);
-	vec3 fragToCam = normalize(viewPos - FragPos);
-	
-	vec3 result = CalcDirLight(dirLight, norm, fragToCam);
-	for(unsigned int i = 0; i < NR_POINT_LIGHTS; ++i) {
-		result += CalcPointLight(pointLights[i], norm, FragPos, fragToCam);
+	float textureAlpha = texture(material.texture_diffuse1, TexCoords).w;
+	if(textureAlpha < 0.1) discard;
+
+	vec3 albedo = texture(material.texture_diffuse1, TexCoords).rgb;
+	vec3 N = getNormal();
+	vec3 V = normalize(viewPos - FragPos);
+
+	vec3 Lo = vec3(0.0);
+	Lo += CalcPBRDirLight(dirLight, N, V, albedo, material.metallic, material.roughness);
+	for(int i = 0; i < NR_POINT_LIGHTS; ++i)
+		Lo += CalcPBRPointLight(pointLights[i], N, V, FragPos, albedo, material.metallic, material.roughness);
+	Lo += CalcPBRSpotLight(spotLight, N, V, FragPos, albedo, material.metallic, material.roughness);
+
+	vec3 ambient = vec3(0.03) * albedo * material.ao;
+	vec3 result = ambient + Lo;
+
+	result = result / (result + vec3(1.0));
+	result = pow(result, vec3(1.0 / 2.2));
+
+	color = vec4(result, textureAlpha);
+}
+
+vec3 getNormal(){
+	if(useNormalMap){
+		vec3 tangentNormal = texture(material.texture_normal1, TexCoords).xyz * 2.0 - 1.0;
+		return normalize(TBN * tangentNormal);
 	}
-	result += CalcSpotLight(spotLight, norm, FragPos, fragToCam);
-
-	// Result
-	color = vec4(result, textureAlpha);//最终片元颜色的alpha值与纹理的alpha值相同
+	return normalize(TBN[2]);
 }
 
-vec3 CalcDirLight(DirLight light, vec3 normal, vec3 viewDir) {
-	vec3 lightDirection = normalize(-light.direction);
-
-	float diff = max(dot(lightDirection, normal), 0.0);
-
-	vec3 halfwayDir = normalize(lightDirection + viewDir);
-	float spec=pow(max(dot(normal,halfwayDir),0.0),material.shininess);
-
-	vec3 ambient = light.ambient * texture(material.texture_diffuse1, TexCoords).rgb;
-	vec3 diffuse = light.diffuse * diff * texture(material.texture_diffuse1, TexCoords).rgb;
-	vec3 specular = light.specular * spec * texture(material.texture_specular1, TexCoords).rgb;
-	
-	
-	return (ambient + diffuse + specular);
+float DistributionGGX(vec3 N, vec3 H, float roughness){
+	float a = roughness * roughness;
+	float a2 = a * a;
+	float NdotH = max(dot(N, H), 0.0);
+	float denom = NdotH * NdotH * (a2 - 1.0) + 1.0;
+	return a2 / (PI * denom * denom + 0.0001);
 }
 
-vec3 CalcPointLight(PointLight light, vec3 normal, vec3 fragPos, vec3 viewDir) {
-	vec3 lightDirection = normalize(light.position - fragPos);
-
-	float diff = max(dot(lightDirection, normal), 0.0);
-
-	vec3 halfwayDir = normalize(lightDirection + viewDir);
-	float spec=pow(max(dot(normal,halfwayDir),0.0),material.shininess);
-
-	// Attenuation calculation
-	float distance = length(light.position - fragPos);
-	float attenuation = 1.0 / (light.constant + light.linear * distance + light.quadratic * distance * distance);
-
-	vec3 ambient = light.ambient * texture(material.texture_diffuse1, TexCoords).rgb;
-	vec3 diffuse = light.diffuse * diff * texture(material.texture_diffuse1, TexCoords).rgb;
-	vec3 specular = light.specular * spec * texture(material.texture_specular1, TexCoords).rgb;
-	
-
-	// Apply attenuation
-	ambient *= attenuation;
-	diffuse *= attenuation;
-	specular *= attenuation;
-
-	return (ambient + diffuse + specular);
+float GeometrySchlickGGX(float NdotV, float roughness){
+	float r = roughness + 1.0;
+	float k = (r * r) / 8.0;
+	return NdotV / (NdotV * (1.0 - k) + k);
 }
 
-vec3 CalcSpotLight(SpotLight light, vec3 normal, vec3 fragPos, vec3 viewDir) {
-	vec3 lightDirection = normalize(light.position - fragPos);
+float GeometrySmith(vec3 N, vec3 V, vec3 L, float roughness){
+	return GeometrySchlickGGX(max(dot(N, V), 0.0), roughness)
+		 * GeometrySchlickGGX(max(dot(N, L), 0.0), roughness);
+}
 
-	float diff = max(dot(lightDirection, normal), 0.0);
+vec3 FresnelSchlick(float cosTheta, vec3 F0){
+	return F0 + (1.0 - F0) * pow(clamp(1.0 - cosTheta, 0.0, 1.0), 5.0);
+}
 
-	vec3 halfwayDir = normalize(lightDirection + viewDir);
-	float spec=pow(max(dot(normal,halfwayDir),0.0),material.shininess);
+vec3 calcPBR(vec3 N, vec3 V, vec3 L, vec3 radiance, vec3 albedo, float metallic, float roughness){
+	vec3 H = normalize(V + L);
+	vec3 F0 = mix(vec3(0.04), albedo, metallic);
 
-	// Attenuation calculation
-	float distance = length(light.position - fragPos);
-	float attenuation = 1.0 / (light.constant + light.linear * distance + light.quadratic * distance * distance);
+	float D = DistributionGGX(N, H, roughness);
+	float G = GeometrySmith(N, V, L, roughness);
+	vec3 F = FresnelSchlick(max(dot(H, V), 0.0), F0);
 
-	// Check if it is in the spotlight's circle
-	float theta = dot(normalize(light.direction), -viewDir);
-	float difference = light.cutOff - light.outerCutOff;
-	float intensity = clamp((theta - light.outerCutOff) / difference, 0.0, 1.0);
+	vec3 kS = F;
+	vec3 kD = (1.0 - metallic) * (vec3(1.0) - kS);
 
-	vec3 ambient = light.ambient * texture(material.texture_diffuse1, TexCoords).rgb;
-	vec3 diffuse = light.diffuse * diff * texture(material.texture_diffuse1, TexCoords).rgb;
-	vec3 specular = light.specular * spec * texture(material.texture_specular1, TexCoords).rgb;
-	//vec3 emission = texture(material.emission, TexCoords).rgb * clamp((sin(time) * 2) - 1, 0, 1);
+	vec3 numerator = D * G * F;
+	float denominator = 4.0 * max(dot(N, V), 0.0) * max(dot(N, L), 0.0) + 0.0001;
+	vec3 specular = numerator / denominator;
 
-	// Apply attenuation
-	ambient *= attenuation * intensity;
-	diffuse *= attenuation * intensity;
-	specular *= attenuation * intensity;
+	float NdotL = max(dot(N, L), 0.0);
+	return (kD * albedo / PI + specular) * radiance * NdotL;
+}
 
-	return (ambient + diffuse + specular );
+vec3 CalcPBRDirLight(DirLight light, vec3 N, vec3 V, vec3 albedo, float metallic, float roughness){
+	vec3 L = normalize(-light.direction);
+	return calcPBR(N, V, L, light.color, albedo, metallic, roughness);
+}
+
+vec3 CalcPBRPointLight(PointLight light, vec3 N, vec3 V, vec3 fragPos, vec3 albedo, float metallic, float roughness){
+	vec3 L = normalize(light.position - fragPos);
+	float dist = length(light.position - fragPos);
+	float attenuation = 1.0 / (light.constant + light.linear * dist + light.quadratic * dist * dist);
+	return calcPBR(N, V, L, light.color * attenuation, albedo, metallic, roughness);
+}
+
+vec3 CalcPBRSpotLight(SpotLight light, vec3 N, vec3 V, vec3 fragPos, vec3 albedo, float metallic, float roughness){
+	vec3 L = normalize(light.position - fragPos);
+	float dist = length(light.position - fragPos);
+	float attenuation = 1.0 / (light.constant + light.linear * dist + light.quadratic * dist * dist);
+	float theta = dot(L, normalize(-light.direction));
+	float epsilon = light.cutOff - light.outerCutOff;
+	float intensity = clamp((theta - light.outerCutOff) / epsilon, 0.0, 1.0);
+	return calcPBR(N, V, L, light.color * attenuation * intensity, albedo, metallic, roughness);
 }

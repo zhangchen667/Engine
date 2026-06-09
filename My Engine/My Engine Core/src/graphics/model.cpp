@@ -17,26 +17,21 @@ namespace myarcane {
 		}
 		void Model::loadModel(const std::string& path) {
 			Assimp::Importer import;
-			//读取文件
-			const aiScene* scene = import.ReadFile(path, aiProcess_Triangulate | aiProcess_FlipUVs);
-			if (!scene || scene->mFlags & AI_SCENE_FLAGS_INCOMPLETE || !scene->mRootNode) {//检查错误
+			const aiScene* scene = import.ReadFile(path,
+				aiProcess_Triangulate | aiProcess_FlipUVs | aiProcess_CalcTangentSpace);
+			if (!scene || scene->mFlags & AI_SCENE_FLAGS_INCOMPLETE || !scene->mRootNode) {
 				std::cout << "ERROR::ASSIMP::" << import.GetErrorString() << std::endl;
 				utils::Logger::getInstance().error("logged_files/log.txt", "model initialization", import.GetErrorString());
 				return;
 			}
-			//获取目录路径
 			m_Directory = path.substr(0, path.find_last_of('/'));
-			//处理节点
 			processNode(scene->mRootNode, scene);
 		}
 		void Model::processNode(aiNode* node, const aiScene* scene) {
-			//处理节点所有网格
 			for (unsigned int i = 0; i < node->mNumMeshes; i++) {
-				//获取网格
 				aiMesh* mesh = scene->mMeshes[node->mMeshes[i]];
 				m_Meshes.push_back(processMesh(mesh, scene));
 			}
-			//递归处理子节点
 			for (unsigned int i = 0; i < node->mNumChildren; i++) {
 				processNode(node->mChildren[i], scene);
 			}
@@ -45,51 +40,55 @@ namespace myarcane {
 			std::vector<Vertex> vertices;
 			std::vector<unsigned int> indices;
 			std::vector<Texture> textures;
-			vertices.reserve(mesh->mNumVertices);//预留空间
-			indices.reserve(mesh->mNumFaces * 3);//预留空间
-			//处理顶点
+			vertices.reserve(mesh->mNumVertices);
+			indices.reserve(mesh->mNumFaces * 3);
+
 			for (unsigned int i = 0; i < mesh->mNumVertices; i++) {
 				glm::vec2 vec;
-				//纹理坐标
 				if (mesh->mTextureCoords[0]) {
-					
 					vec.x = mesh->mTextureCoords[0][i].x;
 					vec.y = mesh->mTextureCoords[0][i].y;
-					
 				}
 				else {
 					vec.x = 0.0f;
 					vec.y = 0.0f;
 				}
-				vertices.emplace_back(mesh->mVertices[i].x,mesh->mVertices[i].y,mesh->mVertices[i].z,
-					mesh->mNormals[i].x,mesh->mNormals[i].y,mesh->mNormals[i].z,vec.x,vec.y);
+				Vertex v(mesh->mVertices[i].x, mesh->mVertices[i].y, mesh->mVertices[i].z,
+					mesh->mNormals[i].x, mesh->mNormals[i].y, mesh->mNormals[i].z, vec.x, vec.y);
+				// tangent / bitangent for normal mapping
+				if (mesh->mTangents) {
+					v.Tangent = glm::vec3(mesh->mTangents[i].x, mesh->mTangents[i].y, mesh->mTangents[i].z);
+				}
+				if (mesh->mBitangents) {
+					v.Bitangent = glm::vec3(mesh->mBitangents[i].x, mesh->mBitangents[i].y, mesh->mBitangents[i].z);
+				}
+				vertices.emplace_back(v);
 			}
-			//处理索引
+
 			for (unsigned int i = 0; i < mesh->mNumFaces; i++) {
 				aiFace face = mesh->mFaces[i];
 				for (unsigned int j = 0; j < face.mNumIndices; j++) {
 					indices.push_back(face.mIndices[j]);
 				}
 			}
-			//处理材质
+
 			if (mesh->mMaterialIndex >= 0) {
 				aiMaterial* material = scene->mMaterials[mesh->mMaterialIndex];
-				//漫反射贴图
 				std::vector<Texture> diffuseMaps = loadMaterialTextures(material, aiTextureType_DIFFUSE, "texture_diffuse");
 				textures.insert(textures.end(), diffuseMaps.begin(), diffuseMaps.end());
-				//镜面反射贴图
 				std::vector<Texture> specularMaps = loadMaterialTextures(material, aiTextureType_SPECULAR, "texture_specular");
 				textures.insert(textures.end(), specularMaps.begin(), specularMaps.end());
+				std::vector<Texture> normalMaps = loadMaterialTextures(material, aiTextureType_NORMALS, "texture_normal");
+				textures.insert(textures.end(), normalMaps.begin(), normalMaps.end());
 			}
 			return Mesh(vertices, indices, textures);
 		}
 		std::vector<Texture>Model::loadMaterialTextures(aiMaterial* mat, aiTextureType type, std::string typeName) {
 			std::vector<Texture> textures;
-			textures.reserve(mat->GetTextureCount(type));//预留空间,提高效率，避免多次分配内存
+			textures.reserve(mat->GetTextureCount(type));
 			for (unsigned int i = 0; i < mat->GetTextureCount(type); i++) {
 				aiString str;
 				mat->GetTexture(type, i, &str);
-				//检查纹理是否已加载
 				bool skip = false;
 				for (unsigned int j = 0; j < m_LoadedTextures.size(); ++j) {
 					if (std::strcmp(str.C_Str(), m_LoadedTextures[j].path.C_Str()) == 0) {
@@ -101,11 +100,11 @@ namespace myarcane {
 
 				if (!skip) {
 					Texture texture;
-					texture.id = TextureFromFile(str.C_Str(), m_Directory); // Assumption made: material stuff is located in the same directory as the model object
+					texture.id = TextureFromFile(str.C_Str(), m_Directory);
 					texture.type = typeName;
 					texture.path = str;
 					textures.push_back(texture);
-					m_LoadedTextures.push_back(texture); // Add to loaded textures, so no duplicate texture gets loaded
+					m_LoadedTextures.push_back(texture);
 				}
 			}
 			return textures;
